@@ -10,15 +10,15 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 商品spu
+ * 公共商品spu;要货商提供
  * 
  * @author zdh
  * @email yyyyyy@cm.com
- * @date 2020-08-13 14:34:02
+ * @date 2020-08-13 15:06:49
  */
 @Data
-@TableName("t_small_spu")
-public class SmallSpu implements Serializable {
+@TableName("t_small_common_spu")
+public class SmallCommonSpu implements Serializable {
 	private static final long serialVersionUID = 1L;
 
    	   /*  */
@@ -81,9 +81,7 @@ public class SmallSpu implements Serializable {
    	   	   /* 修改时间 */
        @TableField("modify_time")
        private Date modifyTime;
-
-        /* 零售户id*/
-        @TableField("retailer_id")
-        private Long retailerId;
-   	
+        /* 提供商id*/
+        @TableField("provider_id")
+        private Long providerId;
 }
