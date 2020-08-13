@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.small.dao.SmallOrderMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.small.entity.SmallOrder" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="channel" column="channel"/>
+     <result property="orderNo" column="order_no"/>
+     <result property="userId" column="user_id"/>
+     <result property="supplierId" column="supplier_id"/>
+     <result property="orderStatus" column="order_status"/>
+     <result property="payStatus" column="pay_status"/>
+     <result property="refundStatus" column="refund_status"/>
+     <result property="shipStatus" column="ship_status"/>
+     <result property="skuOriginalTotalPrice" column="sku_original_total_price"/>
+     <result property="skuTotalPrice" column="sku_total_price"/>
+     <result property="freightPrice" column="freight_price"/>
+     <result property="couponPrice" column="coupon_price"/>
+     <result property="couponId" column="coupon_id"/>
+     <result property="actualPrice" column="actual_price"/>
+     <result property="payPrice" column="pay_price"/>
+     <result property="payId" column="pay_id"/>
+     <result property="payChannel" column="pay_channel"/>
+     <result property="payTime" column="pay_time"/>
+     <result property="shipCode" column="ship_code"/>
+     <result property="shipNo" column="ship_no"/>
+     <result property="paySn" column="pay_sn"/>
+     <result property="shipTime" column="ship_time"/>
+     <result property="confirmTime" column="confirm_time"/>
+     <result property="province" column="province"/>
+     <result property="city" column="city"/>
+     <result property="county" column="county"/>
+     <result property="address" column="address"/>
+     <result property="memo" column="memo"/>
+     <result property="refundReason" column="refund_reason"/>
+     <result property="consignee" column="consignee"/>
+     <result property="phone" column="phone"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,channel,order_no,user_id,supplier_id,order_status,pay_status,refund_status,ship_status,sku_original_total_price,sku_total_price,freight_price,coupon_price,coupon_id,actual_price,pay_price,pay_id,pay_channel,pay_time,ship_code,ship_no,pay_sn,ship_time,confirm_time,province,city,county,address,memo,refund_reason,consignee,phone,create_time,modify_time
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_small_order t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="channel != null">
+    and t.channel = #{channel}
+</if>
+<if test="order_no != null">
+    and t.order_no = #{order_no}
+</if>
+<if test="user_id != null">
+    and t.user_id = #{user_id}
+</if>
+<if test="supplier_id != null">
+    and t.supplier_id = #{supplier_id}
+</if>
+<if test="order_status != null">
+    and t.order_status = #{order_status}
+</if>
+<if test="pay_status != null">
+    and t.pay_status = #{pay_status}
+</if>
+<if test="refund_status != null">
+    and t.refund_status = #{refund_status}
+</if>
+<if test="ship_status != null">
+    and t.ship_status = #{ship_status}
+</if>
+<if test="sku_original_total_price != null">
+    and t.sku_original_total_price = #{sku_original_total_price}
+</if>
+<if test="sku_total_price != null">
+    and t.sku_total_price = #{sku_total_price}
+</if>
+<if test="freight_price != null">
+    and t.freight_price = #{freight_price}
+</if>
+<if test="coupon_price != null">
+    and t.coupon_price = #{coupon_price}
+</if>
+<if test="coupon_id != null">
+    and t.coupon_id = #{coupon_id}
+</if>
+<if test="actual_price != null">
+    and t.actual_price = #{actual_price}
+</if>
+<if test="pay_price != null">
+    and t.pay_price = #{pay_price}
+</if>
+<if test="pay_id != null">
+    and t.pay_id = #{pay_id}
+</if>
+<if test="pay_channel != null">
+    and t.pay_channel = #{pay_channel}
+</if>
+<if test="pay_time != null">
+    and t.pay_time = #{pay_time}
+</if>
+<if test="ship_code != null">
+    and t.ship_code = #{ship_code}
+</if>
+<if test="ship_no != null">
+    and t.ship_no = #{ship_no}
+</if>
+<if test="pay_sn != null">
+    and t.pay_sn = #{pay_sn}
+</if>
+<if test="ship_time != null">
+    and t.ship_time = #{ship_time}
+</if>
+<if test="confirm_time != null">
+    and t.confirm_time = #{confirm_time}
+</if>
+<if test="province != null">
+    and t.province = #{province}
+</if>
+<if test="city != null">
+    and t.city = #{city}
+</if>
+<if test="county != null">
+    and t.county = #{county}
+</if>
+<if test="address != null">
+    and t.address = #{address}
+</if>
+<if test="memo != null">
+    and t.memo = #{memo}
+</if>
+<if test="refund_reason != null">
+    and t.refund_reason = #{refund_reason}
+</if>
+<if test="consignee != null">
+    and t.consignee = #{consignee}
+</if>
+<if test="phone != null">
+    and t.phone = #{phone}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+</where>
+</select>
+</mapper>

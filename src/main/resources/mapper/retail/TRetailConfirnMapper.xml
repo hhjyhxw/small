@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.retail.dao.TRetailConfirnMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.retail.entity.TRetailConfirn" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="userName" column="user_name"/>
+     <result property="passwd" column="passwd"/>
+     <result property="liences" column="liences"/>
+     <result property="shopName" column="shop_name"/>
+     <result property="phone" column="phone"/>
+     <result property="openid" column="openid"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+     <result property="lastLoginTime" column="last_login_time"/>
+     <result property="lastLoginIp" column="last_login_ip"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,user_name,passwd,liences,shop_name,phone,openid,create_time,modify_time,last_login_time,last_login_ip
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_retail_confirn t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="user_name != null">
+    and t.user_name = #{user_name}
+</if>
+<if test="passwd != null">
+    and t.passwd = #{passwd}
+</if>
+<if test="liences != null">
+    and t.liences = #{liences}
+</if>
+<if test="shop_name != null">
+    and t.shop_name = #{shop_name}
+</if>
+<if test="phone != null">
+    and t.phone = #{phone}
+</if>
+<if test="openid != null">
+    and t.openid = #{openid}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+<if test="modify_time != null">
+    and t.modify_time = #{modify_time}
+</if>
+<if test="last_login_time != null">
+    and t.last_login_time = #{last_login_time}
+</if>
+</where>
+</select>
+</mapper>

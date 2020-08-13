@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.mpwx.dao.MpwxCardMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.mpwx.entity.MpwxCard" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="wxappId" column="wxapp_id"/>
+     <result property="cardType" column="card_type"/>
+     <result property="cardId" column="card_id"/>
+     <result property="logoUrl" column="logo_url"/>
+     <result property="codeType" column="code_type"/>
+     <result property="brandName" column="brand_name"/>
+     <result property="title" column="title"/>
+     <result property="subTitle" column="sub_title"/>
+     <result property="color" column="color"/>
+     <result property="notice" column="notice"/>
+     <result property="servicePhone" column="service_phone"/>
+     <result property="description" column="description"/>
+     <result property="useLimit" column="use_limit"/>
+     <result property="getLimit" column="get_limit"/>
+     <result property="useCustomCode" column="use_custom_code"/>
+     <result property="bindOpenid" column="bind_openid"/>
+     <result property="canShare" column="can_share"/>
+     <result property="canGiveFriend" column="can_give_friend"/>
+     <result property="dateInfoType" column="date_info_type"/>
+     <result property="beginTimestamp" column="begin_timestamp"/>
+     <result property="endTimestamp" column="end_timestamp"/>
+     <result property="fixedTerm" column="fixed_term"/>
+     <result property="fixedBeginTerm" column="fixed_begin_term"/>
+     <result property="skuQuantity" column="sku_quantity"/>
+     <result property="skuTotalQuantity" column="sku_total_quantity"/>
+     <result property="customUrlName" column="custom_url_name"/>
+     <result property="customUrl" column="custom_url"/>
+     <result property="customUrlSubTitle" column="custom_url_sub_title"/>
+     <result property="promotionUrlName" column="promotion_url_name"/>
+     <result property="promotionUrl" column="promotion_url"/>
+     <result property="promotionUrlSubTitle" column="promotion_url_sub_title"/>
+     <result property="source" column="source"/>
+     <result property="verifyStatus" column="verify_status"/>
+     <result property="poiPicUrl" column="poi_pic_url"/>
+     <result property="autoUpdateNewLocation" column="auto_update_new_location"/>
+     <result property="state" column="state"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+     <result property="shopType" column="shop_type"/>
+     <result property="noShopReason" column="no_shop_reason"/>
+     <result property="noShopInput" column="no_shop_input"/>
+     <result property="shopInNearby" column="shop_in_nearby"/>
+     <result property="getCustomCodeMode" column="get_custom_code_mode"/>
+     <result property="customAppBrandUserName" column="custom_app_brand_user_name"/>
+     <result property="customAppBrandPass" column="custom_app_brand_pass"/>
+     <result property="promotionAppBrandUserName" column="promotion_app_brand_user_name"/>
+     <result property="promotionAppBrandPass" column="promotion_app_brand_pass"/>
+     <result property="supplierId" column="supplier_id"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,wxapp_id,card_type,card_id,logo_url,code_type,brand_name,title,sub_title,color,notice,service_phone,description,use_limit,get_limit,use_custom_code,bind_openid,can_share,can_give_friend,date_info_type,begin_timestamp,end_timestamp,fixed_term,fixed_begin_term,sku_quantity,sku_total_quantity,custom_url_name,custom_url,custom_url_sub_title,promotion_url_name,promotion_url,promotion_url_sub_title,source,verify_status,poi_pic_url,auto_update_new_location,state,create_time,modify_time,shop_type,no_shop_reason,no_shop_input,shop_in_nearby,get_custom_code_mode,custom_app_brand_user_name,custom_app_brand_pass,promotion_app_brand_user_name,promotion_app_brand_pass,supplier_id
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_mpwx_card t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="wxapp_id != null">
+    and t.wxapp_id = #{wxapp_id}
+</if>
+<if test="card_type != null">
+    and t.card_type = #{card_type}
+</if>
+<if test="card_id != null">
+    and t.card_id = #{card_id}
+</if>
+<if test="logo_url != null">
+    and t.logo_url = #{logo_url}
+</if>
+<if test="code_type != null">
+    and t.code_type = #{code_type}
+</if>
+<if test="brand_name != null">
+    and t.brand_name = #{brand_name}
+</if>
+<if test="title != null">
+    and t.title = #{title}
+</if>
+<if test="sub_title != null">
+    and t.sub_title = #{sub_title}
+</if>
+<if test="color != null">
+    and t.color = #{color}
+</if>
+<if test="notice != null">
+    and t.notice = #{notice}
+</if>
+<if test="service_phone != null">
+    and t.service_phone = #{service_phone}
+</if>
+<if test="description != null">
+    and t.description = #{description}
+</if>
+<if test="use_limit != null">
+    and t.use_limit = #{use_limit}
+</if>
+<if test="get_limit != null">
+    and t.get_limit = #{get_limit}
+</if>
+<if test="use_custom_code != null">
+    and t.use_custom_code = #{use_custom_code}
+</if>
+<if test="bind_openid != null">
+    and t.bind_openid = #{bind_openid}
+</if>
+<if test="can_share != null">
+    and t.can_share = #{can_share}
+</if>
+<if test="can_give_friend != null">
+    and t.can_give_friend = #{can_give_friend}
+</if>
+<if test="date_info_type != null">
+    and t.date_info_type = #{date_info_type}
+</if>
+<if test="begin_timestamp != null">
+    and t.begin_timestamp = #{begin_timestamp}
+</if>
+<if test="end_timestamp != null">
+    and t.end_timestamp = #{end_timestamp}
+</if>
+<if test="fixed_term != null">
+    and t.fixed_term = #{fixed_term}
+</if>
+<if test="fixed_begin_term != null">
+    and t.fixed_begin_term = #{fixed_begin_term}
+</if>
+<if test="sku_quantity != null">
+    and t.sku_quantity = #{sku_quantity}
+</if>
+<if test="sku_total_quantity != null">
+    and t.sku_total_quantity = #{sku_total_quantity}
+</if>
+<if test="custom_url_name != null">
+    and t.custom_url_name = #{custom_url_name}
+</if>
+<if test="custom_url != null">
+    and t.custom_url = #{custom_url}
+</if>
+<if test="custom_url_sub_title != null">
+    and t.custom_url_sub_title = #{custom_url_sub_title}
+</if>
+<if test="promotion_url_name != null">
+    and t.promotion_url_name = #{promotion_url_name}
+</if>
+<if test="promotion_url != null">
+    and t.promotion_url = #{promotion_url}
+</if>
+<if test="promotion_url_sub_title != null">
+    and t.promotion_url_sub_title = #{promotion_url_sub_title}
+</if>
+<if test="source != null">
+    and t.source = #{source}
+</if>
+<if test="verify_status != null">
+    and t.verify_status = #{verify_status}
+</if>
+<if test="poi_pic_url != null">
+    and t.poi_pic_url = #{poi_pic_url}
+</if>
+<if test="auto_update_new_location != null">
+    and t.auto_update_new_location = #{auto_update_new_location}
+</if>
+<if test="state != null">
+    and t.state = #{state}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+<if test="modify_time != null">
+    and t.modify_time = #{modify_time}
+</if>
+<if test="shop_type != null">
+    and t.shop_type = #{shop_type}
+</if>
+<if test="no_shop_reason != null">
+    and t.no_shop_reason = #{no_shop_reason}
+</if>
+<if test="no_shop_input != null">
+    and t.no_shop_input = #{no_shop_input}
+</if>
+<if test="shop_in_nearby != null">
+    and t.shop_in_nearby = #{shop_in_nearby}
+</if>
+<if test="get_custom_code_mode != null">
+    and t.get_custom_code_mode = #{get_custom_code_mode}
+</if>
+<if test="custom_app_brand_user_name != null">
+    and t.custom_app_brand_user_name = #{custom_app_brand_user_name}
+</if>
+<if test="custom_app_brand_pass != null">
+    and t.custom_app_brand_pass = #{custom_app_brand_pass}
+</if>
+<if test="promotion_app_brand_user_name != null">
+    and t.promotion_app_brand_user_name = #{promotion_app_brand_user_name}
+</if>
+<if test="promotion_app_brand_pass != null">
+    and t.promotion_app_brand_pass = #{promotion_app_brand_pass}
+</if>
+</where>
+</select>
+</mapper>

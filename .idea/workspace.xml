@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c6fbc680-6164-4f33-9b24-94a00587f493" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallAppraiseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallCartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallCategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallCollectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallCouponController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallFootprintController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallOrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallOrderDetailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallPaymentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallRefundController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallRetailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallSkuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallSpuAttributeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallSpuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallUserCouponController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallAppraiseMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallCartMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallCategoryMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallCollectMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallCouponMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallFootprintMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallOrderDetailMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallOrderMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallPaymentMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallRefundMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallRetailMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallSkuMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallSpuAttributeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallSpuMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallUserCouponMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallAppraise.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallCart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallCollect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallCoupon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallFootprint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallOrder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallOrderDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallPayment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallRefund.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallRetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallSku.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallSpu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallSpuAttribute.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallUserCoupon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallAppraiseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallCartService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallCategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallCollectService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallCouponService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallFootprintService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallOrderDetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallOrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallPaymentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallRefundService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallRetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallSkuService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallSpuAttributeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallSpuService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallUserCouponService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/bsactivity/ScanExchageController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/wxmp/s.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/basecommon/service/redis/RedisCacheConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/basecommon/service/redis/RedisCacheConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/basecommon/ss.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wx-web-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/small.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+    <option name="PARALLEL_COMPILATION" value="true" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="BpmnFile" />
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../apache-maven-3.3.1" />
+        <option name="userSettingsFile" value="D:\apache-maven-3.3.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1deqggNPpim6FxtrBYyZXmsjjkp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/src/test/java/com/icloud/TimeTest.java&#10;D:/project/myproject/web-project/src/main/resources/application-dev.yml&#10;D:/project/myproject/wx-web-project/src/test/java/com/icloud/NicknameTest.java&#10;D:/project/myproject/web-project/src/main/resources/application.yml&#10;D:/project/myproject/wx-web-project/src/test/java/com/icloud/LongCoinChargeTest.java&#10;D:/project/myproject/web-project/src/main/resources/application-dev-init-bak.yml" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/icloud/modules" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates\modules\front\" />
+      <recent name="D:\project\myproject\web-project\src\main\resources\statics\third_plugin" />
+      <recent name="D:\project\myproject\web-project\src\main\resources\statics\js" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.icloud.modules.mpwx.vo" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.icloud" />
+      <recent name="com.icloud.config.global.wx.handler" />
+      <recent name="com.icloud.wiki.vo" />
+      <recent name="com.icloud.modules.mpwx.service" />
+      <recent name="com.icloud.wiki.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\myproject\small\src\main\java\com\icloud\modules" />
+      <recent name="D:\project\myproject\small" />
+      <recent name="D:\project\myproject\wx-customer-project\src\main\java\com\icloud\wiki\controller" />
+      <recent name="D:\project\myproject\wx-customer-project\src\main\java\com\icloud\wiki" />
+      <recent name="D:\project\myproject\wx-customer-project\src\main\resources\statics\js\modules\mpwx" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Application (1)">
+    <configuration name="Application (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.icloud.Application" />
+      <module name="small" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.icloud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.icloud.Application" />
+      <module name="wx-web-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.icloud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ForestHttpBeanTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="wx-web-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.icloud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.icloud" />
+      <option name="MAIN_CLASS_NAME" value="com.icloud.ForestHttpBeanTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ScrewDatabaseDocTest.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="wx-web-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.icloud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.icloud" />
+      <option name="MAIN_CLASS_NAME" value="com.icloud.ScrewDatabaseDocTest" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="small" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.icloud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.icloud.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="wx-web-project" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.icloud.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Application" />
+      <item itemvalue="JUnit.ForestHttpBeanTest.test" />
+      <item itemvalue="JUnit.ScrewDatabaseDocTest.contextLoads" />
+      <item itemvalue="Spring Boot.Application" />
+      <item itemvalue="Spring Boot.Application (1)" />
+      <item itemvalue="Application.Application (1)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Application (1)" />
+        <item itemvalue="Spring Boot.Application (1)" />
+        <item itemvalue="JUnit.ScrewDatabaseDocTest.contextLoads" />
+        <item itemvalue="JUnit.ForestHttpBeanTest.test" />
+        <item itemvalue="Application.Application" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Lenovo\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c6fbc680-6164-4f33-9b24-94a00587f493" name="Default Changelist" comment="" />
+      <created>1572515534215</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572515534215</updated>
+      <workItem from="1592796022322" duration="4538000" />
+      <workItem from="1592809558753" duration="1919000" />
+      <workItem from="1592872887146" duration="4880000" />
+      <workItem from="1592892439766" duration="1761000" />
+      <workItem from="1592898880667" duration="217000" />
+      <workItem from="1592899107991" duration="6092000" />
+      <workItem from="1592959082678" duration="2053000" />
+      <workItem from="1592961223067" duration="2287000" />
+      <workItem from="1593305043046" duration="3917000" />
+      <workItem from="1593391073277" duration="1216000" />
+      <workItem from="1593477729959" duration="1708000" />
+      <workItem from="1593585540384" duration="639000" />
+      <workItem from="1593650704516" duration="776000" />
+      <workItem from="1593669779818" duration="611000" />
+      <workItem from="1594091789258" duration="3889000" />
+      <workItem from="1594168728967" duration="24728000" />
+      <workItem from="1594255262115" duration="15726000" />
+      <workItem from="1594601075734" duration="8218000" />
+      <workItem from="1594690094078" duration="626000" />
+      <workItem from="1594774605668" duration="641000" />
+      <workItem from="1594868045551" duration="15476000" />
+      <workItem from="1594946663275" duration="26353000" />
+      <workItem from="1595205149926" duration="10054000" />
+      <workItem from="1595291524390" duration="25474000" />
+      <workItem from="1595380730020" duration="14155000" />
+      <workItem from="1595464854356" duration="22351000" />
+      <workItem from="1595551712578" duration="18169000" />
+      <workItem from="1595809956774" duration="1372000" />
+      <workItem from="1595812347163" duration="24560000" />
+      <workItem from="1595896245900" duration="17964000" />
+      <workItem from="1595923591638" duration="596000" />
+      <workItem from="1595925697148" duration="5985000" />
+      <workItem from="1595982244231" duration="22290000" />
+      <workItem from="1596068591948" duration="14161000" />
+      <workItem from="1596161601214" duration="8644000" />
+      <workItem from="1596427139883" duration="2701000" />
+      <workItem from="1596522605218" duration="1354000" />
+      <workItem from="1596587705083" duration="4168000" />
+      <workItem from="1596642908047" duration="607000" />
+      <workItem from="1596766903283" duration="2541000" />
+      <workItem from="1597018645923" duration="3668000" />
+      <workItem from="1597105604722" duration="14085000" />
+      <workItem from="1597193156461" duration="1245000" />
+      <workItem from="1597289114376" duration="608000" />
+      <workItem from="1597290215653" duration="237000" />
+      <workItem from="1597290470014" duration="2481000" />
+    </task>
+    <task id="LOCAL-00001" summary="修改写字楼售bug">
+      <created>1574649748896</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574649748896</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="修改写字楼售bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="574" y="117" key="#com.intellij.ide.util.MemberChooser" timestamp="1595984174720">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="117" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1595984174720" />
+    <state x="315" y="324" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1595316164034">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="315" y="324" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1595316164034" />
+    <state x="548" y="292" width="539" height="240" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1595316169987">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="548" y="292" width="539" height="240" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824@0.0.1536.824" timestamp="1595316169987" />
+    <state x="230" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595987273080">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="230" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1595987273080" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595320705695">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1595320705695" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1597132917781">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597132917781" />
+    <state width="1493" height="175" key="GridCell.Tab.0.bottom" timestamp="1597299614663">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597299614663" />
+    <state width="1493" height="175" key="GridCell.Tab.0.center" timestamp="1597299614663">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597299614663" />
+    <state width="1493" height="175" key="GridCell.Tab.0.left" timestamp="1597299614662">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597299614662" />
+    <state width="1493" height="175" key="GridCell.Tab.0.right" timestamp="1597299614663">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597299614663" />
+    <state width="1493" height="175" key="GridCell.Tab.1.bottom" timestamp="1597299614664">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597299614664" />
+    <state width="1493" height="175" key="GridCell.Tab.1.center" timestamp="1597299614663">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597299614663" />
+    <state width="1493" height="175" key="GridCell.Tab.1.left" timestamp="1597299614663">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597299614663" />
+    <state width="1493" height="175" key="GridCell.Tab.1.right" timestamp="1597299614664">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="175" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597299614664" />
+    <state x="502" y="113" key="RollbackChangesDialog" timestamp="1595231170484">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="502" y="113" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1595231170484" />
+    <state x="270" y="57" key="SettingsEditor" timestamp="1597290326582">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597290326582" />
+    <state x="178" y="72" key="new project wizard" timestamp="1597049144988">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="178" y="72" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1597049144988" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1596522938049">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1596522938049" />
+    <state x="431" y="145" width="920" height="678" key="search.everywhere.popup" timestamp="1597127015028">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="920" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597127015028" />
+    <state x="575" y="313" key="svn.upgradeDialog" timestamp="1597132923287">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="575" y="313" key="svn.upgradeDialog/0.0.1536.824@0.0.1536.824" timestamp="1597132923287" />
+    <state x="533" y="285" key="svn4idea.checkout.options" timestamp="1597132920485">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="533" y="285" key="svn4idea.checkout.options/0.0.1536.824@0.0.1536.824" timestamp="1597132920485" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/icloud/modules/generate/utils/GenUtils.java</url>
+          <line>130</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/icloud/modules/sys/service/impl/SysDeptServiceImpl.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/web_project$Application.ic" NAME="Application Coverage Results" MODIFIED="1583394990032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.icloud.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/web_project$LongCoinQueryTest.ic" NAME="LongCoinQueryTest Coverage Results" MODIFIED="1587710334788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.icloud.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>web-project</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: c3p0:c3p0:0.9.1.1</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

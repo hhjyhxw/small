@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+            <div class="form-group col-sm-1">
+                <input type="text" class="form-control" v-model="q.name" @keyup.enter="query" placeholder="商品名称">
+            </div>
+            <div class="form-group col-sm-1">
+                <input type="text" class="form-control" v-model="q.nickname" @keyup.enter="query" placeholder="消费用户昵称">
+            </div>
+            <div class="form-group col-sm-1">
+                <select class="form-control" v-model="q.status" placeholder="状态">
+                    <option value="1">已使用</option>
+                    <option value="0">未使用</option>
+                </select>
+            </div>
+            <a class="btn btn-default" @click="query">查询</a>
+			<!--<#if shiro.hasPermission("bsactivity:bsactivitygoodsqcode:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("bsactivity:bsactivitygoodsqcode:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("bsactivity:bsactivitygoodsqcode:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>-->
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">关联商品id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityGoodsqcode.goodsid" placeholder="关联商品id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">世界唯一key</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityGoodsqcode.qcode" placeholder="世界唯一key"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">使用状态(0未使用，1已使用)</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityGoodsqcode.status" placeholder="使用状态(0未使用，1已使用)"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">生成时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityGoodsqcode.createTime" placeholder="生成时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">消费时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityGoodsqcode.modifyTime" placeholder="消费时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">消费用户id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityGoodsqcode.userid" placeholder="消费用户id"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/bsactivity/bsactivitygoodsqcode.js?_${.now?long}"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.scanactivity.dao.ScanactivityUserScanrecordMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.scanactivity.entity.ScanactivityUserScanrecord" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="mobile" column="mobile"/>
+     <result property="openid" column="openid"/>
+     <result property="qrcode" column="qrcode"/>
+     <result property="brandid" column="brandid"/>
+     <result property="scanTime" column="scan_time"/>
+     <result property="createTime" column="create_time"/>
+     <result property="cacutStatus" column="cacut_status"/>
+     <result property="provinceName" column="province_name"/>
+     <result property="provinceCode" column="province_code"/>
+     <result property="cityName" column="city_name"/>
+     <result property="cityCode" column="city_code"/>
+     <result property="countyName" column="county_name"/>
+     <result property="countyCode" column="county_code"/>
+     <result property="address" column="address"/>
+     <result property="source" column="source"/>
+     <result property="productType" column="product_type"/>
+     <result property="currency" column="currency"/>
+     <result property="count" column="count"/>
+     <result property="unionid" column="unionid"/>
+     <result property="productId" column="product_id"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,mobile,openid,qrcode,brandid,scan_time,create_time,cacut_status,province_name,province_code,city_name,city_code,county_name,county_code,address,source,product_type,currency,count,unionid,product_id
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_scanactivity_user_scanrecord t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="mobile != null">
+    and t.mobile = #{mobile}
+</if>
+<if test="openid != null">
+    and t.openid = #{openid}
+</if>
+<if test="qrcode != null">
+    and t.qrcode = #{qrcode}
+</if>
+<if test="brandid != null">
+    and t.brandid = #{brandid}
+</if>
+<if test="scan_time != null">
+    and t.scan_time = #{scan_time}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+<if test="cacut_status != null">
+    and t.cacut_status = #{cacut_status}
+</if>
+<if test="province_name != null">
+    and t.province_name = #{province_name}
+</if>
+<if test="province_code != null">
+    and t.province_code = #{province_code}
+</if>
+<if test="city_name != null">
+    and t.city_name = #{city_name}
+</if>
+<if test="city_code != null">
+    and t.city_code = #{city_code}
+</if>
+<if test="county_name != null">
+    and t.county_name = #{county_name}
+</if>
+<if test="county_code != null">
+    and t.county_code = #{county_code}
+</if>
+<if test="address != null">
+    and t.address = #{address}
+</if>
+<if test="source != null">
+    and t.source = #{source}
+</if>
+<if test="product_type != null">
+    and t.product_type = #{product_type}
+</if>
+<if test="currency != null">
+    and t.currency = #{currency}
+</if>
+<if test="count != null">
+    and t.count = #{count}
+</if>
+<if test="unionid != null">
+    and t.unionid = #{unionid}
+</if>
+</where>
+</select>
+</mapper>

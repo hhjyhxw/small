@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+            <div class="form-group col-sm-2">
+                <input type="text" class="form-control" v-model="q.openid" @keyup.enter="query" placeholder="openid">
+            </div>
+            <a class="btn btn-default" @click="query">查询</a>
+
+            <#if shiro.hasPermission("scanactivity:scanactivityuserscanrecord:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("scanactivity:scanactivityuserscanrecord:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("scanactivity:scanactivityuserscanrecord:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">用户手机</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.mobile" placeholder="用户手机"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">openid</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.openid" placeholder="openid"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">烟品二维码</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.qrcode" placeholder="烟品二维码"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">烟品id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.brandid" placeholder="烟品id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">扫码时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.scanTime" placeholder="扫码时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">创建时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.createTime" placeholder="创建时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0未累计计数，1已累计计数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.cacutStatus" placeholder="0未累计计数，1已累计计数"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">省</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.provinceName" placeholder="省"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">省行政代码</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.provinceCode" placeholder="省行政代码"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">市</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.cityName" placeholder="市"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">市行政代码</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.cityCode" placeholder="市行政代码"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">区县</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.countyName" placeholder="区县"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">区县行政代码</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.countyCode" placeholder="区县行政代码"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">详细地址</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.address" placeholder="详细地址"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">来源（系统提供方）如：山东扫码平台【SD】</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.source" placeholder="来源（系统提供方）如：山东扫码平台【SD】"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">规格类型，1-条盒，2-小盒</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.productType" placeholder="规格类型，1-条盒，2-小盒"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">规格编码，如 海韵的编码为06</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.productId" placeholder="规格编码，如 海韵的编码为06"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">unionid</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.unionid" placeholder="unionid"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">鲁（币），青（币）</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.currency" placeholder="鲁（币），青（币）"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">参与活动获得奖励（扫码中奖才有值，获得币的数量）</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.count" placeholder="参与活动获得奖励（扫码中奖才有值，获得币的数量）"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">推送状态 0未推送 1已推送</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.tddstatus" placeholder="推送状态 0未推送 1已推送"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">推送状态 0未推送 1已推送</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.astatus" placeholder="推送状态 0未推送 1已推送"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">推送状态 0未推送 1已推送</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.btatus" placeholder="推送状态 0未推送 1已推送"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">推送状态 0未推送 1已推送</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.ctatus" placeholder="推送状态 0未推送 1已推送"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">推送状态 0未推送 1已推送</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="scanactivityUserScanrecord.dstatus" placeholder="推送状态 0未推送 1已推送"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/scanactivity/scanactivityuserscanrecord.js?_${.now?long}"></script>
+</body>
+</html>

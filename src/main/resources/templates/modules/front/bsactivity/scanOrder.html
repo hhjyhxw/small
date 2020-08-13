@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+
+    <title></title>
+    <#include "/header.html">
+    <!-- 百度地图api -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Vom9PNDgBgwxB5NHCrXGOoeawsOj1B98"></script>
+    <!--  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=nsHiiQyIYQiRhOwj9Hzswulw"></script>-->
+    <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <style>
+        .goodimg{
+          display: flex;
+            justify-content: space-around;
+            padding: 2rem 0.1rem;
+            <!--height: 25rem;-->
+            height:0;
+            padding-top: 0.1rem;
+        }
+        .goodimg img{
+            width:100%;
+            height:100%;
+        }
+        .goodname{
+        display: flex;
+            justify-content: space-around;
+            font-size: 2.2rem;
+            font-weight: bold;
+            /* margin-top: -1rem; */
+            margin-bottom: 7rem;
+        }
+        .content{
+            border-top: 2px solid #eee;
+            border-bottom: 2px solid #eee;
+            margin: 1rem;
+        }
+        .content_body{
+           display: flex;
+           justify-content: center;
+           padding:2rem;
+           font-size: 2rem;
+        }
+       .content .content_left{
+              flex: 1;
+            display: flex;
+           justify-content: center;
+            padding-left: 1rem;
+            font-size: 1.5rem;
+        }
+
+       .content .content_left .countnum{
+            display:inline-block;
+            display: inline-block;
+            width: 3.5rem;
+            border: none;
+            text-align:center;
+            color:#FF6600;
+            font-size: 1.6rem;
+            padding:0px;
+        }
+
+        .content .content_left .numdes{
+                font-weight: bold;
+                text-align: right;
+                padding-right:1rem;
+        }
+
+        .content .content_left .icon{
+        　
+        }
+        .content .content_left .minus{
+            display: inline-block;
+            height: 2.2rem;
+            width: 23px;
+            text-indent: -9999px;
+            background:url("${request.contextPath}/statics/images/bsactivity/minus.png") no-repeat;
+            background-size: 23px auto;
+            text-indent:-9999px;
+            background-position:center;
+
+        }
+        .content .content_left .plus{
+            display: inline-block;
+            height: 2.2rem;
+            width: 23px;
+            text-indent: -9999px;
+            background:url("${request.contextPath}/statics/images/bsactivity/plus.png") no-repeat;
+            background-size: 23px auto;
+            text-indent:-9999px;
+             background-position:center;
+        }
+        .content_right{
+            flex:1;
+           display: flex;
+           justify-content: center;
+        }
+        .content_right .cashcoin{
+           width: 3.2rem;
+            height: 3.2rem;
+        }
+         .content_right .goodprice{
+            font-size: 2rem;
+            color: #FF6600;
+            font-weight: bold;
+            padding-left: 5px;
+        }
+        .longcoin{
+           flex:1;
+           display: flex;
+           justify-content: center;
+            padding:2rem;
+           font-size: 1.5rem;
+
+        }
+         .shoplist{
+           flex:1;
+           display: flex;
+           justify-content: center;
+            padding:2rem;
+            font-size: 1.5rem;
+            border-top: 2px solid #eee;
+        }
+        .footer{
+            display: flex;
+           justify-content: center;
+            padding:1rem;
+        }
+        .footer .btn_go_locong{
+                border-radius: 6px;
+                width: 100%;
+                background-color: blue;
+                color: white;
+                height: 3.5rem;
+                line-height: 3.5rem;
+                font-size: 1.6rem;
+                margin-top: 3rem;
+                border: none;
+                text-align:center;
+        }
+       .footer .btn_confin_ok{
+                border-radius: 6px;
+                width: 66%;
+                background-color: rgb(0,204,0);
+                color: white;
+                height: 3.5rem;
+                line-height: 3rem;
+                font-size: 1.6rem;
+                margin-top: 3rem;
+                border: none;
+        }
+        .footer .btn_confin_unok{
+            border-radius: 6px;
+            width: 66%;
+            background-color: lightgrey;
+            color: white;
+            height: 3.5rem;
+            line-height: 3rem;
+            font-size: 1.6rem;
+            margin-top: 3rem;
+            border: none;
+        }
+
+        .error_content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 5rem;
+            font-size: 2rem;
+            color: rgb(255, 102, 0);
+            align-items: center;
+        }
+        .error_content .fairimg{
+            height:5rem;
+            width:5rem;
+            margin-bottom:2rem;
+        }
+        .error_content .successimg{
+            height:5rem;
+            width:5rem;
+            margin-bottom:2rem;
+        }
+        .msgcolor_fair{
+
+        }
+         .msgcolor_success{
+            color:red;
+        }
+        .success_footer{
+            display: flex;
+            height: 6rem;
+            border: 1px dashed lightgrey;
+            width: 100%;
+            margin-top: 3rem;
+            padding: 1rem;
+            font-size: 1.3rem;
+            text-align: center;
+            line-height: 3.5rem;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+
+    <!--商品兑换-->
+    <div v-if="!showerror" style="margin-top:5rem;">
+        <!--头部-->
+        <div>
+            <div class="goodimg">
+                <!--<img :src="goodimg"  />-->
+            </div>
+            <div class="goodname">({{goods.name}})</div>
+        </div>
+        <!--中部-->
+        <div class="content">
+            <div class="content_body" style="padding-bottom:2rem;">
+                <div class="content_left">
+                    <div class="numdes" style="padding-right:1.3rem;">数量:</div>
+
+                   <!-- <i class="icon minus" @click="minus">减</i>-->
+                    <input :value="exchangeNum" class="countnum" readonly/>
+                  <!--  <i class="icon plus" @click="plus">加</i>-->
+
+                </div>
+
+               <!-- <div class="content_right">
+                    <img class="cashcoin" src="${request.contextPath}/statics/images/bsactivity/cashcoin.png">
+                    <div class="goodprice">{{totalAmount}}</div>
+                </div>-->
+            </div>
+
+           <!-- <div class="content_body" style="padding-top:0rem;">
+                <div class="content_left">
+                    <div class="numdes">需要支付：{{totalAmount}} 龙币</div>
+                </div>
+            </div>-->
+
+            <div class="content_body" style="padding-top:0rem;border-bottom: 2px solid #eee;">
+                <div class="content_left">
+                    <div class="numdes">需要支付：<i style="color:red;">{{totalAmount}} 龙币</i></div>
+                   <!-- <div class="numdes">参与更多活动，赢取惊喜好礼！</div>-->
+                </div>
+            </div>
+
+            <div class="longcoin">{{dcurrencyInfo}}</div>
+
+            <div class="shoplist">
+                <div class="form-group" style=" display: flex; justify-content: center; align-items: center;">
+<!--                    <label for="exampleFormControlSelect1" style="display:flex;justify-content:center;">请选择您当前所在的店铺</label>-->
+                    <label for="exampleFormControlSelect1" style="width:10rem;text-align:center;color:red;margin-bottom:0;">所属店铺:</label>
+                    <select class="form-control" id="exampleFormControlSelect1" v-model="supplierId" style="background-color:white;box-shadow:none;transition:none;border-color:red;">
+                        <option  v-for="(item, index) in shoplist" :key="index" :value="item.id">{{item.shopName}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--底部-->
+        <div class="footer">
+            <button v-if="btnshow" class="btn_confin_ok" @click="submitorder">确认兑换</button>
+            <button v-if="!btnshow" class="btn_confin_unok">确认兑换</button>
+        </div>
+    </div>
+
+
+    <!--兑换失败或者 扫码异常-->
+    <div v-if="showerror">
+                <!--兑换失败-->
+                <div class="error_content" v-if="!exchangeSuccess">
+                    <img class="fairimg" src="${request.contextPath}/statics/images/bsactivity/fair.png"/>
+                    <div class="msgcolor_fair">
+                        {{msg}}
+                    </div>
+                </div>
+                <!--兑换成功-->
+                <div class="error_content" v-if="exchangeSuccess">
+                        <img class="successimg" src="${request.contextPath}/statics/images/bsactivity/success.png"/>
+                         <div  class="msgcolor_success">
+                            恭喜你,兑换成功!
+                        </div>
+
+                    <!--底部-->
+                    <div class="footer" style="width:15rem;">
+                        <a  class="btn_go_locong" href="http://wx.thewm.cn/zlnewpro/frontpage/score/scoreLogin">前往龙币商城</a>
+                    </div>
+
+                        <div class="success_footer">
+                            <div style="color:red;"></div><div style="color:black;">参与更多活动，赢取惊喜好礼！</div>
+                        </div>
+                 </div>
+    </div>
+
+
+</div>
+
+<script src="${request.contextPath}/statics/js/front/bsactivity/scanOrder.js?_${.now?long}"></script>
+</body>
+</html>

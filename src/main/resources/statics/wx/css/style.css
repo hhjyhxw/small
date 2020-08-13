@@ -1,0 +1,65 @@
+@font-face {
+  font-family: 'icon-Icon';
+  src:  url('fonts/icon-Icon.eot?a2hjxt');
+  src:  url('fonts/icon-Icon.eot?a2hjxt#iefix') format('embedded-opentype'),
+    url('fonts/icon-Icon.ttf?a2hjxt') format('truetype'),
+    url('fonts/icon-Icon.woff?a2hjxt') format('woff'),
+    url('fonts/icon-Icon.svg?a2hjxt#icon-Icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-i"], [class*=" icon-i"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icon-Icon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-ipro-finish02:before {
+  content: "\e901";
+}
+.icon-isimui-left:before {
+  content: "\e902";
+}
+.icon-iuniE903:before {
+  content: "\e903";
+}
+.icon-i-1:before {
+  content: "\e904";
+}
+.icon-i1:before {
+  content: "\e905";
+}
+.icon-i2:before {
+  content: "\e906";
+}
+.icon-i3:before {
+  content: "\e907";
+}
+.icon-ipro-finish021:before {
+  content: "\e908";
+}
+.icon-isimui-left1:before {
+  content: "\e909";
+}
+.icon-i4:before {
+  content: "\e90a";
+}
+.icon-i-11:before {
+  content: "\e90b";
+}
+.icon-iuniE900:before {
+  content: "\e900";
+}
+.icon-i5:before {
+  content: "\e90c";
+}

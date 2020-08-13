@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>折扣券管理</title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("small:smallcoupon:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("small:smallcoupon:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("small:smallcoupon:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">代金券名称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.title" placeholder="代金券名称"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">使用类型，如满减</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.coupType" placeholder="使用类型，如满减"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">描述</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.description" placeholder="描述"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">订单金额</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.total" placeholder="订单金额"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">会员类型0:非会员1:会员2:全部</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.surplus" placeholder="会员类型0:非会员1:会员2:全部"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">限？？</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.limits" placeholder="限？？"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">减少金额</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.discount" placeholder="减少金额"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">最低消费金额</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.min" placeholder="最低消费金额"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">是否可用 0不用 1可用</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.status" placeholder="是否可用 0不用 1可用"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">分类id(分类可用)</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.categoryId" placeholder="分类id(分类可用)"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">过期天数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.days" placeholder="过期天数"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">领取开始时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.startTime" placeholder="领取开始时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">领取/使用结束时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.endTime" placeholder="领取/使用结束时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">创建时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.createTime" placeholder="创建时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">修改时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.modifyTime" placeholder="修改时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">商户id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallCoupon.supplierId" placeholder="商户id"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/small/smallcoupon.js?_${.now?long}"></script>
+</body>
+</html>

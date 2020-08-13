@@ -1,0 +1,113 @@
+<!-- saved from url=(0051)http://u.im-cc.com/scManager/toEditSinglePicText.do -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+    </script>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/bootstrap.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/font-awesome.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/pnotify.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/pnotify.buttons.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/webuploader.css">
+    <link href="${request.contextPath}/statics/wx/2/font.css" rel="stylesheet">
+    <title>单图文</title>
+    <#include "/header.html">
+    <script src="${request.contextPath}/statics/libs/ajaxupload.js"></script>
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/bootstrap.custom.css">
+    <link href="${request.contextPath}/statics/wx/2/setting.css" rel="stylesheet">
+
+
+<body style="">
+<div id="icloudapp" v-cloak>
+    <div class="page page-with-panels" style="">
+        <main class="page-body" style="">
+            <section class="panel panel-top">
+                <table class="table table-noborder">
+                    <tbody>
+                    <tr>
+                        <td width="60">标题：</td>
+                        <td>
+                            <div class="form-group is-empty">
+                                <input type="text" name="scInfoTitle" id="scInfoTitle" v-model="sucai.title" maxlength="30" class="form-control" value="">
+                                <span class="material-input"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="panel panel-bottoms clearfix" style="">
+                <div class="panel-bottom-left">
+                    <ul class="pic-text-list">
+                        <li class="first" style="cursor: default;border:3px solid #3ACF83;"  v-for="(item,index) in sucai.list" :key="index" v-if="index==0" @click="selectone(index,item)">
+                                <span class="preview"><img id="preview" :src="item.localUrls"/></span>
+                                <span class="edit"><i class="icon icon-trash" id="delImg"></i></span>
+                        </li>
+                        <li v-for="(item,index) in sucai.list" :key="index" v-if="index!=0"  @click="selectone(index,item)">
+                                <span class="preview"><img id="preview" :src="item.localUrls" /></span>
+                                <span class="title" >{{item.subTitle}}</span>
+                                <span class="edit"><i class="icon icon-trash" id="delImg" @click=deleteItem(index)></i></span>
+                        </li>
+                    </ul>
+                    <a class="pic-text-add" @click="addItem">+</a>
+                </div>
+                <div class="panel-bottom-right" style="">
+                    <div class="pic-text-edit" style="">
+                        <header>
+                            <h4>封面<small>图片建议尺寸360像素X200像素</small></h4>
+                            <span class="btns">
+                                <button class="btn btn-success" id="upload">本地上传</button>
+                                 <input type="file" style="display: none;" accept="image/*" id="upload_file">
+                            </span>
+                        </header>
+
+                        <div class="content" style="border-bottom: none;">
+                            <p class="input title">
+                                <input type="text" class="text" name="title" id="title" value="" maxlength="64"  placeholder="请在这里输入标题" v-model="optionSucai.subTitle">
+                            </p>
+                           <!-- <p class="input overview">
+                                <textarea placeholder="请在这里输入摘要" name="summary" id="summary" v-model="optionSucai.shrtContent"></textarea>
+                            </p>-->
+                            <p class="input textarea">
+                            </p><h4>设置正文</h4>
+                            <div id="article_content" style="margin-top: 12px;">
+                                <div class="control-group" style="">
+                                    <textarea style="border: 1px solid lightgrey; border-radius: 5px;width: 100%; height: 69px;" placeholder="正文" v-model="optionSucai.mainContent">
+
+                                    </textarea>
+                                </div>
+                            </div>
+                            <p></p>
+                        </div>
+
+                        <div class="options" id="istrue" style="display: block;">
+                            <p style="display:block;" id="chain_span">
+                              <span>阅读原文地址(http://开头的链接格式)
+                                 <div class="form-group is-empty">
+                                     <input type="text" id="chain" name="chain" v-model="optionSucai.wxUrls" class="form-control"><span class="material-input" placeholder="http://xx.yy.com"></span>
+                                 </div>
+                              </span>
+                            </p>
+                        </div>
+
+                        <footer>
+                            <button class="btn btn-success" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate">保存</button>
+                           <!-- <button class="btn btn-warning" data-toggle="modal" data-target="#modalCancel">取消</button>-->
+                        </footer>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+
+</div>
+<script src="${request.contextPath}/statics/js/modules/mpwx/mpwxsucaiAdd.js?_${.now?long}"></script>
+<script>
+
+</script>
+</body>
+</html>
+
+

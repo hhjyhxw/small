@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="warn">
+	<Properties>
+		<Property name="logDir">log</Property>
+		<Property name="logRollingFile">chatInterface.log</Property>
+	</Properties>
+
+	<appenders>
+		<!-- 按log文件最大长度限度生成新文件 fileName中如果使用相对路径，则是相对于工程路径。这里是 工程路径 -->
+		<RollingFile name="rollingFile" fileName="${logDir}/${logRollingFile}"
+			append="true" filePattern="${logDir}/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout
+				pattern="[%d{yyyy-MM-dd HH:mm:sss }] [%-5level] %class{36}.%M (%L): %msg%xEx%n" />
+			<SizeBasedTriggeringPolicy size="4 MB" />
+		</RollingFile>
+
+
+		<!--这个输出控制台的配置 -->
+		<Console name="console" target="SYSTEM_OUT">
+			<!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
+			<ThresholdFilter level="info" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout
+				pattern="[%d{yyyy-MM-dd HH:mm:sss }] [%-5level] %class{36}.%M (%L): %msg%xEx%n" />
+		</Console>
+
+
+		<!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，适合临时测试用 -->
+		<File name="templog" fileName="log/test.log" append="true">
+			<ThresholdFilter level="trace" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout
+				pattern="[%d{yyyy-MM-dd HH:mm:sss }] [%-5level] %class{36}.%M (%L): %msg%xEx%n" />
+		</File>
+
+
+	</appenders>
+
+	<loggers>
+
+
+		<!--建立一个默认的root的logger -->
+		<root level="trace">
+			<appender-ref ref="rollingFile" />
+			<appender-ref ref="console" />
+			<appender-ref ref="templog" />
+		</root>
+
+		<!-- 建立 name为chatInterface的日志 additivity="true" 表示继承父Logger的appender -->
+		<Logger name="chatInterface" additivity="true" level="ALL">
+			<AppenderRef ref="rollingFile" level="ALL" />
+		</Logger>
+	</loggers>
+</configuration> 

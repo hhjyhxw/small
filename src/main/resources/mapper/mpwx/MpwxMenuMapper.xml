@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.mpwx.dao.MpwxMenuMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.mpwx.entity.MpwxMenu" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="wxappId" column="wxapp_id"/>
+     <result property="name" column="name"/>
+     <result property="menuLevel" column="menu_level"/>
+     <result property="sortNum" column="sort_num"/>
+     <result property="menuType" column="menu_type"/>
+     <result property="xcxAppid" column="xcx_appid"/>
+     <result property="url" column="url"/>
+     <result property="pagepath" column="pagepath"/>
+     <result property="msgType" column="msg_type"/>
+     <result property="textContent" column="text_content"/>
+     <result property="wxscId" column="wxsc_id"/>
+     <result property="processId" column="process_id"/>
+     <result property="parentId" column="parent_id"/>
+     <result property="isUse" column="is_use"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,wxapp_id,name,menu_level,sort_num,menu_type,xcx_appid,url,pagepath,msg_type,text_content,wxsc_id,process_id,parent_id,is_use,create_time,modify_time
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_mpwx_menu t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="wxapp_id != null">
+    and t.wxapp_id = #{wxapp_id}
+</if>
+<if test="name != null">
+    and t.name = #{name}
+</if>
+<if test="menu_level != null">
+    and t.menu_level = #{menu_level}
+</if>
+<if test="sort_num != null">
+    and t.sort_num = #{sort_num}
+</if>
+<if test="menu_type != null">
+    and t.menu_type = #{menu_type}
+</if>
+<if test="xcx_appid != null">
+    and t.xcx_appid = #{xcx_appid}
+</if>
+<if test="url != null">
+    and t.url = #{url}
+</if>
+<if test="pagepath != null">
+    and t.pagepath = #{pagepath}
+</if>
+<if test="msg_type != null">
+    and t.msg_type = #{msg_type}
+</if>
+<if test="text_content != null">
+    and t.text_content = #{text_content}
+</if>
+<if test="wxsc_id != null">
+    and t.wxsc_id = #{wxsc_id}
+</if>
+<if test="process_id != null">
+    and t.process_id = #{process_id}
+</if>
+<if test="parent_id != null">
+    and t.parent_id = #{parent_id}
+</if>
+<if test="is_use != null">
+    and t.is_use = #{is_use}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+</where>
+</select>
+</mapper>

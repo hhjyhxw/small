@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>用户拥有的折扣券</title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("small:smallusercoupon:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("small:smallusercoupon:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("small:smallusercoupon:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">用户id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallUserCoupon.userId" placeholder="用户id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">代金券id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallUserCoupon.couponId" placeholder="代金券id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">使用订单Id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallUserCoupon.orderId" placeholder="使用订单Id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">使用时间，若使用时间为空，表示未使用</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallUserCoupon.useTime" placeholder="使用时间，若使用时间为空，表示未使用"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">优惠券有效开始时间（领取优惠券时写入）</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallUserCoupon.startTime" placeholder="优惠券有效开始时间（领取优惠券时写入）"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">优惠券有效结束时间（领取优惠券过期时间根据策略计算）</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallUserCoupon.endTime" placeholder="优惠券有效结束时间（领取优惠券过期时间根据策略计算）"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">创建时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallUserCoupon.createTime" placeholder="创建时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">修改时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallUserCoupon.modifyTime" placeholder="修改时间"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/small/smallusercoupon.js?_${.now?long}"></script>
+</body>
+</html>

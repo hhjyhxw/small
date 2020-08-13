@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+
+    <title></title>
+    <#include "/header.html">
+    <style>
+        .errorpage{
+             display: flex;
+           justify-content: center;
+        }
+        .error_content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 5rem;
+            font-size: 2rem;
+            color: rgb(255, 102, 0);
+            align-items: center;
+        }
+        .fairimg{
+            height:5rem;
+            width:5rem;
+            margin-bottom:2rem;
+        }
+    </style>
+</head>
+<body>
+<div id="icloudapp" class="errorpage">
+
+    <div class="error_content">
+        <img class="fairimg" src="${request.contextPath}/statics/images/bsactivity/fair.png"/>
+        <div>
+            该二维码已使用!
+        </div>
+    </div>
+
+</div>
+</body>

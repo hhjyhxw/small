@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="${package}.${moduleName}.dao.${className}Mapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="${package}.${moduleName}.entity.${className}" id="BaseResultMap">
+#foreach($column in $columns)
+#if($column.columnName == $pk.columnName)
+     <id property="${column.attrname}" column="${column.columnName}"/>
+#else
+     <result property="${column.attrname}" column="${column.columnName}"/>
+#end
+#end
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+#foreach($column in $columns)
+#if($foreach.hasNext)
+${column.columnName},##
+#else
+${column.columnName}
+#end
+#end
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from ${tableName} t
+<where>
+#foreach($column in $columns)
+#if($foreach.hasNext)
+<if test="${column.columnName} != null">
+    and t.${column.columnName} = #{${column.columnName}}
+</if>
+#end
+#end
+</where>
+</select>
+</mapper>

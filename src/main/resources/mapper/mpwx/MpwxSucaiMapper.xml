@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.mpwx.dao.MpwxSucaiMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.mpwx.entity.MpwxSucai" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="wxappId" column="wxapp_id"/>
+     <result property="title" column="title"/>
+     <result property="scType" column="sc_type"/>
+     <result property="localUrls" column="local_urls"/>
+     <result property="wxUrls" column="wx_urls"/>
+     <result property="wxMediaids" column="wx_mediaids"/>
+     <result property="detailInfo" column="detail_info"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,wxapp_id,title,sc_type,local_urls,wx_urls,wx_mediaids,detail_info,create_time,modify_time
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_mpwx_sucai t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="wxapp_id != null">
+    and t.wxapp_id = #{wxapp_id}
+</if>
+<if test="title != null">
+    and t.title = #{title}
+</if>
+<if test="sc_type != null">
+    and t.sc_type = #{sc_type}
+</if>
+<if test="local_urls != null">
+    and t.local_urls = #{local_urls}
+</if>
+<if test="wx_urls != null">
+    and t.wx_urls = #{wx_urls}
+</if>
+<if test="wx_mediaids != null">
+    and t.wx_mediaids = #{wx_mediaids}
+</if>
+<if test="detail_info != null">
+    and t.detail_info = #{detail_info}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+</where>
+</select>
+</mapper>

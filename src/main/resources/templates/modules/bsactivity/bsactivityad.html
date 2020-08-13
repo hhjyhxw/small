@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+		<#include "/header.html">
+    <script src="${request.contextPath}/statics/libs/ajaxupload.js"></script>
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("bsactivity:bsactivityad:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("bsactivity:bsactivityad:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("bsactivity:bsactivityad:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">名称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityAd.adName" placeholder="名称"/>
+                        </div>
+                    </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">图片url</div>
+                <img   :src="goodsimgshow" style="width:300px;height:150px;" v-model="bsactivityAd.adImgurl" placeholder="店铺图标"/>
+                <div class="col-sm-10">
+                    <a class="btn btn-primary" id="upload" style="margin-left:11rem;"><i class="fa fa-plus"></i>&nbsp;图片url</a>
+                </div>
+            </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">跳转url</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityAd.addJumpurl" placeholder="跳转url"/>
+                        </div>
+                    </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">状态</div>
+                <label class="radio-inline">
+                    <input type="radio" name="status" value="1" v-model="bsactivityAd.status"/> 启用
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="status" value="0" v-model="bsactivityAd.status"/> 停用
+                </label>
+            </div>
+
+
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">排序</div>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" v-model="bsactivityAd.sortNum" placeholder="排序"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/bsactivity/bsactivityad.js?_${.now?long}"></script>
+</body>
+</html>

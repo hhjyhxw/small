@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.bsactivity.dao.BsactivityFollowuserMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.bsactivity.entity.BsactivityFollowuser" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="openid" column="openid"/>
+     <result property="headimgurl" column="headimgurl"/>
+     <result property="nickname" column="nickname"/>
+     <result property="createTime" column="create_time"/>
+     <result property="fromType" column="from_type"/>
+     <result property="modifyTime" column="modify_time"/>
+     <result property="longcoin" column="longcoin"/>
+     <result property="status" column="status"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,openid,headimgurl,nickname,create_time,from_type,modify_time,longcoin,status
+    </sql>
+
+
+    <select id="queryMixList" resultMap="BaseResultMap">
+            select * from t_bsactivity_followuser t
+            <where>
+                                                    <if test="id != null">
+                        and t.id = #{id}
+                    </if>
+                                                                    <if test="openid != null">
+                        and t.openid = #{openid}
+                    </if>
+                                                                    <if test="headimgurl != null">
+                        and t.headimgurl = #{headimgurl}
+                    </if>
+                                                                    <if test="nickname != null">
+                        and t.nickname = #{nickname}
+                    </if>
+                                                                    <if test="create_time != null">
+                        and t.create_time = #{create_time}
+                    </if>
+                                                                    <if test="from_type != null">
+                        and t.from_type = #{from_type}
+                    </if>
+                                                                    <if test="modify_time != null">
+                        and t.modify_time = #{modify_time}
+                    </if>
+                                                                    <if test="longcoin != null">
+                        and t.longcoin = #{longcoin}
+                    </if>
+                                                                            </where>
+        </select>
+</mapper>

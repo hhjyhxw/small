@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+<!--            <div class="form-group col-sm-1">-->
+<!--                <input type="text" class="form-control" v-model="q.goodName" @keyup.enter="query" placeholder="商品名称">-->
+<!--            </div>-->
+            <div class="form-group col-sm-1">
+                <input type="text" class="form-control" v-model="q.name" @keyup.enter="query" placeholder="用户昵称">
+            </div>
+            <a class="btn btn-default" @click="query">查询</a>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">订单编号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.orderNo" placeholder="订单编号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">总金额</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.totalAmount" placeholder="总金额"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">商品名称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.goodName" placeholder="商品名称"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">用户id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.userid" placeholder="用户id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">openid</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.openid" placeholder="openid"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">订单类型（0、扫码消费、1、）</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.orderType" placeholder="订单类型（0、扫码消费、1、）"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">订单状态 0：未支付，1：已支付  ，2已完成</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.orderStatus" placeholder="订单状态 0：未支付，1：已支付  ，2已完成"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">发货状态 1：已发货 0：未发货</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.shippingStatus" placeholder="发货状态 1：已发货 0：未发货"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">删除状态 1：已删除 0：未删除</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.deleteStatus" placeholder="删除状态 1：已删除 0：未删除"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">订单创建时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.createTime" placeholder="订单创建时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">订单修改时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.modifyTime" placeholder="订单修改时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">商品id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.goodid" placeholder="商品id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">商品二维id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.qcodeid" placeholder="商品二维id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">收货用户</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.name" placeholder="收货用户"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">收货用户手机</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.phone" placeholder="收货用户手机"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">省</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.provinceName" placeholder="省"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">市</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.cityName" placeholder="市"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">县</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.countyName" placeholder="县"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">乡镇</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.townsName" placeholder="乡镇"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">详细地址</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.detailAddress" placeholder="详细地址"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">邮编</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityOrder.zipCode" placeholder="邮编"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/bsactivity/bsactivityorder.js?_${.now?long}"></script>
+</body>
+</html>

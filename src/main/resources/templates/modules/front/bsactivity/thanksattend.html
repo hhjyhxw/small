@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+
+    <title></title>
+    <#include "/header.html">
+    <style>
+        .goodimg{
+            display: flex;
+            justify-content: space-around;
+            padding: 2rem 1rem;
+            height: 33rem;
+        }
+        .goodimg img{
+            width:100%;
+            height:100%;
+        }
+        .goodname{
+            display: flex;
+            justify-content: space-around;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .content{
+            border-top: 2px solid #eee;
+            border-bottom: 2px solid #eee;
+            margin: 1rem;
+        }
+        .content_body{
+           display: flex;
+           justify-content: space-around;
+           padding:2rem;
+           font-size: 2rem;
+        }
+       .content .content_left{
+          flex:1;
+           display: flex;
+           justify-content: space-around;
+        }
+       .content .content_left .countnum{
+            display:inline-block;
+            display: inline-block;
+            width: 3.5rem;
+            border: none;
+            text-align:center;
+            color:#FF6600;
+            font-size: 1.6rem;
+            padding:0px;
+        }
+
+        .content .content_left .numdes{
+                font-weight: bold;
+                text-align: right;
+        }
+
+        .content .content_left .icon{
+        　
+        }
+        .content .content_left .minus{
+            display: inline-block;
+            height: 3.2rem;
+            width: 23px;
+            text-indent: -9999px;
+            background:url("${request.contextPath}/statics/images/bsactivity/minus.png") no-repeat;
+            background-size: 23px auto;
+            text-indent:-9999px;
+            background-position:center;
+
+        }
+        .content .content_left .plus{
+            display: inline-block;
+            height: 3.2rem;
+            width: 23px;
+            text-indent: -9999px;
+            background:url("${request.contextPath}/statics/images/bsactivity/plus.png") no-repeat;
+            background-size: 23px auto;
+            text-indent:-9999px;
+             background-position:center;
+        }
+        .content_right{
+            flex:1;
+           display: flex;
+           justify-content: center;
+        }
+        .content_right .cashcoin{
+           width: 3.2rem;
+            height: 3.2rem;
+        }
+         .content_right .goodprice{
+            font-size: 2rem;
+            color: #FF6600;
+            font-weight: bold;
+            padding-left: 5px;
+        }
+        .longcoin{
+           flex:1;
+           display: flex;
+           justify-content: center;
+            padding:1rem;
+             font-size: 1.5rem;
+        }
+        .footer{
+            display: flex;
+           justify-content: center;
+            padding:1rem;
+            width:80%;
+        }
+       .footer .btn_confin_ok{
+                border-radius: 6px;
+                width: 66%;
+                background-color: blue;
+                color: white;
+                height: 3.5rem;
+                line-height: 3.5rem;
+                font-size: 1.6rem;
+                margin-top: 3rem;
+                border: none;
+                text-align:center;
+        }
+        .footer .btn_confin_unok{
+            border-radius: 6px;
+            width: 66%;
+            background-color: lightgrey;
+            color: white;
+            height: 3.5rem;
+            line-height: 3rem;
+            font-size: 1.6rem;
+            margin-top: 3rem;
+            border: none;
+        }
+
+        .error_content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 5rem;
+            font-size: 2rem;
+            color: rgb(255, 102, 0);
+            align-items: center;
+        }
+        .error_content .fairimg{
+            height:5rem;
+            width:5rem;
+            margin-bottom:2rem;
+        }
+        .error_content .successimg{
+            height:5rem;
+            width:5rem;
+            margin-bottom:2rem;
+        }
+        .msgcolor_fair{
+
+        }
+         .msgcolor_success{
+            color:#12f51b;
+        }
+        .success_footer{
+            display: flex;
+            height: 6rem;
+            border: 1px dashed lightgrey;
+            width: 100%;
+            margin-top: 3rem;
+            padding: 1rem;
+            font-size: 1.3rem;
+            text-align: center;
+            line-height: 3.5rem;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<!--扫Pos机码，已注册会员，提示谢谢参与-->
+<div id="icloudapp" >
+
+
+        <!---->
+        <div class="error_content">
+            <img class="fairimg" src="${request.contextPath}/statics/images/bsactivity/fair.png"/>
+            <div class="msgcolor_fair">
+                很遗憾,您没能抽到奖励!
+            </div>
+
+            <!--底部-->
+            <div class="footer">
+                <a  class="btn_confin_ok" href="http://wx.thewm.cn/zlnewpro/frontpage/score/scoreLogin">前往龙币商城</a>
+            </div>
+
+            <div class="success_footer">
+                <div style="color:red;"></div><div style="color:black;">参与更多活动，赢取惊喜好礼！</div>
+            </div>
+        </div>
+
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+package ${package}.${moduleName}.service;
+
+import ${package}.${moduleName}.entity.${className};
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.icloud.basecommon.service.BaseServiceImpl;
+import ${package}.${moduleName}.dao.${className}Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
+/**
+ * ${comments}
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Service
+@Transactional
+public class ${className}Service extends BaseServiceImpl<${className}Mapper,${className}> {
+
+    @Autowired
+    private ${className}Mapper ${classname}Mapper;
+}
+

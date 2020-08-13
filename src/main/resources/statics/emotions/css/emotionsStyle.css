@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+/* 头部 */
+@font-face {
+        font-family: hoverTreeFont;
+        src: url('/images/PingFang Medium.ttf'),
+}
+
+.flex_container{
+	width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: left;
+    padding:20px 10px;
+}
+.flex_container li{
+	box-sizing: border-box;
+    flex: 0 0 30%;
+    border: 1px solid #d9d9d9;
+    margin: 0 10px;
+    margin-bottom: 20px;
+    
+}
+.flex_container li img {
+    min-width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+}
+.face_send{
+	padding:0 60px;
+}
+.face_send p:nth-of-type(1){
+	margin:100px 0 80px 0;
+}
+.face_send button{
+	width: 100%;
+	height: 75px;
+	border-radius: 7px;
+	background: #1655a4;
+	font-size: 30px;
+	color: #fff;
+	border: none;
+	letter-spacing: 1px;
+}
+.face_send p:nth-of-type(2){
+	font-size: 24px;
+	color: #999;
+	text-align: center;
+	margin:15px 0 20px 0;
+}
+.face_send p:nth-of-type(3){
+	font-size: 34px;
+	color: #1655a4;
+	text-align: center;
+}

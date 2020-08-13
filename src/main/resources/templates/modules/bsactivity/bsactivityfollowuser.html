@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>pos机用户引流记录表</title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+    <div v-show="showList">
+    <!--    <div class="grid-btn">
+			<#if shiro.hasPermission("bsactivity:bsactivityfollowuser:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("bsactivity:bsactivityfollowuser:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("bsactivity:bsactivityfollowuser:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>-->
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">opendi</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityFollowuser.openid" placeholder="opendi"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">头像</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityFollowuser.headimgurl" placeholder="头像"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">昵称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityFollowuser.nickname" placeholder="昵称"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">创建时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityFollowuser.createTime" placeholder="创建时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">来源 1、百色引流</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityFollowuser.fromType" placeholder="来源 1、百色引流"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">更新时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityFollowuser.modifyTime" placeholder="更新时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">赠送龙币</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityFollowuser.longcoin" placeholder="赠送龙币"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0老会员  1 新注册会员</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="bsactivityFollowuser.status" placeholder="0老会员  1 新注册会员"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/bsactivity/bsactivityfollowuser.js?_${.now?long}"></script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!-- saved from url=(0051)http://u.im-cc.com/scManager/toEditSinglePicText.do -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+    </script>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/bootstrap.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/font-awesome.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/pnotify.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/pnotify.buttons.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/webuploader.css">
+    <link href="${request.contextPath}/statics/wx/2/font.css" rel="stylesheet">
+    <title>关键字回复</title>
+    <#include "/header.html">
+    <script src="${request.contextPath}/statics/libs/ajaxupload.js"></script>
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/bootstrap.custom.css">
+    <link href="${request.contextPath}/statics/wx/2/setting.css" rel="stylesheet">
+    <link href="${request.contextPath}/statics/wx/2/operate.css" rel="stylesheet">
+
+    <style type="text/css">
+        .keyword-hui .fuzzyKwNr button.del {
+            border-radius: 5px;
+            width: 10px;
+            height: 10px;
+            padding: 0;
+            line-height: 8px;
+            border: none;
+            vertical-align: top;
+        }
+        .keyword-hui .fuzzyKwNr input {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 150px;
+            padding: 0 5px;
+        }
+        #wxTab .nav-tabs li a{
+            color:#fff;
+        }
+        #wxTab .nav-tabs li a:hover {
+            color: #000;
+        }
+        .textTab{
+            display: none;
+        }
+        .textTab .nav-tabs li{
+            width: 50%;
+            text-align: center;
+        }
+        .textTab .nav-tabs li a{
+            background: #ECF1F7;
+        }
+        .textTab .nav-tabs li a{
+            color: #000;
+        }
+        #clickType{
+            color: #2D8CF0;
+            padding: 5px;
+        }
+        #clickType input,.wx-keywords-item input{
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 150px;
+            padding: 0 5px;
+            height: 28px;
+            line-height:28px;
+            color: #2D8CF0;
+        }
+        .wx-keywords-item{
+            padding-left: 5px;
+            color: #2D8CF0;
+        }
+        .wx-keywords-item textarea{
+            border-radius: 4px;
+            border:1px solid #dfe6ee;
+            width: 98%;
+            margin-top: 5px;
+            padding: 0 5px;
+            color: #333;
+        }
+        .wx-keywords-item span{
+            cursor: pointer;
+            margin-left: 10px
+        }
+        #clickType input::-webkit-input-placeholder { color: #2D8CF0;}
+        .keywords-item span.ml-10{
+            margin-left: 10px
+        }
+        .keywords-item span.addKey{
+            cursor: pointer;
+        }
+        #myTabContent{
+            display: none;
+        }
+        #clickModel .keyword-input{
+            width: 250px;
+            display: inline-block;
+            font-size: 14px;
+            line-height: 28px;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            height: 28px;
+            padding-left: 5px;
+        }
+        #wxTab .nav-tabs li a {
+            color: rgb(34, 34, 34);
+        }
+
+        .nr button.del {
+            border-radius: 5px;
+            width: 10px;
+            height: 10px;
+            padding: 0;
+            line-height: 8px;
+            border: none;
+            vertical-align: top;
+        }
+        .nr input {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 150px;
+            padding: 0 5px;
+            height: 29px;
+            line-height: 29px;
+        }
+        .btn-sm, .btn-group-sm>.btn {
+            padding: 2px 6px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 3px;
+        }
+
+        .btn-success {
+            color: #fff;
+            background-color: #3cd283;
+            border-color: #2ec776;
+        }
+        .btn {
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: normal;
+            text-align: center;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            padding: 4px 16px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            border-radius: 4px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+<body style="">
+<div id="icloudapp" v-cloak>
+    <div class="menu-content" id="wxMenu"  style="padding-left:0.5rem;">
+        <form id="questionModel" name="questionModel" style="padding-left:0.5rem;">
+            <table class="table table-noborder table-muiti-form" style="font-size: 14px;">
+                <tbody><tr v-if="mpwxReply.keywords!=0">
+                    <td width="140">关键字描述：</td>
+                    <td>
+                        <textarea name="questionDesc" v-model="mpwxReply.keywords" placeholder="请输入关键字描述" style="width: 50%" class="textarea-block" oninput="this.value=this.value.replace(/&lt;/g,&#39;&#39;).replace(/&gt;/g,&#39;&#39;)" maxlength="100"></textarea>
+                    </td>
+                </tr>
+                <tr v-if="mpwxReply.keywords!=0">
+                    <td width="140">完全匹配关键词：</td>
+                    <td class="nr">
+                        <span v-for="(item,index) in mpwxReply.keywordList" :key="index" ><button v-if="index!=0" class='del btn nrdel' @click="delkeywords(index)">&times</button><input v-model="item.keywords" name='kwTemp' maxlength='30'/>&nbsp;&nbsp;&nbsp;</span>
+                        <button type="button" class="btn btn-sm btn-success" @click="addItem">+</button>
+                    </td>
+                </tr>
+                <!--<tr>
+                    <td width="140">多关键字匹配：</td>
+                    <td class="fuzzyKwNr">
+                        <button type="button" class="btn btn-sm btn-success">+</button>
+                    </td>
+                </tr>-->
+
+                <!-- 导航流程 -->
+                <tr id="replyTr">
+                    <td>回复内容：</td>
+                    <td>
+                        <!-- 菜单编辑区域 -->
+                        <section class="menu-form-area">
+                            <div class="portable-editor">
+                                <div class="editor-inner">
+                                    <div class="menu-form-bd">
+                                        <div class="menu-container">
+                                            <!-- 发送消息 start -->
+                                            <div class="content in" role="tabpanel" id="wxTab">
+                                                <!-- Nav tabs -->
+                                                <ul class="nav nav-tabs" role="tablist" id="myTab" style="background-color: #ededf3;">
+                                                    <li role="presentation" class="active" @click="selectType(1)">
+                                                        <a  aria-controls="textMsg" role="tab" data-toggle="tab">
+                                                            <i class="icon icon-text"></i> 文字
+                                                        </a>
+                                                    </li>
+                                                    <li role="presentation"  @click="selectType(2)">
+                                                        <a  aria-controls="picTextMsg" role="tab" data-toggle="tab">
+                                                            <i class="icon icon-pic-text"></i> 图文消息
+                                                        </a>
+                                                    </li>
+                                                    <li role="presentation"  @click="selectType(6)">
+                                                        <a  aria-controls="picMsg" role="tab" data-toggle="tab">
+                                                            <i class="icon icon-pic"></i> 图片
+                                                        </a>
+                                                    </li>
+                                                </ul>
+
+                                                <div class="tab-content">
+                                                    <!-- 文字  panel -->
+                                                    <div ole="tabpane1" class="tab-pane fade in active" v-if="mpwxReply.replyType==1">
+                                                        <div style="display:inline-block;width:60%;vertical-align:top;border-right: 1px solid #ddd">
+                                                            <textarea class="textarea-block"   v-model="mpwxReply.content" name="answerText" id="answerText" rows="10" placeholder="请输入……"  maxlength="3000">欢迎您来!
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 图文消息  panel -->
+                                                    <div role="tabpane1" class="tab-pane fade in active" id="picTextMsg" v-if="mpwxReply.replyType==2">
+                                                        <div class="appmsg">
+                                                            <div class="media-cover" @click="openSelectsucaiWin(1)" v-if="selectNews.id==null">
+                                                                <a class="btn-sucai" data-toggle="modal" data-target="#modalTpl" data-name="选择素材" data-type="pic-text"><i class="icon"></i><strong>选择图文</strong></a>
+                                                            </div>
+                                                            <div class="wx-sucai multi" value="229" v-if="selectNews.id!=null && selectNews.list!=null">
+                                                                <div class="msg-a" v-for="(item,index) in selectNews.list" :key="index" v-if="index==0">
+                                                                    <p class="thumb" :style="{backgroundImage: 'url(' + item.localUrls + ')', backgroundSize:'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center center'}"><span>{{item.subTitle}}</span></p>
+
+                                                                </div>
+                                                                <div v-for="(item,index) in selectNews.list" :key="index" v-if="index!=0" class="msg-b"><h4>{{item.subTitle}}</h4><span class="thumb" :style="{backgroundImage: 'url(' + item.localUrls + ')'}"></span></div>
+                                                            </div>
+                                                             <a v-if="selectNews.id!=null" class="del-sucai" @click="delMsg(2)">删除</a>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 图片  panel -->
+                                                    <div role="tabpanel" class="tab-pane fade in active" id="picMsg" v-if="mpwxReply.replyType==6">
+                                                        <div class="appmsg">
+                                                            <div class="media-cover" @click="openSelectsucaiWin(4)" v-if="selectPic.id==null">
+                                                                <a class="btn-sucai" data-toggle="modal"  data-target="#modalTpl" data-name="选择图片" data-type="pic"><i class="icon"></i><strong>选择图片</strong></a>
+                                                            </div>
+                                                            <div v-if="selectPic.id!=null" class="wx-sucai" value="228"><h4></h4><span class="img"><img :src="selectPic.localUrls" alt=""></span><p>{{selectPic.title}}</p></div>
+                                                            <a v-if="selectPic.id!=null" class="del-sucai" @click="delMsg(6)">删除</a>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align: center;"> <!-- 菜单编辑区域 end-->
+                        <footer class="menu-bottom-btns">
+                            <button type="button" class="btn btn-success" @click="saveOrUpdate()" id="btnSave">保存</button>
+                          <!--  <button type="button" class="btn btn-default" onclick="javascript:history.back()">取消</button>-->
+                        </footer>
+                    </td>
+                </tr>
+                </tbody></table>
+        </form>
+    </div>
+
+
+
+</div>
+<script src="${request.contextPath}/statics/js/modules/mpwx/mpwxreplyAdd.js?_${.now?long}"></script>
+<script>
+
+</script>
+</body>
+</html>
+
+

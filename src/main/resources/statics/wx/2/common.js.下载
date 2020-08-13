@@ -1,0 +1,69 @@
+define([], function () {
+  //计时器
+  var timer;
+
+  function jishi() {
+    if(timer) return;
+    var HH = 0;
+    var mm = 0;
+    var ss = 0;
+    var str = '';
+    timer = setInterval(function () {
+      str = "";
+      if (++ss == 60) {
+        if (++mm == 60) {
+          HH++;
+          mm = 0;
+        }
+        ss = 0;
+      }
+
+      str += mm < 10 ? "0" + mm : mm;
+      str += ":";
+      str += ss < 10 ? "0" + ss : ss;
+      document.getElementById("Time").innerHTML = str;
+    }, 1000);
+  }
+
+//停止计时
+  function stopCount() {
+// alert("结束时："+timer);
+    //setTimeout(function () {
+      document.getElementById("txtAni").innerHTML = "";
+      if(timer) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+      document.getElementById("Time").innerHTML = "";
+    //}, 200);
+  }
+
+//得到cookie的值
+  function getImccCookie(name) {
+    var arg = name + "=";
+    var alen = arg.length;
+    var clen = document.cookie.length;
+    var i = 0;
+    var j = 0;
+    var cookieStr = document.cookie;
+    while (i < clen) {
+      j = i + alen;
+      if (document.cookie.substring(i, j) == arg) {
+        var endstr = cookieStr.indexOf(";", j);
+        if (endstr == -1) endstr = cookieStr.length;
+        return unescape(cookieStr.substring(j, endstr));
+
+      }
+      i = document.cookie.indexOf(" ", i) + 1;
+      if (i == 0)
+        break;
+    }
+    return "";
+  }
+
+  return {
+    jishi: jishi,
+    stopCount: stopCount,
+    getImccCookie: getImccCookie
+  }
+})

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.small.dao.SmallSpuAttributeMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.small.entity.SmallSpuAttribute" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="spuId" column="spu_id"/>
+     <result property="name" column="name"/>
+     <result property="value" column="value"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,spu_id,name,value,create_time,modify_time
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_small_spu_attribute t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="spu_id != null">
+    and t.spu_id = #{spu_id}
+</if>
+<if test="name != null">
+    and t.name = #{name}
+</if>
+<if test="value != null">
+    and t.value = #{value}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+</where>
+</select>
+</mapper>

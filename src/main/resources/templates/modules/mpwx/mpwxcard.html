@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("mpwx:mpwxcard:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("mpwx:mpwxcard:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("mpwx:mpwxcard:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">公众号记录id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.wxappId" placeholder="公众号记录id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">卡券类型</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.cardType" placeholder="卡券类型"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">微信卡券id  card_id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.cardId" placeholder="微信卡券id  card_id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">logo地址</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.logoUrl" placeholder="logo地址"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">code码展示类型</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.codeType" placeholder="code码展示类型"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">商户名称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.brandName" placeholder="商户名称"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">卡券名称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.title" placeholder="卡券名称"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">券名的副标题</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.subTitle" placeholder="券名的副标题"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">卡券颜色</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.color" placeholder="卡券颜色"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">使用提醒。（一句描述，展示在首页）</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.notice" placeholder="使用提醒。（一句描述，展示在首页）"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">客服电话</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.servicePhone" placeholder="客服电话"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">使用说明。长文本描述。</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.description" placeholder="使用说明。长文本描述。"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">每人使用次数限制</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.useLimit" placeholder="每人使用次数限制"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">每人最大领取次数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.getLimit" placeholder="每人最大领取次数"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">是否自定义code码，填写1或0。1表示是。0表示否</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.useCustomCode" placeholder="是否自定义code码，填写1或0。1表示是。0表示否"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">是否指定用户领取，填写1或0。1表示是。0表示否</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.bindOpenid" placeholder="是否指定用户领取，填写1或0。1表示是。0表示否"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">领取卡券原生页面是否可分享，填写1或0。1表示是。0表示否</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.canShare" placeholder="领取卡券原生页面是否可分享，填写1或0。1表示是。0表示否"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">卡券是否可转赠，填写1或0。1表示是。0表示否</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.canGiveFriend" placeholder="卡券是否可转赠，填写1或0。1表示是。0表示否"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">DATE_TYPE_FIX_TIME_RANGE 表示固定日期区间，DATE_TYPE_FIX_TERM表示自领取后按天算</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.dateInfoType" placeholder="DATE_TYPE_FIX_TIME_RANGE 表示固定日期区间，DATE_TYPE_FIX_TERM表示自领取后按天算"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">固定日期区间专用，表示起用时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.beginTimestamp" placeholder="固定日期区间专用，表示起用时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">固定日期区间专用，表示结束时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.endTimestamp" placeholder="固定日期区间专用，表示结束时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">固定时长专用，表示自领取后多少天内有效。（单位为天）</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.fixedTerm" placeholder="固定时长专用，表示自领取后多少天内有效。（单位为天）"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">固定时长专用，表示自领取后多少天开始生效。(单位为天)</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.fixedBeginTerm" placeholder="固定时长专用，表示自领取后多少天开始生效。(单位为天)"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">剩余库存量</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.skuQuantity" placeholder="剩余库存量"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">总库存量</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.skuTotalQuantity" placeholder="总库存量"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">商户自定义入口名称，与custom_url字段共同使用，长度限制在5个汉字内</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.customUrlName" placeholder="商户自定义入口名称，与custom_url字段共同使用，长度限制在5个汉字内"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">商户自定义cell跳转外链的地址链接，跳转页面内容需与自定义cell名称保持匹配</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.customUrl" placeholder="商户自定义cell跳转外链的地址链接，跳转页面内容需与自定义cell名称保持匹配"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">显示在cell右侧的tips，长度限制在6个汉字内</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.customUrlSubTitle" placeholder="显示在cell右侧的tips，长度限制在6个汉字内"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">营销场景的自定义入口</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.promotionUrlName" placeholder="营销场景的自定义入口"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">入口跳转外链的地址链接</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.promotionUrl" placeholder="入口跳转外链的地址链接"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">显示在入口右侧的tips，长度限制在6个汉字内</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.promotionUrlSubTitle" placeholder="显示在入口右侧的tips，长度限制在6个汉字内"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">第三方来源名，例如同程旅游、格瓦拉</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.source" placeholder="第三方来源名，例如同程旅游、格瓦拉"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">卡券审核状态(CARD_STATUS_NOT_VERIFY：待审核；CARD_STATUS_VERIFY_FAIL:审核失败；CARD_STATUS_VERIFY_OK:通过审核。CARD_STATUS_DELETE:卡券在mp后台被用户删除。CARD_STATUS_DISPATCH:在公众平台投放过的卡券)</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.verifyStatus" placeholder="卡券审核状态(CARD_STATUS_NOT_VERIFY：待审核；CARD_STATUS_VERIFY_FAIL:审核失败；CARD_STATUS_VERIFY_OK:通过审核。CARD_STATUS_DELETE:卡券在mp后台被用户删除。CARD_STATUS_DISPATCH:在公众平台投放过的卡券)"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">选择用户可在“附近”领取卡券时，上传的卡券缩略图</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.poiPicUrl" placeholder="选择用户可在“附近”领取卡券时，上传的卡券缩略图"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">用户选择门店。0(false):表示选择无门店限制或指定门店。1(true)：表示选择全部门店</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.autoUpdateNewLocation" placeholder="用户选择门店。0(false):表示选择无门店限制或指定门店。1(true)：表示选择全部门店"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">存在状态。0表示存在，1表示删除</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.state" placeholder="存在状态。0表示存在，1表示删除"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">创建日期</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.createTime" placeholder="创建日期"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">修改日期</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.modifyTime" placeholder="修改日期"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">适用门店类型</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.shopType" placeholder="适用门店类型"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">无指定门店的原因</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.noShopReason" placeholder="无指定门店的原因"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">无指定门店的中的其它原因描述</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.noShopInput" placeholder="无指定门店的中的其它原因描述"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">是否选择用户可在“附近”领取卡券，1表示选择，0表示不选择</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.shopInNearby" placeholder="是否选择用户可在“附近”领取卡券，1表示选择，0表示不选择"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">GET_CUSTOM_CODE_MODE_DEPOSIT 表示该卡券为预存code模式卡券， 须导入超过库存数目的自定义code后方可投放， 填入该字段后，quantity字段须为0,须导入code 后再增加库存</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.getCustomCodeMode" placeholder="GET_CUSTOM_CODE_MODE_DEPOSIT 表示该卡券为预存code模式卡券， 须导入超过库存数目的自定义code后方可投放， 填入该字段后，quantity字段须为0,须导入code 后再增加库存"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">卡券跳转的小程序的user_name，仅可跳转该 公众号绑定的小程序 </div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.customAppBrandUserName" placeholder="卡券跳转的小程序的user_name，仅可跳转该 公众号绑定的小程序 "/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">卡券跳转的小程序的path</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.customAppBrandPass" placeholder="卡券跳转的小程序的path"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">卡券跳转的小程序的user_name，仅可跳转该 公众号绑定的小程序 </div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.promotionAppBrandUserName" placeholder="卡券跳转的小程序的user_name，仅可跳转该 公众号绑定的小程序 "/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">卡券跳转的小程序的path</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.promotionAppBrandPass" placeholder="卡券跳转的小程序的path"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">supplier_id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mpwxCard.supplierId" placeholder="supplier_id"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/mpwx/mpwxcard.js?_${.now?long}"></script>
+</body>
+</html>

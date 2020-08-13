@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- IE=Edge 强制使用浏览器的最高版本模式进行渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <script type="text/javascript" src="${request.contextPath}/statics/wxmp/js/jdUtil.js"></script>
+    <script type="text/javascript" src="${request.contextPath}/statics/wxmp/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript"  src="${request.contextPath}/statics/wxmp/js/modernizr.custom.js"></script>
+    <script type="text/javascript"  src="${request.contextPath}/statics/wxmp/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${request.contextPath}/statics/wxmp/js/json2.js"></script>
+    <link href="${request.contextPath}/statics/wxmp/css/font-awesome.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="${request.contextPath}/statics/wxmp/css/bootstrap/bootstrap.css">
+    <#include "/header.html">
+    <style type="text/css">
+        .main_menu {
+            width: 52%;
+            border: 1px solid #787878;
+            margin-top: 10px;
+            background-color: #F5F5F5;
+            float:left;
+            display:inline;
+            border-radius: 5px;
+        }
+
+        #item_config {
+            width: 45%;
+            margin-top: 10px;
+            border: 1px solid;
+            float:left;
+            margin-left:2%;
+            border-radius: 5px;
+        }
+
+        .form-horizontal {
+            margin: 0px;
+            width:100%;
+        }
+
+        .form-actions {
+            margin: 0px;
+            padding: 15px 0px;
+        }
+
+        #item_config .form-horizontal {
+            margin-top: 10px;
+
+        }
+
+        .column {
+            display: inline-block;
+            width: 31.5%;
+            margin-top: 10px;
+        }
+
+        .tab {
+            background: none repeat scroll 0 0 #FFFFFF;
+            border: 1px solid #8AA8BD;
+            border-radius: 5px;
+            list-style: none outside none;
+            box-shadow: 0 0 5px #9AB8CD;
+            margin: 0 0 10px 10px;
+        }
+
+        .tab li {
+            line-height: 20px;
+        }
+
+        .tab li div {
+           /* height: 20px;*/
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #8aa8bd;
+            border-bottom: 1px solid #e6e8ea;
+        }
+
+        .bar {
+            background-color: #FFFFFF;
+            border: 1px solid #8AA8BD;
+            border-radius: 7px;
+            box-shadow: 0 1px 1px rgba(50, 50, 50, 0.1);
+            color: #8AA8BD;
+            cursor: pointer;
+            padding: 10px;
+            font-weight: bold;
+            margin: 0 0 10px 25px;
+            margin: 0 0 10px 10px;
+        }
+
+        .form-horizontal .control-label {width: 80px;}
+        .form-horizontal .controls {margin-left: 100px;}
+
+        li:hover {
+            background: #f0f8f8;
+            cursor: pointer;
+        }
+
+        .selected {
+            background-color: #f3f8f8;
+        }
+
+        .controls input {width: 80%;}
+        .controls select {width: 80%;}
+        .controls textarea {width: 80%;}
+
+        .moveleft {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            padding: 10px;
+            margin: 5px;
+
+        }
+        .moveleft:hover{
+            background:gray;
+
+            cursor: pointer;
+        }
+        .moveright {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            padding: 10px;
+            margin: 5px 5px 10px 10px;
+        }
+        .moveright:hover {
+            background: gray;
+            cursor: pointer;
+        }
+
+        #edit-menu {padding-left:10px; text-align:center;}
+
+        #moveup,#movedown {margin-right: 5%; cursor:pointer;}
+        #moveleft,#moveright  {margin-left:5%; cursor:pointer;}
+
+        #materialTitle {width: 60%}
+        #cust_btn {width: 20%}
+
+        .name_un {
+            display:block;height:40px;
+        }
+
+        .right_input{
+            display:block;height:35px;line-height:35px;
+        }
+    </style>
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+    <div class="main_menu" >
+            <div class="column"  v-for="(item,index) in menuList" :key="index">
+                <ul class="tab">
+                        <li v-for="(inner,index2) in item.childList" :key="index2" @click="selectItem(index,index2,inner)">
+                            <div class="name name_un" v-if="inner.name=='' || inner.name==null">
+                                <span>{{inner.name}} </span>
+                                    <a v-if="inner.name!='' && inner.name!=null" @click="deleteMenuItem(index,index2,inner)" title="删除"
+                                       style="float:right"><img src="${request.contextPath}/statics/wxmp/images/delete.gif" border="0">
+                                    </a>
+                            </div>
+                            <div class="name" v-if="inner.name!='' && inner.name!=null">
+                                <span>{{inner.name}} </span>
+                                <a v-if="inner.name!='' && inner.name!=null" @click="deleteMenuItem(index,index2,inner)" title="删除"
+                                   style="float:right"><img src="${request.contextPath}/statics/wxmp/images/delete.gif" border="0">
+                                </a>
+                            </div>
+                        </li>
+                </ul>
+                <div class="bar" @click="selectItem(index,-1,item)">
+                    <div class="name">
+                        <span> {{item.name}}</span>&nbsp;
+                        <a v-if="item.name!='' && item.name!=null" @click="deleteMenuItem(index,-1,item)" style="float:right"title="删除">
+                           <img src="${request.contextPath}/statics/wxmp/images/delete.gif" border="0">
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+    <div id="item_config" >
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label " for="item-name">名称：</label>
+                <div class="controls ">
+                    <input v-model="optionMenu.menu.name" type="text" id="item-name" placeholder="Name" style="display:block;height:35px;line-height:35px;" :disabled="optionMenuStat.menuNameDisableStatus" />
+
+                </div>
+            </div>
+            <div class="control-group" id="item-type-group">
+                <label class="control-label">类型：</label>
+                <div class="controls">
+                    <select class="right_input" v-model="optionMenu.menu.menuType" @change="selectMenuType" style="display:block;height:35px;line-height:35px;" :disabled="optionMenuStat.menuTypeDisableStatus">
+                        <option value="click">点击</option>
+                        <option value="view">跳转url</option>
+                        <option value="scancode_push">扫描</option>
+                        <option value="scancode_waitmsg">扫描并提示</option>
+                        <option value="pic_sysphoto">系统拍照</option>
+                        <option value="pic_photo_or_album">拍照或相册</option>
+                        <option value="pic_weixin">微信相册</option>
+                        <option value="location_select">地理位置</option>
+                        <option value="miniprogram">小程序</option>
+                        <option value="menu">主菜单</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group" id="item-isauth-group" style="display: none;">
+                <label class="control-label" for="item-url">Auth2.0：</label>
+                <div class="controls">
+                    <span><input type="radio" id="radio1" style="width:30px;" class="radio" name="isAuth" value="1" /> 使用</span>
+                    <span><input type="radio" id="radio2" style="width:30px;" class="radio" name="isAuth" value="2" checked /> 不使用</span>
+
+                </div>
+            </div>
+            <div class="control-group" id="item-url-group" v-show="optionMenuStat.urlShowStatus">
+                <label class="control-label" for="item-url">Url：</label>
+                <div class="controls">
+                    <!-- <input type="text" id="item-url" placeholder="Url"> -->
+                    <textarea rows="3" v-model="optionMenu.menu.url" class="input-xlarge" id="item-url"
+                              placeholder="Url"></textarea>
+                </div>
+            </div>
+
+            <div class="control-group" id="item-click-type"  v-show="optionMenuStat.msgTypeShowStatus">
+                <label class="control-label">消息类型：</label>
+                <div class="controls">
+                    <select @change="selectClickType" name="msgType" v-model="optionMenu.menu.msgType"
+                            id="msgType" style="display:block;height:35px;line-height:35px;" :disabled="optionMenuStat.msgTypeDisableStatus" >
+                        <option value="0">文本类型</option>
+                        <option value="1">素材</option>
+                        <option value="2">跳转流程</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group" id="item-text-group"  v-show="optionMenuStat.contentShowStatus">
+                <label class="control-label" for="text-content">文本内容：</label>
+                <div class="controls">
+                    <textarea rows="3" v-model="optionMenu.menu.textContent" class="input-xlarge" id="text-content" :disabled="optionMenuStat.contentDisableStatus"></textarea>
+                </div>
+            </div>
+
+            <div class="control-group" id="item-process-group" v-show="optionMenuStat.processShowStatus">
+                <label class="control-label" for="item-processId">跳转流程：</label>
+                <div class="controls">
+                    <input type="hidden" id="processIdHidden"> <select
+                        name="item-processId" id="item-processId" style="display:block;height:35px;line-height:35px;">
+                    <option value="0">--请选择--</option>
+                </select>
+                </div>
+            </div>
+
+            <div class="control-group" id="item-material-group" v-show="optionMenuStat.sucaiShowStatus">
+                <label class="control-label">素材：</label>
+                <div class="controls">
+                    <input type="text" id="materialTitle" readonly style="display:block;height:35px;line-height:35px;">
+                    <input type="button" id="cust_btn" class="btn" value="选择" onclick="selMaterial()">
+                </div>
+            </div>
+
+            <div class="control-group"  v-show="optionMenuStat.xiaochengxuShowStatus">
+                <label class="control-label">小程序appId：</label>
+                <div class="controls">
+                    <input v-model="optionMenu.menu.xcxAppid" type="text" placeholder="Name" style="display:block;height:35px;line-height:35px;"  />
+                </div>
+            </div>
+            <div class="control-group"  v-show="optionMenuStat.xiaochengxuShowStatus">
+                <label class="control-label">小程序路径：</label>
+                <div class="controls">
+                    <input v-model="optionMenu.menu.pagepath" type="text" placeholder="Name" style="display:block;height:35px;line-height:35px;" />
+                </div>
+            </div>
+            <div class="control-group"  v-show="optionMenuStat.xiaochengxuShowStatus">
+                <label class="control-label">备用网址：</label>
+                <div class="controls">
+                    <input v-model="optionMenu.menu.url" type="text" placeholder="Name" style="display:block;height:35px;line-height:35px;"  />
+                </div>
+            </div>
+
+
+
+            <!-- <div class="control-group">
+            <div class="controls">
+                <button onclick="modifyMenuItem()" class="btn">确定</button>
+            </div>
+        </div> -->
+
+            <form name="actionForm" class="form-horizontal"
+                  action="weixin/weixinMenu!editMenu.action" method="post">
+                <div id="edit-menu" class="form-actions" >
+					<!--	<span id="moveup">
+						<i class="fa fa-arrow-up fa-lg" id="move_up"></i>
+						</span>
+                    <span id="movedown">
+							<i class="fa fa-arrow-down fa-lg" id="move_down"></i>
+						</span>-->
+                    <input type="hidden" name="jsonMenu" id="json-menu" />
+                    <input type="button" class="btn btn-primary" @click="saveMenu" value="保存菜单">
+                   <!-- <input type="button" class="btn" onclick="menuCancel()" value="返回">-->
+                   <!-- <span id="moveleft">
+						<i class="fa fa-arrow-left fa-lg" id="move_left"></i>
+						</span>
+                    <span id="moveright">
+							<i class="fa fa-arrow-right fa-lg" id="move_right"></i>
+						</span>-->
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<script src="${request.contextPath}/statics/js/modules/wxmp/menu.js?_${.now?long}"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

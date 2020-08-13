@@ -1,0 +1,282 @@
+jQuery(document).ready(function($) {
+
+    /**
+     * 一级导航交互js
+     */
+
+    // 一级导航页面跳转
+    $('.ucc-main .sidebar .nav-sidebar a').on('click', function() {
+        var pageName = $(this).attr('url');//.split('#')[1];
+        var src = pageName ; //'./' + pageName + '.html';
+        
+        // 页面加载
+	    $('.ucc-main .main iframe').attr('src', src);
+        //$('title').text(pageName);
+    });
+
+    // 侧边栏 点击态
+    $('.nav-sidebar li').on('click', function() {
+        $('.nav-sidebar li').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    // 侧边栏状态切换
+//    $('.ucc-main .sidebar').on('mouseover', function() {
+//
+//        $('.ucc-main').removeClass('sidebar-hide');
+//
+//    }).on('mouseout', function() {
+//
+//        $('.ucc-main').addClass('sidebar-hide');
+//
+//    });
+
+$(document).on("click",".numbers .number",function(){
+  $(this).removeClass("active");
+    $(this).css('color','#fff').css('background-color','#3ACF83');
+})
+    $(document).on("mouseleave",".numbers .number",function(){
+        $(this).css('color','#858587').css('background-color','#F7F8FC');
+    })
+    /**
+     * 二级导航交互js
+     */
+
+    // 系统设置菜单折叠/收缩
+    $('.setting-list').on('click', 'dt', function() {
+    	
+        var $parent = $(this).parent('dl');
+        $parent.toggleClass('collapsed');
+    });
+
+    // 二级导航页面跳转
+    $('.setting-list').on('click', 'dd a', function() {
+        $('.setting-list dd').removeClass('active');
+        $(this).parent('dd').addClass('active');
+
+        var $dt = $(this).parent().siblings('dt');
+        var _lev2 = $dt.length > 0 ? $dt.text().trim() + "-" : "";
+
+        var src = $(this).attr('url');//.split('#')[1];
+        var args = $(this).attr('args'); //extend args
+        if(args){
+        	if(src.indexOf('?') != -1){ //has ?
+        		src = src + '&' + args;
+        	}else{
+        		src = src + '?' + args;
+        	}
+        }
+        var openMode=$(this).attr('openMode');
+        if(openMode!=undefined || openMode!=""){
+	        if(openMode==1){
+	        	// 页面加载
+	            $('.setting-page iframe').attr('src', src);
+	        }else{
+	        	window.open(src);
+	        }
+        }else{
+        	// 页面加载
+            $('.setting-page iframe').attr('src', src);
+        }
+
+    });
+
+    /**
+     * 顶部功能栏
+     */
+    // popover隐藏
+    $(document).on('click', '.popover-mask', function() {
+    	$(this).parent('.popover').popover('hide');
+    });
+
+    // tooltip显示
+    $('[data-toggle="tooltip"]').tooltip();
+    
+    // 消息通知：实例化popover
+    $('#newNote').popover({
+        trigger: 'click',
+        placement: 'bottom',
+        html: 'true',
+        delay: { "show": 300},
+        template: '<div class="popover popover-newnote" role="tooltip"><div class="arrow"></div><div class="popover-mask"></div><div class="popover-content"></div></div>',
+        content: function() {
+            return $(".newnote-tpl").html();
+        }
+    });
+    $('#newNote').on('show.bs.popover', function() {
+    	// 打开时为popover内容赋值
+        $('#newNote').popover({
+	     	content: function() {
+	            return $(".newnote-tpl").html();
+	        }
+	    });
+    })
+    $('#newNote').on('hide.bs.popover', function() {
+        // 关闭时获取popover内容
+        
+    })
+
+    // 侧边栏抽屉: 滑入
+    $(document).on('click', '.sidemenu', function(){
+        $('.sm-container').addClass('in');
+    });
+    // 侧边栏抽屉: 滑出
+    $(document).on('click', '#logOut .sm-mask', function(){
+        $('.sm-container').removeClass('in');
+    });
+
+ // 拨打电话：实例化popover
+    $('#callup').popover({
+        trigger: 'click',
+        placement: 'bottom',
+        html: 'true',
+        template: '<div class="popover popover-callup" role="tooltip"><div class="arrow"></div><div class="popover-mask"></div><div class="popover-content"></div></div>',
+        content: function() {
+            return $(".callup-tpl").html();
+        }
+    });
+    
+    $('#callup').on("show.bs.popover",function(){
+//    	var state = document.getElementById('state').innerHTML;
+    	// 根据是否通话结束的标识来显示隐藏拨号和挂断按钮
+    	if(stateText!=""){
+    		document.getElementById("online").innerHTML = stateText;
+    		document.getElementById("online").style.background = stateColour;
+//    		$span.text($(this).text()).css('background-color', $(this).data('bgcolor'));
+    	}
+        if(isCallOver){
+            $('#DialOut').hide();
+            $('#overCall').show();
+        }else{
+        	$('#overCall').hide();
+            $('#DialOut').show();
+        }
+    });
+    
+    $('#callup').on("hide.bs.popover",function(){
+    	dialOutNum = document.getElementById("DnisText").value;
+    });
+    $('#callup').on('click', function() {
+        // 在线状态：实例化popover
+        $('#online').popover({
+            trigger: 'click',
+            placement: 'bottom',
+            html: 'true',
+            template: '<div class="popover popover-online" role="tooltip"><div class="arrow"></div><div class="popover-mask"></div><div class="popover-content" style="overflow:visible;"></div></div>',
+            content: function() {
+                return $(".online-tpl").html();
+            }
+        });
+        document.getElementById("DnisText").value = dialOutNum;
+    });
+
+ // 在线状态：状态切换
+    $(document).on('click', '.popover-online .list-group-item a', function() {
+    	if(!!$(this).parent('li').hasClass('busy')) return;
+    	var $span = $('#online');
+    	stateText = $(this).text();
+    	stateColour = $(this).data('bgcolor');
+        $span.text($(this).text()).css('background-color', $(this).data('bgcolor'));
+        $(this).addClass('active').parent('li').siblings('li').find('a').removeClass('active');
+        
+        $('#online').popover('hide');
+    });
+    
+ // 拨号键盘：数字点击态
+    $(document).on('click', '.jianpan .number', function() {
+        var $input = $('.jianpan .input .val'),
+        val = $input.val(),
+        length = val.length,
+        pos = getCursorPos($input);
+
+	    if(val.length > 0 && pos==0){
+	    	$input.val(val.substr(0, pos) + $(this).text().trim() + val.substr(pos, length-0));
+	    }else{
+	    	$input.val(val.substr(0, pos) + $(this).text().trim() + val.substr(pos, length-1));
+	    }
+	    setCursorPos($input, pos+1);
+	
+	    $(this).addClass('active').siblings('.number').removeClass('active');
+    });
+    // 拨号键盘：x号删除
+    $(document).on('click', '.jianpan .input .btn-del', function() {
+        var $input = $('.jianpan .input .val'),
+            val = $input.val(),
+            length = val.length;
+        	pos = getCursorPos($input);
+        	if(val.length > 0 && pos==0){
+    	    	$input.val(val.substr(0, pos-1) + val.substr(pos, length-0));
+    	    }else{
+    	    	$input.val(val.substr(0, pos-1) + val.substr(pos, length-1));
+    	    }
+        	
+        	setCursorPos($input, pos-1);
+    });
+    
+ // 获取文本框光标位置
+    function getCursorPos(el){
+        var $el = $(el).get(0);
+        var cursurPosition=-1;
+
+        if($el.selectionStart > -1){//非IE浏览器
+            cursurPosition= $el.selectionStart;
+        }else{//IE
+            var range = document.selection.createRange();
+            range.moveStart("character",-$el.value.length);
+            cursurPosition=range.text.length;
+        }
+        return cursurPosition;
+    }
+    
+    // 设置文本框光标位置
+    function setCursorPos(el, pos){
+        var $el = $(el).get(0);
+        var val = $el.value;
+        var len = val.length;
+        // 超过文本长度直接返回
+        if (len < pos) return
+        setTimeout(function() {
+            $el.focus();
+            if ($el.setSelectionRange) { // 标准浏览器
+                $el.setSelectionRange(pos, pos);
+            } else { // IE9-
+                var range = $el.createTextRange();
+                range.moveStart("character", -len);
+                range.moveEnd("character", -len);
+                range.moveStart("character", pos);
+                range.moveEnd("character", 0);
+                range.select();
+            }
+        }, 10);
+    }
+    
+	// 转接会话：实例化popover
+    $('#Transfer').popover({
+    	trigger: 'click',
+	    placement: 'bottom', 
+	    html: 'true',
+	    delay: {'show':300, 'hide': 100},
+	    template: '<div class="popover popover-pass" role="tooltip"><div class="arrow"></div><div class="popover-content" style="width:240px;"></div></div>',
+	    content: function(){
+	    	return $(".pass-tpl").html(); 
+	    }
+	});
+    
+    $('#Transfer').on("show.bs.popover",function(){
+    	document.getElementById('Transfer').disabled = 'disabled';
+    	document.getElementById('ServiceLevel').disabled = 'disabled';
+    	document.getElementById('Hook').disabled = 'disabled';
+    });
+    
+    $('#Transfer').on("hidden.bs.popover",function(){
+    	document.getElementById('Transfer').disabled = '';
+    	document.getElementById('ServiceLevel').disabled = '';
+    	document.getElementById('Hook').disabled = '';
+    });
+    
+    // 转接会话：客服列表选中态
+    $(document).on('click','.kefu-list .list-item', function() {
+       $(this).addClass('active').siblings().removeClass('active'); 
+    });
+     
+}); 

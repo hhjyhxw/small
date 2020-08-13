@@ -1,0 +1,10 @@
+/target/
+/src/main/resources/application*
+/src/main/resources/dataSource*
+/src/main/resources/config*
+/src/main/resources/*.yml
+/src/main/resources/*.properties
+/webapp/
+
+
+

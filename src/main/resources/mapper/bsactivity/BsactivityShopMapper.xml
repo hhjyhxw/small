@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.bsactivity.dao.BsactivityShopMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.bsactivity.entity.BsactivityShop" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="shopName" column="shop_name"/>
+     <result property="shopImg" column="shop_img"/>
+     <result property="shopLicense" column="shop_license"/>
+     <result property="contactMan" column="contact_man"/>
+     <result property="contactPhone" column="contact_phone"/>
+     <result property="provinceName" column="province_name"/>
+     <result property="cityName" column="city_name"/>
+     <result property="countyName" column="county_name"/>
+     <result property="address" column="address"/>
+     <result property="lnt" column="lnt"/>
+     <result property="lat" column="lat"/>
+     <result property="createTime" column="create_time"/>
+     <result property="createMan" column="create_man"/>
+     <result property="modifyTime" column="modify_time"/>
+     <result property="modifyMan" column="modify_man"/>
+     <result property="openid" column="openid"/>
+     <result property="status" column="status"/>
+        <result property="distance" column="distance"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,shop_name,shop_img,shop_license,contact_man,contact_phone,province_name,city_name,county_name,address,lnt,lat,create_time,create_man,modify_time,modify_man,openid,status
+    </sql>
+
+
+    <select id="queryMixList" resultMap="BaseResultMap">
+            select * from t_bsactivity_shop t
+            <where>
+                                                    <if test="id != null">
+                        and t.id = #{id}
+                    </if>
+                                                                    <if test="shop_name != null">
+                        and t.shop_name = #{shop_name}
+                    </if>
+                                                                    <if test="shop_img != null">
+                        and t.shop_img = #{shop_img}
+                    </if>
+                                                                    <if test="shop_license != null">
+                        and t.shop_license = #{shop_license}
+                    </if>
+                                                                    <if test="contact_man != null">
+                        and t.contact_man = #{contact_man}
+                    </if>
+                                                                    <if test="contact_phone != null">
+                        and t.contact_phone = #{contact_phone}
+                    </if>
+                                                                    <if test="province_name != null">
+                        and t.province_name = #{province_name}
+                    </if>
+                                                                    <if test="city_name != null">
+                        and t.city_name = #{city_name}
+                    </if>
+                                                                    <if test="county_name != null">
+                        and t.county_name = #{county_name}
+                    </if>
+                                                                    <if test="address != null">
+                        and t.address = #{address}
+                    </if>
+                                                                    <if test="lnt != null">
+                        and t.lnt = #{lnt}
+                    </if>
+                                                                    <if test="lat != null">
+                        and t.lat = #{lat}
+                    </if>
+                                                                    <if test="create_time != null">
+                        and t.create_time = #{create_time}
+                    </if>
+                                                                    <if test="create_man != null">
+                        and t.create_man = #{create_man}
+                    </if>
+                                                                    <if test="modify_time != null">
+                        and t.modify_time = #{modify_time}
+                    </if>
+                                                                    <if test="modify_man != null">
+                        and t.modify_man = #{modify_man}
+                    </if>
+                                                                    <if test="openid != null">
+                        and t.openid = #{openid}
+                    </if>
+                                                                            </where>
+        </select>
+
+    <select id="selectByposition" resultMap="BaseResultMap">
+        SELECT *, ROUND(
+        6378.138 * 2 * ASIN(
+        SQRT(
+        POW(
+        SIN(
+        (
+        #{lat} * PI() / 180 - t.lat * PI() / 180
+        ) / 2
+        ),
+        2
+        ) + COS(#{lat} * PI() / 180) * COS(t.lat * PI() / 180) * POW(
+        SIN(
+        (
+        #{lnt} * PI() / 180 - t.lnt * PI() / 180
+        ) / 2
+        ),
+        2
+        )
+        )
+        )
+        ) AS distance from t_bsactivity_shop t where t.status=1 order by distance asc
+
+    </select>
+</mapper>

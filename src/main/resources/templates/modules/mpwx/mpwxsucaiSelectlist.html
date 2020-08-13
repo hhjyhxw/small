@@ -1,0 +1,212 @@
+<!-- saved from url=(0051)http://u.im-cc.com/scManager/toEditSinglePicText.do -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+    </script>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/bootstrap.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/font-awesome.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/pnotify.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/pnotify.buttons.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/webuploader.css">
+    <link href="${request.contextPath}/statics/wx/2/font.css" rel="stylesheet">
+    <title>关键字回复</title>
+    <#include "/header.html">
+    <script src="${request.contextPath}/statics/libs/ajaxupload.js"></script>
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/bootstrap.custom.css">
+    <link href="${request.contextPath}/statics/wx/2/setting.css" rel="stylesheet">
+    <link href="${request.contextPath}/statics/wx/2/operate.css" rel="stylesheet">
+
+    <style type="text/css">
+        .keyword-hui .fuzzyKwNr button.del {
+            border-radius: 5px;
+            width: 10px;
+            height: 10px;
+            padding: 0;
+            line-height: 8px;
+            border: none;
+            vertical-align: top;
+        }
+        .keyword-hui .fuzzyKwNr input {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 150px;
+            padding: 0 5px;
+        }
+        #wxTab .nav-tabs li a{
+            color:#fff;
+        }
+        #wxTab .nav-tabs li a:hover {
+            color: #000;
+        }
+        .textTab{
+            display: none;
+        }
+        .textTab .nav-tabs li{
+            width: 50%;
+            text-align: center;
+        }
+        .textTab .nav-tabs li a{
+            background: #ECF1F7;
+        }
+        .textTab .nav-tabs li a{
+            color: #000;
+        }
+        #clickType{
+            color: #2D8CF0;
+            padding: 5px;
+        }
+        #clickType input,.wx-keywords-item input{
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 150px;
+            padding: 0 5px;
+            height: 28px;
+            line-height:28px;
+            color: #2D8CF0;
+        }
+        .wx-keywords-item{
+            padding-left: 5px;
+            color: #2D8CF0;
+        }
+        .wx-keywords-item textarea{
+            border-radius: 4px;
+            border:1px solid #dfe6ee;
+            width: 98%;
+            margin-top: 5px;
+            padding: 0 5px;
+            color: #333;
+        }
+        .wx-keywords-item span{
+            cursor: pointer;
+            margin-left: 10px
+        }
+        #clickType input::-webkit-input-placeholder { color: #2D8CF0;}
+        .keywords-item span.ml-10{
+            margin-left: 10px
+        }
+        .keywords-item span.addKey{
+            cursor: pointer;
+        }
+        #myTabContent{
+            display: none;
+        }
+        #clickModel .keyword-input{
+            width: 250px;
+            display: inline-block;
+            font-size: 14px;
+            line-height: 28px;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            height: 28px;
+            padding-left: 5px;
+        }
+        #wxTab .nav-tabs li a {
+            color: rgb(34, 34, 34);
+        }
+
+        .nr button.del {
+            border-radius: 5px;
+            width: 10px;
+            height: 10px;
+            padding: 0;
+            line-height: 8px;
+            border: none;
+            vertical-align: top;
+        }
+        .nr input {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 150px;
+            padding: 0 5px;
+            height: 29px;
+            line-height: 29px;
+        }
+        .btn-sm, .btn-group-sm>.btn {
+            padding: 2px 6px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 3px;
+        }
+
+        .btn-success {
+            color: #fff;
+            background-color: #3cd283;
+            border-color: #2ec776;
+        }
+        .btn {
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: normal;
+            text-align: center;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            padding: 4px 16px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            border-radius: 4px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+<body style="">
+<div id="icloudapp" v-cloak>
+    <!-- 模态框：从素材库中选择 -->
+    <div  class="modal fade modal-tpl in" id="modalTpl" style="display:block;padding-left: 4px;">
+        <div class="modal-dialog modal-lg" style="width:100%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body" id="sucaiContentDiv">
+                    <div style="text-align:right;margin-top: 10px;">
+                        <input class="search" type="text" placeholder="请输入标题" v-model="q.title" id="searchText" maxlength="20" style="height: 30px;background: #fff;border: 1px solid #ddd;">
+                        <button type="button" class="btn btn-success" id="searchTitle"  @click="getsuciInfoList" style="margin-left: -5px;">搜索</button>
+                    </div>
+                    <!-- 图文消息tpl -->
+                    <section class="section pic-text" data-type="picTextMsg" id="picTextMsgSec" style="margin-top: 0px; position: relative; height: 0px; display: block;" v-if="q.scType==1">
+                        <div class="wx-sucai multi" value="229" v-for="(sucai,index) in list" v-if="sucai.scType==1" @dblclick="doubleClickSelect(sucai.scType,sucai.id)">
+                            <div  class="msg-a" v-for="(item,index2) in sucai.webSucaivo.list" v-if="sucai.scType==1 && index2==0">
+                                <p class="thumb" :style="{backgroundImage: 'url(' + item.localUrls + ')'}"><span>{{item.subTitle}}</span></p>
+                            </div>
+                            <div  v-for="(item,index2) in sucai.webSucaivo.list" :key="index2" v-if="sucai.scType==1 && index2!=0" class="msg-b"><h4>{{item.subTitle}}</h4><span class="thumb" :style="{backgroundImage: 'url(' + item.localUrls + ')'}"></span></div>
+                            <p>{{sucai.title}}</p>
+                        </div>
+                    </section>
+
+                    <section class="section pic" data-type="picMsg" id="picMsgSec" style="margin-top: 0px; display: block;"  v-if="q.scType==4">
+                        <div class="wx-sucai" value="228" v-for="(item,index) in list"  v-if="item.scType==4"  @dblclick="doubleClickSelect(item.scType,item.id)">
+                            <!--<h4>沁园春·雪</h4>-->
+                            <span class="img"><img :src="item.localUrls" alt="" alt=""></span>
+                            <p>{{item.title}}</p>
+                        </div>
+                    </section>
+                </div>
+               <!-- <div class="modal-footer">
+                    <button type="button"  @click="selectConfirm(2)" class="btn btn-success" >确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"  @click="selectCancel(2)">取消</button>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${request.contextPath}/statics/js/modules/mpwx/mpwxsucaiSelectlist.js?_${.now?long}"></script>
+<script>
+
+</script>
+</body>
+</html>
+
+

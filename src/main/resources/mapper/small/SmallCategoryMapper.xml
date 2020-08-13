@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.small.dao.SmallCategoryMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.small.entity.SmallCategory" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="title" column="title"/>
+     <result property="parentId" column="parent_id"/>
+     <result property="picUrl" column="pic_url"/>
+     <result property="level" column="level"/>
+     <result property="status" column="status"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,title,parent_id,pic_url,level,status,create_time,modify_time
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_small_category t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="title != null">
+    and t.title = #{title}
+</if>
+<if test="parent_id != null">
+    and t.parent_id = #{parent_id}
+</if>
+<if test="pic_url != null">
+    and t.pic_url = #{pic_url}
+</if>
+<if test="level != null">
+    and t.level = #{level}
+</if>
+<if test="status != null">
+    and t.status = #{status}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+</where>
+</select>
+</mapper>

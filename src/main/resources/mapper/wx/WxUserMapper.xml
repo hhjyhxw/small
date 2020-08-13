@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.wx.dao.WxUserMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.wx.entity.WxUser" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="openid" column="openid"/>
+     <result property="nickname" column="nickname"/>
+     <result property="sex" column="sex"/>
+     <result property="province" column="province"/>
+     <result property="city" column="city"/>
+     <result property="country" column="country"/>
+     <result property="headimgurl" column="headimgurl"/>
+     <result property="privilege" column="privilege"/>
+     <result property="unionid" column="unionid"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+     <result property="phone" column="phone"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,openid,nickname,sex,province,city,country,headimgurl,privilege,unionid,create_time,modify_time,phone
+    </sql>
+</mapper>

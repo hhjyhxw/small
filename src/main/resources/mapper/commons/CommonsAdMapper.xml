@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.commons.dao.CommonsAdMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.commons.entity.CommonsAd" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="adName" column="ad_name"/>
+     <result property="adImgurl" column="ad_imgurl"/>
+     <result property="addJumpurl" column="add_jumpurl"/>
+     <result property="status" column="status"/>
+     <result property="createTime" column="create_time"/>
+     <result property="createOperator" column="create_operator"/>
+     <result property="modifyTime" column="modify_time"/>
+     <result property="modifyOperator" column="modify_operator"/>
+     <result property="posittionId" column="posittion_id"/>
+     <result property="sortNum" column="sort_num"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,ad_name,ad_imgurl,add_jumpurl,status,create_time,create_operator,modify_time,modify_operator,posittion_id,sort_num
+    </sql>
+</mapper>

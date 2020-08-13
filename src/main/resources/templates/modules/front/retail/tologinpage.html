@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+
+    <title></title>
+    <style>
+        .container {
+            padding-top: 115px;
+            position: relative;
+            /* width: 100vw; */
+            height: 100vh;
+            overflow: hidden;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            z-index: 90;
+            background: #fff;
+            padding-bottom: 40px;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 40px;
+            z-index: 9999;
+            top: 40px;
+            font-size: 40px;
+        }
+
+        .left-top-sign {
+            font-size: 120px;
+            position: relative;
+            left: -16px;
+        }
+
+        .right-top-sign {
+            position: absolute;
+            top: 80px;
+            right: -30px;
+            z-index: 95;
+        }
+        .right-top-sign:before{
+            display: block;
+            content: "";
+            width: 400px;
+            height: 80px;
+            background: #b4f3e2;
+        }
+        .right-top-sign:after {
+             display: block;
+             content: "";
+             width: 400px;
+             height: 80px;
+             background: #b4f3e2;
+         }
+        .left-bottom-sign {
+            position: absolute;
+            left: -270px;
+            bottom: -320px;
+            border: 100px solid #d0d1fd;
+            border-radius: 50%;
+            padding: 180px;
+        }
+
+        .welcome {
+            position: relative;
+            left: 50px;
+            top: -90px;
+            font-size: 46px;
+            color: #555;
+            text-shadow: 1px 0px 1px rgba(0, 0, 0, .3);
+        }
+
+        .input-content {
+            padding: 0 37px;
+            /*padding-left: 8px;*/
+        }
+
+        .input-item {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+            border-radius: 4px;
+            margin-bottom: 25px;
+         }
+
+        .tit {
+            height: 50px;
+            line-height: 56px;
+        }
+
+        input {
+            height: 39px;
+            width: 100%;
+            border: 1px solid lightgray;
+            border-radius: 7px;
+            padding-left: 8px;
+            font-size: 1rem;
+        }
+
+        .confirm-btn {
+            height: 3rem;
+            border-radius: 50px;
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fa436a;
+            color: #fff;
+            font-size: 1rem;
+        }
+        .confirm-btn_disable {
+            height: 3rem;
+            border-radius: 50px;
+            margin-top: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: lightgray;
+            color: #fff;
+            font-size: 1rem;
+        }
+        .confirm-btn:after {
+             border-radius: 100px;
+         }
+
+
+        .forget-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .register-section {
+            position: absolute;
+            left: 0;
+            bottom: 50px;
+            width: 100%;
+            text-align: center;
+        }
+        .register-section text {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<!--登陆-->
+<div id="icloudapp" >
+    <!--兑换成功-->
+        <div class="container">
+            <!-- 设置白色背景防止软键盘把下部绝对定位元素顶上来盖住输入框等 -->
+            <div class="wrapper">
+                <div  class="input-content">
+                    <div class="input-item">
+                        <!--<text class="tit">账号</text>-->
+                        <input type="number" v-model="userName" placeholder="请输入账号" maxlength="15" data-key="phone"  />
+                    </div>
+                    <div class="input-item">
+                        <!--<text class="tit">密码</text>-->
+                        <input type="password" v-model="passwd" placeholder="请输入密码" placeholder-class="input-empty" maxlength="20"
+                               password data-key="password"/>
+                    </div>
+                </div>
+                <button v-if="!logining" class="confirm-btn" @click="toLogin">登录</button>
+                <button  v-if="logining" class="confirm-btn_disable">登录</button>
+                <view  class="forget-section">
+                    <!-- 忘记密码? -->
+                </view>
+            </div>
+        </div>
+</div>
+<script src=" https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script src="${request.contextPath}/statics/libs/jquery.min.js"></script>
+<script src="${request.contextPath}/statics/plugins/layer/layer.js"></script>
+<script src="${request.contextPath}/statics/libs/bootstrap.min.js"></script>
+<script src="${request.contextPath}/statics/libs/vue.min.js"></script>
+<script src="${request.contextPath}/statics/plugins/jqgrid/grid.locale-cn.js"></script>
+<script src="${request.contextPath}/statics/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="${request.contextPath}/statics/plugins/ztree/jquery.ztree.all.min.js"></script>
+<script src="${request.contextPath}/statics/js/common.js"></script>
+<script src="${request.contextPath}/statics/js/front/retail/tologinpage.js?_${.now?long}"></script>
+</body>
+</html>

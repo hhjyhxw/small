@@ -1,0 +1,298 @@
+/* 首页 */
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type:none;
+    text-decoration:none;
+}
+.head{
+      width: 100%;
+      height: auto;
+      font-size: 1.8rem;
+      background-color: rgb(170, 199, 227);
+      display:-webkit-flex;
+      display:flex;
+      justify-content:space-between;
+}
+.head_left,.head_right{
+   width: 50%;
+   padding: 8%;
+   text-align: center;
+}
+.head_left p,.head_right p{
+    line-height: 3rem;
+}
+.head_textColor1{
+    color: #ff9900;
+}
+.head_textColor2{
+    color: #ff6600;
+}
+.head_right p{
+    color: #fff;
+}
+.content{
+    width: 100%;
+    height: auto;
+    font-size: 2rem;
+    
+}
+.content_tite{
+    width: 95%;
+    height: auto;
+    margin: auto;
+    display:-webkit-flex;
+      display:flex;
+      justify-content:space-between;
+      border-bottom: 2px solid #333;
+}
+.content_tite_l,.content_tite_r{
+ width: 50%;
+ padding:1rem;
+}
+.content_tite_r{
+  text-align: right;
+}
+.date_time{
+ width: 95%;
+ margin: auto;
+ padding: 1rem;
+ text-align: center;
+ color: #999;
+ font-size: 1.5rem; 
+ display:-webkit-flex;
+      display:flex;
+      justify-content:space-between;
+}
+.list{
+    width: 95%;
+    margin: auto;
+    font-size: 1.5rem;
+}
+.list ul{
+    width: 95%;
+    margin: auto;
+}
+.list ul li{
+    display:-webkit-flex;
+      display:flex;
+      justify-content:space-between;
+      border-bottom:0.1px solid #ccc;
+      padding: 1rem 0rem 1rem 0rem;
+}
+.list ul li span{
+     display: block;
+     width:40%;
+}
+.list ul li span p{
+    line-height: 3rem;
+}
+.money{
+    line-height: 6rem;
+}
+.this_time{
+display: block;
+width: 50%;
+text-align: right;
+}
+.this_time1{
+text-align: left;	
+}
+.mon{
+font-size: 3rem;color: #ff9900;
+}
+
+/* 每日账单记录 */
+.bilrecord{
+    width: 100%;
+}
+.bill_head{
+      width: 100%;
+      height: 5rem;
+      margin: auto;
+      display:-webkit-flex;
+      display:flex;
+      justify-content:space-between;
+      border-bottom: 1.5px solid #000;
+      font-size: 1.5rem;
+      line-height: 4rem;
+}
+.spot{
+    padding-right: 2rem;
+}
+.bill_head span{
+    display: block;
+    line-height:5rem;
+}
+.bilrecord_list{
+    width: 100%;
+    font-size:25px;
+}
+.bilrecord_list ul li{
+    display:-webkit-flex;
+      display:flex;
+      justify-content:space-between;
+      border-bottom: 0.2px solid #000;
+}
+.bilrecord_list ul li span{
+    display: block;
+    padding: 2rem;
+}
+.text_color{
+    color:#ff6600;
+}
+/* 收款成功页 */
+.payment{
+    width: 100%;
+}
+.pay_head{
+      width: 100%;
+      height: 4rem;
+      margin: auto;
+      display:-webkit-flex;
+      display:flex;
+      justify-content:space-between;
+      font-size: 1.5rem;
+      background-color: #fff;
+}
+.pay_head span{
+    line-height: 4rem;
+    padding-left: 1rem;
+}
+.spot{
+    padding-right: 2rem;
+}
+.return{
+    width: 100%;
+    height: 4rem;
+    background-color: #ff9900;
+    font-size: 2rem;
+    color: #fff;
+}
+.return span{
+   line-height: 3.8rem;
+   padding-left: 1rem;
+}
+.collection{
+    width: 100%;
+    height: 6.5rem;
+    font-size: 2.5rem;
+    color: #ff9900;
+    display:-webkit-flex;
+      display:flex;
+      justify-content:space-between;
+}
+.collection span{
+     display: block; 
+    font-size: 2rem;
+    line-height: 6rem;
+    padding-left: 2rem;
+}
+.actual_receipts{
+    width: 100%;
+    height:30rem;
+    background-color: #fff;
+}
+.actual_receipts_p{
+    border-bottom: 1px solid #333;
+    text-align: center;
+    padding: 3rem;
+    font-size: 2rem;
+}
+.fon{
+    font-size: 3.5rem;
+    margin-top: 2rem;
+}
+.actual_receipts1{
+    width: 100%;
+    font-size: 2rem;
+    
+}
+.actual_receipts1 p{
+    line-height: 4.5rem;
+    padding-left: 2rem;
+}
+.span_color{
+    color: #6b6b6b;
+}
+.coll{
+    width: 90%;line-height: 4rem;
+}
+/* 支付成功页 */
+.haiyunpayment{
+    width: 100%;
+}
+.hai_head{
+      width: 100%;
+      height: 4rem;
+      margin: auto;
+      display:-webkit-flex;
+      display:flex;
+      justify-content:space-between;
+      font-size: 1.5rem;
+      background-color: #fff;
+}
+.hai_head span{
+    line-height: 4rem;
+    padding-left: 1rem;
+}
+
+.return{
+    width: 100%;
+    height: 4rem;
+    background-color: #ff9900;
+    font-size: 2rem;
+    color: #fff;
+}
+.return span{
+   line-height: 3.8rem;
+   padding-left: 1rem;
+}
+.haiyun_receipt{
+    width: 95%;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    margin: auto;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+}
+.haiyun_tite{
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+.haiyun_input{
+    padding: 1.5rem;
+    
+}
+.haiyun_input input{
+    width:96%;
+    height: 3rem;
+    border: 0;
+    outline: none;
+    border-bottom: 1px solid #333;
+    font-size: 2rem;
+}
+.haiyun_input input::-webkit-input-placeholder {
+    font-size: 3rem;
+    color: #000;
+}
+.haiyun_input input:-moz-placeholder {
+font-size: 3rem;
+    color: #000;
+}
+.haiyun_input input:-ms-input-placeholder {
+font-size: 3rem;
+    color: #000;
+}
+.but{
+    display: block;
+    width: 80%;
+    padding: 1rem;
+    margin: auto;
+    background-color: #ff9900;
+    border:none;
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    color: #fff;
+    margin-top: 2rem;	
+}

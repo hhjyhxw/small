@@ -1,0 +1,79 @@
+<!-- saved from url=(0051)http://u.im-cc.com/scManager/toEditSinglePicText.do -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+    </script>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/bootstrap.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/font-awesome.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/pnotify.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/pnotify.buttons.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/webuploader.css">
+    <link href="${request.contextPath}/statics/wx/2/font.css" rel="stylesheet">
+    <title>单图文</title>
+    <#include "/header.html">
+    <script src="${request.contextPath}/statics/libs/ajaxupload.js"></script>
+    <link rel="stylesheet" href="${request.contextPath}/statics/wx/2/bootstrap.custom.css">
+    <link href="${request.contextPath}/statics/wx/2/setting.css" rel="stylesheet">
+
+
+<body style="">
+<div id="icloudapp" v-cloak>
+    <div class="page page-with-panels" style="">
+        <main class="page-body" style="">
+            <section class="panel panel-top">
+                <table class="table table-noborder">
+                    <tbody>
+                    <tr>
+                        <td width="60">标题：</td>
+                        <td>
+                            <div class="form-group is-empty">
+                                <input type="text" name="scInfoTitle" id="scInfoTitle" v-model="mpwxSucai.title" maxlength="30" class="form-control" value="">
+                                <span class="material-input"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="panel panel-bottoms clearfix" style="">
+                <div class="panel-bottom-left">
+                    <ul class="pic-text-list">
+                        <li class="first" style="cursor: default;border:3px solid #3ACF83;" >
+                                <span class="preview"><img id="preview" :src="mpwxSucai.localUrls"/></span>
+                                <span class="edit"><i class="icon icon-trash" id="delImg"></i></span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="panel-bottom-right" style="">
+                    <div class="pic-text-edit" style="">
+                        <header>
+                            <h4><small>图片建议尺寸360像素X200像素</small></h4>
+                            <span class="btns">
+                                <button class="btn btn-success" id="upload">本地上传</button>
+                                 <input type="file" style="display: none;" accept="image/*" id="upload_file">
+                            </span>
+                        </header>
+
+                        <footer>
+                            <button class="btn btn-success" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate">保存</button>
+                           <!-- <button class="btn btn-warning" data-toggle="modal" data-target="#modalCancel">取消</button>-->
+                        </footer>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+
+</div>
+<script src="${request.contextPath}/statics/js/modules/mpwx/mpwxsucaiPic.js?_${.now?long}"></script>
+<script>
+
+</script>
+</body>
+</html>
+
+

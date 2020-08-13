@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.small.dao.SmallSkuMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.small.entity.SmallSku" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="spuId" column="spu_id"/>
+     <result property="barCode" column="bar_code"/>
+     <result property="title" column="title"/>
+     <result property="img" column="img"/>
+     <result property="originalPrice" column="original_price"/>
+     <result property="price" column="price"/>
+     <result property="vipPrice" column="vip_price"/>
+     <result property="stock" column="stock"/>
+     <result property="freezeStock" column="freeze_stock"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,spu_id,bar_code,title,img,original_price,price,vip_price,stock,freeze_stock,create_time,modify_time
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_small_sku t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="spu_id != null">
+    and t.spu_id = #{spu_id}
+</if>
+<if test="bar_code != null">
+    and t.bar_code = #{bar_code}
+</if>
+<if test="title != null">
+    and t.title = #{title}
+</if>
+<if test="img != null">
+    and t.img = #{img}
+</if>
+<if test="original_price != null">
+    and t.original_price = #{original_price}
+</if>
+<if test="price != null">
+    and t.price = #{price}
+</if>
+<if test="vip_price != null">
+    and t.vip_price = #{vip_price}
+</if>
+<if test="stock != null">
+    and t.stock = #{stock}
+</if>
+<if test="freeze_stock != null">
+    and t.freeze_stock = #{freeze_stock}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+</where>
+</select>
+</mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.small.dao.SmallOrderDetailMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.small.entity.SmallOrderDetail" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="skuId" column="sku_id"/>
+     <result property="spuId" column="spu_id"/>
+     <result property="orderId" column="order_id"/>
+     <result property="orderNo" column="order_no"/>
+     <result property="spuTitle" column="spu_title"/>
+     <result property="skuTitle" column="sku_title"/>
+     <result property="barCode" column="bar_code"/>
+     <result property="unit" column="unit"/>
+     <result property="num" column="num"/>
+     <result property="originalPrice" column="original_price"/>
+     <result property="price" column="price"/>
+     <result property="spuImg" column="spu_img"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,sku_id,spu_id,order_id,order_no,spu_title,sku_title,bar_code,unit,num,original_price,price,spu_img,create_time,modify_time
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_small_order_detail t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="sku_id != null">
+    and t.sku_id = #{sku_id}
+</if>
+<if test="spu_id != null">
+    and t.spu_id = #{spu_id}
+</if>
+<if test="order_id != null">
+    and t.order_id = #{order_id}
+</if>
+<if test="order_no != null">
+    and t.order_no = #{order_no}
+</if>
+<if test="spu_title != null">
+    and t.spu_title = #{spu_title}
+</if>
+<if test="sku_title != null">
+    and t.sku_title = #{sku_title}
+</if>
+<if test="bar_code != null">
+    and t.bar_code = #{bar_code}
+</if>
+<if test="unit != null">
+    and t.unit = #{unit}
+</if>
+<if test="num != null">
+    and t.num = #{num}
+</if>
+<if test="original_price != null">
+    and t.original_price = #{original_price}
+</if>
+<if test="price != null">
+    and t.price = #{price}
+</if>
+<if test="spu_img != null">
+    and t.spu_img = #{spu_img}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+</where>
+</select>
+</mapper>

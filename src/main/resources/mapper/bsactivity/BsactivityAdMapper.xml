@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.bsactivity.dao.BsactivityAdMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.bsactivity.entity.BsactivityAd" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="adName" column="ad_name"/>
+     <result property="adImgurl" column="ad_imgurl"/>
+     <result property="addJumpurl" column="add_jumpurl"/>
+     <result property="status" column="status"/>
+     <result property="createTime" column="create_time"/>
+     <result property="createOperator" column="create_operator"/>
+     <result property="modifyTime" column="modify_time"/>
+     <result property="modifyOperator" column="modify_operator"/>
+     <result property="posittionId" column="posittion_id"/>
+     <result property="sortNum" column="sort_num"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,ad_name,ad_imgurl,add_jumpurl,status,create_time,create_operator,modify_time,modify_operator,posittion_id,sort_num
+    </sql>
+
+
+    <select id="queryMixList" resultMap="BaseResultMap">
+            select * from t_bsactivity_ad t
+            <where>
+                                                    <if test="id != null">
+                        and t.id = #{id}
+                    </if>
+                                                                    <if test="ad_name != null">
+                        and t.ad_name = #{ad_name}
+                    </if>
+                                                                    <if test="ad_imgurl != null">
+                        and t.ad_imgurl = #{ad_imgurl}
+                    </if>
+                                                                    <if test="add_jumpurl != null">
+                        and t.add_jumpurl = #{add_jumpurl}
+                    </if>
+                                                                    <if test="status != null">
+                        and t.status = #{status}
+                    </if>
+                                                                    <if test="create_time != null">
+                        and t.create_time = #{create_time}
+                    </if>
+                                                                    <if test="create_operator != null">
+                        and t.create_operator = #{create_operator}
+                    </if>
+                                                                    <if test="modify_time != null">
+                        and t.modify_time = #{modify_time}
+                    </if>
+                                                                    <if test="modify_operator != null">
+                        and t.modify_operator = #{modify_operator}
+                    </if>
+                                                                    <if test="posittion_id != null">
+                        and t.posittion_id = #{posittion_id}
+                    </if>
+                                                                            </where>
+        </select>
+</mapper>

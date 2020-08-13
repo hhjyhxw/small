@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mall> 
+	<description>系统配置文件</description>  
+	<setting> 
+		<systemName>真龙子系统</systemName>  
+		<systemVersion>1.0</systemVersion>  
+		<systemDescription>真龙子系统是基于JAVA技术的微信商城。</systemDescription>  
+		<contextPath></contextPath>  
+		<htmlWords>script,onerror,onload,iframe,img,alert,expression,onmouse,exec,extractvalue,execute,insert,select,delete,update,count,drop,chr,mid,master,truncate,declare,sitename,xp_cmdshell,create,table,grant,group_concat,column_name,information_schema.columns,table_schema,union,where,declare,or,topicDetail</htmlWords>
+		<!--免(xss,csrf)过滤url-->  
+		<ignoreUrls>/jsSdkConfig/getJsSdkConfig,/beanGoods,/backpage/collectTopic/collect_save,/backpage/subjectTopic/topic_save,/backpage/admin/menu_input</ignoreUrls>
+		<!--免csrf过滤url-->  
+		<ignoreCsrfUrls>/backpage/collectTopic/collect_save,/backpage/subjectTopic/topic_save,/backpage/admin/menu_input</ignoreCsrfUrls>
+	</setting> 
+</mall>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.mpwx.dao.MpwxReplyKeywordMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.mpwx.entity.MpwxReplyKeyword" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="keywords" column="keywords"/>
+     <result property="replyId" column="reply_id"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,keywords,reply_id
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_mpwx_reply_keyword t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="keywords != null">
+    and t.keywords = #{keywords}
+</if>
+</where>
+</select>
+</mapper>

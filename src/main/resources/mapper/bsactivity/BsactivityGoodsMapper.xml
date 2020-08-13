@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.bsactivity.dao.BsactivityGoodsMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.bsactivity.entity.BsactivityGoods" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="name" column="name"/>
+     <result property="originPrice" column="origin_price"/>
+     <result property="marketPrice" column="market_price"/>
+     <result property="goodimg" column="goodimg"/>
+     <result property="describs" column="describs"/>
+     <result property="details" column="details"/>
+     <result property="store" column="store"/>
+     <result property="freezeStore" column="freeze_store"/>
+     <result property="status" column="status"/>
+     <result property="deleteStatus" column="delete_status"/>
+     <result property="categoriesid" column="categoriesid"/>
+     <result property="createTime" column="create_time"/>
+     <result property="createMan" column="create_man"/>
+     <result property="modifyTime" column="modify_time"/>
+     <result property="modifyMan" column="modify_man"/>
+     <result property="operateip" column="operateip"/>
+     <result property="realSales" column="real_sales"/>
+     <result property="virtlSales" column="virtl_sales"/>
+     <result property="sortnum" column="sortnum"/>
+     <result property="memo" column="memo"/>
+     <result property="goodsStrategyid" column="goods_strategyid"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,name,origin_price,market_price,goodimg,describs,details,store,freeze_store,status,delete_status,categoriesid,create_time,create_man,modify_time,modify_man,operateip,real_sales,virtl_sales,sortnum,memo,goods_strategyid
+    </sql>
+
+    <!--根据商品二维码查询商品，一个商品对应多个二维码,一个二维码只能对应一个商品-->
+    <select id="selectByQcode" parameterType="java.lang.String" resultType="com.icloud.modules.bsactivity.entity.BsactivityGoods">
+        select g.* from t_bsactivity_goods g,t_bsactivity_goodsqcode gq where g.id=gq.goodsid and gq.qcode=#{qcode}
+    </select>
+
+    <!-- 更新库存与销量 -->
+    <update id="updateGoodsStore" parameterType="com.icloud.modules.bsactivity.entity.BsactivityGoods" flushCache="true">
+        update t_bsactivity_goods set freeze_store=#{freezeStore},
+        real_sales=#{realSales},
+        virtl_sales=#{virtlSales}
+        where id=#{id}
+    </update>
+</mapper>

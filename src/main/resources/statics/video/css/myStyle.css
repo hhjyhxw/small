@@ -1,0 +1,134 @@
+.mBottom100{
+	margin-bottom: 100px;
+}
+.search{
+	width: 100%;
+	height: 98px;
+	padding: 19px 30px;
+	background: #fff;
+}
+.search>input{
+	width: 435px;
+	float: left;
+	height: 60px;
+	border-radius: 30px;
+	background: #e9ecf0 url(../images/search.png) no-repeat 22px 13px;
+	background-size: 34px 34px;
+	border:0;
+	padding:0px 30px 0 70px ;
+	line-height: 38px;
+	font-size: 28px;
+}
+.search>div.sousuo{
+	width: 120px;
+	float: left;
+	height: 50px;
+	border-radius: 25px;
+	line-height: 50px;
+	font-size: 26px;
+	color: #fff;
+	margin: 7px 0 0 20px;
+	background: #2671FE;
+	border: 0;
+	letter-spacing: 0.1em;
+	text-align:center;
+}
+.search>input::-webkit-input-placeholder{
+    color:#808080;
+}
+.search>input:-moz-placeholder{
+    color:#808080;
+}
+.search>input::-moz-placeholder{
+    color:#808080;
+}
+.search>input:-ms-input-placeholder{
+    color:#808080;
+}
+.bannerImg{
+	display: block;
+	width: 100%;
+	max-height: 320px;
+}
+.bannerImg>img{
+	width: 100%;
+	height: auto;
+	background-size: contain;
+}
+.titleBlock{
+	width: 100%;
+	height: 88px;
+	background: #fff url(../images/icon_live.png) no-repeat 30px 30px;
+	background-size: 38px 26px;
+	line-height: 88px;
+	padding-left: 85px;
+	font-size: 28px;
+	color: #000;
+	margin-bottom: 20px;
+}
+
+.newsBlock>li>a{
+	display: block;
+	background: #fff;
+	width: 100%;	
+	height: 220px;
+	padding: 24px 20px 40px;
+	box-sizing: border-box;
+	border-bottom: 1px solid #e0e0e0;
+}
+.newsEntry>dt{
+	float: left;
+	width:240px;
+	height:160px;
+}
+.newsEntry>dt>img{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.newsEntry>dd{
+	float: left;
+	width: 350px;
+	padding-left: 20px;
+}
+.newsEntry>dd>h3{
+	font-style: normal;
+	font-size: 28px;
+	line-height: 40px;
+	color: #000;
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	display:-webkit-box; 
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:2;
+	text-align: justify;
+	min-height: 85px;
+}
+.backSee{
+	width: 145px;
+	height: 40px;
+	line-height: 43px;
+	font-size: 20px;
+	color: #fff;
+	background: #2671FE url(../images/icon_backSee.png) no-repeat 12px 9px;
+	background-size: 25px 23px;
+	display: block;
+	border-radius: 22px;
+	padding-left: 45px;
+	margin: 5px 0 10px;
+}
+.playTime{
+	display: block;
+	font-size: 20px;
+	color: #666;
+	padding-left: 40px;
+	background: url(../images/icon_time.png) no-repeat 3px 3px;
+	background-size: 25px 23px;
+}
+.noMore{
+	display: block;
+	margin: 50px auto ;
+	font-size: 24px;
+	color: #ccc;
+	text-align: center;
+}

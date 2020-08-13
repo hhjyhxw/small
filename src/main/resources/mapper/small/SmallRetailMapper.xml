@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.small.dao.SmallRetailMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.small.entity.SmallRetail" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="supplierName" column="supplier_name"/>
+     <result property="address" column="address"/>
+     <result property="licence" column="licence"/>
+     <result property="phone" column="phone"/>
+     <result property="keeperOpenid" column="keeper_openid"/>
+     <result property="balance" column="balance"/>
+     <result property="frozenBalance" column="frozen_balance"/>
+     <result property="bankCart" column="bank_cart"/>
+     <result property="bankName" column="bank_name"/>
+     <result property="bankPhone" column="bank_phone"/>
+     <result property="bankKeeper" column="bank_keeper"/>
+     <result property="licenceImg" column="licence_img"/>
+     <result property="headImg" column="head_img"/>
+     <result property="boss" column="boss"/>
+     <result property="password" column="password"/>
+     <result property="maxCash" column="max_cash"/>
+     <result property="payOpenid" column="pay_openid"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+     <result property="lnt" column="lnt"/>
+     <result property="lat" column="lat"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,supplier_name,address,licence,phone,keeper_openid,balance,frozen_balance,bank_cart,bank_name,bank_phone,bank_keeper,licence_img,head_img,boss,password,max_cash,pay_openid,create_time,modify_time,lnt,lat
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_small_retail t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="supplier_name != null">
+    and t.supplier_name = #{supplier_name}
+</if>
+<if test="address != null">
+    and t.address = #{address}
+</if>
+<if test="licence != null">
+    and t.licence = #{licence}
+</if>
+<if test="phone != null">
+    and t.phone = #{phone}
+</if>
+<if test="keeper_openid != null">
+    and t.keeper_openid = #{keeper_openid}
+</if>
+<if test="balance != null">
+    and t.balance = #{balance}
+</if>
+<if test="frozen_balance != null">
+    and t.frozen_balance = #{frozen_balance}
+</if>
+<if test="bank_cart != null">
+    and t.bank_cart = #{bank_cart}
+</if>
+<if test="bank_name != null">
+    and t.bank_name = #{bank_name}
+</if>
+<if test="bank_phone != null">
+    and t.bank_phone = #{bank_phone}
+</if>
+<if test="bank_keeper != null">
+    and t.bank_keeper = #{bank_keeper}
+</if>
+<if test="licence_img != null">
+    and t.licence_img = #{licence_img}
+</if>
+<if test="head_img != null">
+    and t.head_img = #{head_img}
+</if>
+<if test="boss != null">
+    and t.boss = #{boss}
+</if>
+<if test="password != null">
+    and t.password = #{password}
+</if>
+<if test="max_cash != null">
+    and t.max_cash = #{max_cash}
+</if>
+<if test="pay_openid != null">
+    and t.pay_openid = #{pay_openid}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+<if test="modify_time != null">
+    and t.modify_time = #{modify_time}
+</if>
+<if test="lnt != null">
+    and t.lnt = #{lnt}
+</if>
+</where>
+</select>
+</mapper>

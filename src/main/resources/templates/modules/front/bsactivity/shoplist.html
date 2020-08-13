@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <title></title>
+    <link rel="stylesheet" href="${request.contextPath}/statics/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/plugins/jqgrid/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/plugins/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/css/main.css">
+    <script src="${request.contextPath}/statics/libs/jquery.min.js"></script>
+    <!--<script src="${request.contextPath}/statics/plugins/layer/layer.js"></script>-->
+    <script src="${request.contextPath}/statics/libs/bootstrap.min.js"></script>
+    <script src="${request.contextPath}/statics/libs/vue.min.js"></script>
+    <script src="${request.contextPath}/statics/plugins/jqgrid/grid.locale-cn.js"></script>
+    <script src="${request.contextPath}/statics/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="${request.contextPath}/statics/plugins/ztree/jquery.ztree.all.min.js"></script>
+    <script src="${request.contextPath}/statics/js/common.js"></script>
+
+    <script src="${request.contextPath}/statics/third_plugin/swiper/swiper.min.js"></script>
+    <link rel="stylesheet" href="${request.contextPath}/statics/third_plugin/swiper/swiper.min.css">
+
+    <!-- 百度地图api -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Vom9PNDgBgwxB5NHCrXGOoeawsOj1B98"></script>
+  <!--  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=nsHiiQyIYQiRhOwj9Hzswulw"></script>-->
+    <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <style>
+        body{
+            background-color:white;
+        }
+        .swiper-container .swiper-slide img{
+            display:inline-block;
+            width:100%;
+            height: 100%;
+        }
+        .posiinfo{
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+            background: rgb(242, 242, 242);
+            padding-bottom:0;
+        }
+        .posiinfo1{
+            display: flex;
+            justify-content: left;
+            padding: 1rem;
+            background: rgb(242, 242, 242);
+            padding-left: 2.2rem;
+        }
+        .positext1{
+            color: red;
+            font-weight: bold;
+            padding-right: 1rem;
+        }
+        .positext2{
+            color: black;
+            font-weight: bold;
+            padding-right: 1rem;
+        }
+        .shoplist{
+            display: flex;
+            justify-content: space-around;
+            padding: 1rem;
+            border-bottom: 1px solid lightgrey
+        }
+        .shopimg{
+           flex:0;
+            padding-right:1rem;
+        }
+        .shopimg img{
+            width: 100%;
+            height: 100%
+        }
+        .shopinfo{
+            flex:2;
+        }
+        .shopinfo .item{
+            padding:0.2rem;
+        }
+         .shopinfo .item2{
+            padding:0.2rem;
+            display: flex;
+            width: 130%;
+        }
+        .shopinfo .shopname{
+            white-space: nowrap;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            font-family: "Segoe UI";
+            color: rgb(0, 0, 0);
+        }
+       .shopinfo .shoptext1{
+            white-space: nowrap;
+            text-align: left;
+            font-size: 1.3rem;
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            color: rgb(27, 27, 27);
+        }
+        .shopinfo .shoptext2{
+
+        }
+       .shopinfo .shoptext3{
+            color:#999;
+            font-size: 1.3rem;
+        }
+        .shopinfo .icon{
+            margin-top: -0.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        .distance{
+            flex: 1;
+            text-align: center;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+        }
+        .distance_icon{
+            margin-top: -0.5rem;
+            width: 2rem;
+            height: 2rem;
+        }
+
+         .modal-comfirm {
+              			  position: fixed;
+               			  z-index: 9999;
+               			  top: 0;
+                		  left: 0;
+                		  right: 0;
+                		  bottom: 0;
+               			  background-color: rgba(0, 0, 0, 0.6);
+            		}
+            		.modal-comfirm .contentdb {
+              			  -webkit-transform: translateX(-50%) translateY(-50%);
+              		 	  float: left;
+                	      width: 80%;
+                		  background: white;
+               			  position: fixed;
+               			  top: 50%;
+                		  left: 50%;
+                		  border-radius: 0.3em;
+                		  text-align: center;
+            		}
+            		.close-x {
+               			 position: absolute;
+               			 top: -1.3rem;
+               			 right: -9px;
+                		 width: 2.5rem;
+               		  	 height: 2.5rem;
+              			 border: solid 2px #1e4fa0;
+                		background-color: #ffffff;
+                		text-align: center;
+                		border-radius: 100%;
+                		display: inline-table;
+            		}
+
+              .modal-comfirm .alert-close {
+                  color: #fff;
+                  font-size: 1.5rem;
+                  display: block;
+                  width: 20%;
+                  height: 4rem;
+                  line-height: 4rem;
+                  border-radius: 4px;
+                  background-color: #137bd7;
+                  margin: 0 1.5rem;
+              }
+              .ft_btn{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+    </style>
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+        <!--banner-->
+        <div class="swiper-container" style="height:22rem;">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="(item,index) in adlist" :key="index">
+                    <img :src="item.adImgurl"/>
+                </div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+
+            <!-- 如果需要导航按钮 -->
+       <!--    <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>-->
+
+            <!-- 如果需要滚动条 -->
+           <!-- <div class="swiper-scrollbar"></div>-->
+        </div>
+        <!--banner end-->
+    <div class="posiinfo">
+        <div class="positext1">前往以下店铺参与活动</div><div></div>
+    </div>
+
+        <!--位置信息-->
+        <div class="posiinfo1">
+            <div class="positext2">您当前位置:</div><div>{{detailaddress}}</div>
+        </div>
+    <!--位置信息end-->
+    <!--店铺列表-->
+       <div class="shoplist"  v-for="(item,index) in shoplist" :key="index">
+            <div class="shopimg">
+               <!-- <img :src="item.shopImg"/>-->
+            </div>
+            <div class="shopinfo">
+                <div class="shopname">{{item.shopName}}</div>
+                <div class="item"><text class="shoptext1">电话:</text><a class="shoptext3" :href="'tel:' + item.contactPhone">{{item.contactPhone}}</a><a class="shoptext3" :href="'tel:' + item.contactPhone"><img class="icon" src="${request.contextPath}/statics/images/bsactivity/phone.png"></a></div>
+                <div class="item2"><div class="shoptext1">地址:</div><div class="shoptext3">{{item.cityName}}{{item.countyName}}{{item.address}}</div></div>
+            </div>
+            <div class="distance" @click="goToBaidumap(item)">
+                <img class="distance_icon" src="${request.contextPath}/statics/images/bsactivity/posit.png"/><div>{{item.distance}}km</div>
+            </div>
+      </div>
+    <!--店铺列表end-->
+
+
+
+<div v-if="showgogetLocation" class="modal-comfirm" id="modal-comfirmdb" >
+    <div class="contentdb" style="height:10rem;width: 70%;">
+      					<span class="close-x" style="border:none;width: 2.5; height: 2.5rem;" @click="closeWindown" >
+      						<img src="${request.contextPath}/statics/images/bsactivity/posit.png" width="100%">
+      					</span>
+        <p class="mg-t1" style="margin:2rem 1rem;font-size:1.5rem;">
+            真龙服务号请求获取您的位置？
+        </p>
+
+        <div class="ft_btn">
+            <a href="javascript:;" @click="cancelGet"  class="alert-close" style="height:2em; line-height: 2em">取消</a> <a href="javascript:;" @click="okGet"  class="alert-close" style="height:2em; line-height: 2em">确定</a>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<script src="${request.contextPath}/statics/js/front/bsactivity/shoplist.js?_${.now?long}"></script>
+</body>

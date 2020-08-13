@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.mpwx.dao.MpwxAppMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.mpwx.entity.MpwxApp" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="name" column="name"/>
+     <result property="weixinNo" column="weixin_no"/>
+     <result property="appId" column="app_id"/>
+     <result property="appsecret" column="appsecret"/>
+     <result property="url" column="url"/>
+     <result property="token" column="token"/>
+     <result property="encodingaeskey" column="encodingaeskey"/>
+     <result property="partner" column="partner"/>
+     <result property="paysignkey" column="paysignkey"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,name,weixin_no,app_id,appsecret,url,token,encodingaeskey,partner,paysignkey,create_time,modify_time
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_mpwx_app t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="name != null">
+    and t.name = #{name}
+</if>
+<if test="weixin_no != null">
+    and t.weixin_no = #{weixin_no}
+</if>
+<if test="app_id != null">
+    and t.app_id = #{app_id}
+</if>
+<if test="appsecret != null">
+    and t.appsecret = #{appsecret}
+</if>
+<if test="url != null">
+    and t.url = #{url}
+</if>
+<if test="token != null">
+    and t.token = #{token}
+</if>
+<if test="encodingaeskey != null">
+    and t.encodingaeskey = #{encodingaeskey}
+</if>
+<if test="partner != null">
+    and t.partner = #{partner}
+</if>
+<if test="paysignkey != null">
+    and t.paysignkey = #{paysignkey}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+</where>
+</select>
+</mapper>

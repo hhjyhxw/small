@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.small.dao.SmallCouponMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.small.entity.SmallCoupon" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="title" column="title"/>
+     <result property="coupType" column="coup_type"/>
+     <result property="description" column="description"/>
+     <result property="total" column="total"/>
+     <result property="surplus" column="surplus"/>
+     <result property="limits" column="limits"/>
+     <result property="discount" column="discount"/>
+     <result property="min" column="min"/>
+     <result property="status" column="status"/>
+     <result property="categoryId" column="category_id"/>
+     <result property="days" column="days"/>
+     <result property="startTime" column="start_time"/>
+     <result property="endTime" column="end_time"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+     <result property="supplierId" column="supplier_id"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,title,coup_type,description,total,surplus,limits,discount,min,status,category_id,days,start_time,end_time,create_time,modify_time,supplier_id
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_small_coupon t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="title != null">
+    and t.title = #{title}
+</if>
+<if test="coup_type != null">
+    and t.coup_type = #{coup_type}
+</if>
+<if test="description != null">
+    and t.description = #{description}
+</if>
+<if test="total != null">
+    and t.total = #{total}
+</if>
+<if test="surplus != null">
+    and t.surplus = #{surplus}
+</if>
+<if test="limits != null">
+    and t.limits = #{limits}
+</if>
+<if test="discount != null">
+    and t.discount = #{discount}
+</if>
+<if test="min != null">
+    and t.min = #{min}
+</if>
+<if test="status != null">
+    and t.status = #{status}
+</if>
+<if test="category_id != null">
+    and t.category_id = #{category_id}
+</if>
+<if test="days != null">
+    and t.days = #{days}
+</if>
+<if test="start_time != null">
+    and t.start_time = #{start_time}
+</if>
+<if test="end_time != null">
+    and t.end_time = #{end_time}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+<if test="modify_time != null">
+    and t.modify_time = #{modify_time}
+</if>
+</where>
+</select>
+</mapper>
