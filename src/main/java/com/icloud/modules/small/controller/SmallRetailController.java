@@ -1,21 +1,20 @@
 package com.icloud.modules.small.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-import com.icloud.basecommon.model.Query;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import com.icloud.modules.small.entity.SmallRetail;
-import com.icloud.modules.small.service.SmallRetailService;
 import com.icloud.basecommon.model.Query;
 import com.icloud.common.PageUtils;
 import com.icloud.common.R;
 import com.icloud.common.validator.ValidatorUtils;
+import com.icloud.modules.small.entity.SmallRetail;
+import com.icloud.modules.small.service.SmallRetailService;
+import com.icloud.modules.small.vo.RetailVo;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -44,6 +43,28 @@ public class SmallRetailController {
         return R.ok().put("page", page);
     }
 
+
+    /**
+     * 选择部门(添加、修改菜单)
+     */
+    @RequestMapping("/select")
+    @RequiresPermissions("small:smallcategory:update")
+    public R select(){
+        List<SmallRetail> retailList = smallRetailService.list();
+        List<RetailVo> list =  new ArrayList<RetailVo>();
+        RetailVo vo = null;
+        if(list!=null){
+            for (SmallRetail smallRetail : retailList) {
+                vo =  new RetailVo();
+                vo.setId(smallRetail.getId());
+                vo.setName(smallRetail.getSupplierName());
+                vo.setParentId(null);
+                vo.setParentName(null);
+                list.add(vo);
+            }
+        }
+        return R.ok().put("retailList", list);
+    }
 
     /**
      * 信息

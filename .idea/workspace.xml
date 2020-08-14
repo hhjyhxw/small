@@ -6,28 +6,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6fbc680-6164-4f33-9b24-94a00587f493" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xercesImpl_2_6_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_0_b2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/common/beanutils/ColaBeanUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/common/beanutils/ColaBeanUtilsCallBack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/vo/CategoryVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xercesImpl_2_11_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_4_01.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/vo/RetailVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/small.iml" beforeDir="false" afterPath="$PROJECT_DIR$/small.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallCategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/dao/SmallCategoryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallCategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/sys/controller/SysDeptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/sys/controller/SysDeptController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/small/SmallCategoryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/small/SmallCategoryMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/js/modules/small/smallcategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/js/modules/small/smallcategory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/js/modules/small/smallretail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/js/modules/small/smallretail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/plugins/treegrid/tree.table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/plugins/treegrid/tree.table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modules/bsactivity/bsactivityshop.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modules/bsactivity/bsactivityshop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallcategory.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallcategory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallretail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallretail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallRetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallRetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallSpu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallSpu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/js/modules/small/smallspu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/js/modules/small/smallspu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallspu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallspu.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +33,8 @@
       <list>
         <option value="AnnotationType" />
         <option value="BpmnFile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -120,7 +104,7 @@
       <recent name="D:\project\myproject\wx-customer-project\src\main\java\com\icloud\wiki" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Application (1)">
+  <component name="RunManager" selected="Spring Boot.Application (1)">
     <configuration name="Application (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.icloud.Application" />
       <module name="small" />
@@ -209,8 +193,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Application (1)" />
         <item itemvalue="Spring Boot.Application (1)" />
+        <item itemvalue="Application.Application (1)" />
         <item itemvalue="JUnit.ScrewDatabaseDocTest.contextLoads" />
         <item itemvalue="JUnit.ForestHttpBeanTest.test" />
         <item itemvalue="Application.Application" />
@@ -273,7 +257,7 @@
       <workItem from="1597289114376" duration="608000" />
       <workItem from="1597290215653" duration="237000" />
       <workItem from="1597290470014" duration="16271000" />
-      <workItem from="1597365572478" duration="7282000" />
+      <workItem from="1597365572478" duration="12926000" />
     </task>
     <task id="LOCAL-00001" summary="修改写字楼售bug">
       <created>1574649748896</created>
@@ -346,38 +330,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597132917781" />
-    <state width="1493" height="271" key="GridCell.Tab.0.bottom" timestamp="1597372201264">
+    <state width="1493" height="131" key="GridCell.Tab.0.bottom" timestamp="1597385856555">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="271" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597372201264" />
-    <state width="1493" height="271" key="GridCell.Tab.0.center" timestamp="1597372201264">
+    <state width="1493" height="131" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597385856555" />
+    <state width="1493" height="131" key="GridCell.Tab.0.center" timestamp="1597385856554">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="271" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597372201264" />
-    <state width="1493" height="271" key="GridCell.Tab.0.left" timestamp="1597372201264">
+    <state width="1493" height="131" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597385856554" />
+    <state width="1493" height="131" key="GridCell.Tab.0.left" timestamp="1597385856554">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="271" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597372201264" />
-    <state width="1493" height="271" key="GridCell.Tab.0.right" timestamp="1597372201264">
+    <state width="1493" height="131" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597385856554" />
+    <state width="1493" height="131" key="GridCell.Tab.0.right" timestamp="1597385856555">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="271" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597372201264" />
-    <state width="1493" height="378" key="GridCell.Tab.1.bottom" timestamp="1597317076087">
+    <state width="1493" height="131" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597385856555" />
+    <state width="1493" height="131" key="GridCell.Tab.1.bottom" timestamp="1597385856555">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="378" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597317076087" />
-    <state width="1493" height="378" key="GridCell.Tab.1.center" timestamp="1597317076086">
+    <state width="1493" height="131" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597385856555" />
+    <state width="1493" height="131" key="GridCell.Tab.1.center" timestamp="1597385856555">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="378" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597317076086" />
-    <state width="1493" height="378" key="GridCell.Tab.1.left" timestamp="1597317076086">
+    <state width="1493" height="131" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597385856555" />
+    <state width="1493" height="131" key="GridCell.Tab.1.left" timestamp="1597385856555">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="378" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597317076086" />
-    <state width="1493" height="378" key="GridCell.Tab.1.right" timestamp="1597317076087">
+    <state width="1493" height="131" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597385856555" />
+    <state width="1493" height="131" key="GridCell.Tab.1.right" timestamp="1597385856555">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="378" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597317076087" />
+    <state width="1493" height="131" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597385856555" />
     <state x="502" y="113" key="RollbackChangesDialog" timestamp="1595231170484">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

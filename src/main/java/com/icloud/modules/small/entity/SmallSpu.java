@@ -1,9 +1,9 @@
 package com.icloud.modules.small.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -85,5 +85,12 @@ public class SmallSpu implements Serializable {
         /* 零售户id*/
         @TableField("retailer_id")
         private Long retailerId;
+
+        /*关联分类*/
+        @TableField(exist = false)
+        private SmallCategory smallCategory;
+        /*消费商户*/
+        @TableField(exist = false)
+        private SmallRetail smallRetail;
    	
 }
