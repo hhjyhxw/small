@@ -1,5 +1,6 @@
 package com.icloud.modules.sys.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.icloud.common.Constant;
 import com.icloud.common.R;
 import com.icloud.modules.sys.entity.SysDeptEntity;
@@ -31,7 +32,7 @@ public class SysDeptController extends AbstractController {
 	@RequiresPermissions("sys:dept:list")
 	public List<SysDeptEntity> list(){
 		List<SysDeptEntity> deptList = sysDeptService.queryList(new HashMap<String, Object>());
-
+		logger.info("deptList====="+ JSON.toJSONString(deptList));
 		return deptList;
 	}
 

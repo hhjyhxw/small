@@ -1,13 +1,11 @@
 package com.icloud.modules.small.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 商品分类
@@ -29,7 +27,7 @@ public class SmallCategory implements Serializable {
        private String title;
    	   	   /* 父类id */
        @TableField("parent_id")
-       private String parentId;
+       private Long parentId;
    	   	   /* 分类图标地址 */
        @TableField("pic_url")
        private String picUrl;
@@ -45,5 +43,24 @@ public class SmallCategory implements Serializable {
    	   	   /* 修改时间 */
        @TableField("modify_time")
        private Date modifyTime;
+        /* 排序*/
+        @TableField("sort_num")
+        private Integer sortNum;
+
+
+        @TableField(exist=false)
+        private String name;
+        /**
+         * 上级名称
+         */
+        @TableField(exist=false)
+        private String parentName;
+        /**
+         * ztree属性
+         */
+        @TableField(exist=false)
+        private Boolean open;
+        @TableField(exist=false)
+        private List<?> list;
    	
 }

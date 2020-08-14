@@ -9,9 +9,9 @@ $(function () {
 			{ label: '许可证号', name: 'licence', index: 'licence', width: 80 }, 			
 			{ label: '电话号码', name: 'phone', index: 'phone', width: 80 }, 			
 			{ label: '店主openid', name: 'keeperOpenid', index: 'keeper_openid', width: 80 }, 			
-			{ label: '余额', name: 'balance', index: 'balance', width: 80 }, 			
-			{ label: '冻结余额', name: 'frozenBalance', index: 'frozen_balance', width: 80 }, 			
-			{ label: '银行卡', name: 'bankCart', index: 'bank_cart', width: 80 }, 			
+			// { label: '余额', name: 'balance', index: 'balance', width: 80 },
+			// { label: '冻结余额', name: 'frozenBalance', index: 'frozen_balance', width: 80 },
+			/*{ label: '银行卡', name: 'bankCart', index: 'bank_cart', width: 80 },
 			{ label: '开户行', name: 'bankName', index: 'bank_name', width: 80 }, 			
 			{ label: '银行关联手机', name: 'bankPhone', index: 'bank_phone', width: 80 }, 			
 			{ label: '开户人', name: 'bankKeeper', index: 'bank_keeper', width: 80 }, 			
@@ -24,7 +24,7 @@ $(function () {
 			{ label: '创建时间', name: 'createTime', index: 'create_time', width: 80 }, 			
 			{ label: '修改时间', name: 'modifyTime', index: 'modify_time', width: 80 }, 			
 			{ label: '经度', name: 'lnt', index: 'lnt', width: 80 }, 			
-			{ label: '纬度', name: 'lat', index: 'lat', width: 80 }			
+			{ label: '纬度', name: 'lat', index: 'lat', width: 80 }	*/
         ],
 		viewrecords: true,
         height: 385,

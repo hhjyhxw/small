@@ -14,7 +14,11 @@
      <result property="status" column="status"/>
      <result property="createTime" column="create_time"/>
      <result property="modifyTime" column="modify_time"/>
+     <result property="sortNum" column="sort_num"/>
     </resultMap>
+
+
+
 
    <!-- 基础字段列 -->
    <sql id="Base_Column_List" >
@@ -23,7 +27,7 @@ id,title,parent_id,pic_url,level,status,create_time,modify_time
 
 
 <select id="queryMixList" resultMap="BaseResultMap">
-select * from t_small_category t
+    select t.*,t.title name,(select t2.title from t_small_category t2 where t2.id=t.parent_id) parentName from t_small_category t
 <where>
 <if test="id != null">
     and t.id = #{id}
@@ -48,4 +52,16 @@ select * from t_small_category t
 </if>
 </where>
 </select>
+
+
+    <select id="queryList" resultType="com.icloud.modules.small.entity.SmallCategory" resultMap="BaseResultMap">
+        select t1.id,t1.title,t1.parent_id,t1.status,t1.sort_num,t1.title name,(select t2.title from t_small_category t2 where t2.id=t1.parent_id) parentName from t_small_category t1
+        <if test="sql_filter != null">
+            and ${sql_filter}
+        </if>
+    </select>
+
+    <select id="queryDetpIdList" resultType="long">
+		select id from t_small_category where parent_id = #{value}
+	</select>
 </mapper>

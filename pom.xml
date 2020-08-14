@@ -41,11 +41,11 @@
     <dependencies>
         <!-- https://mvnrepository.com/artifact/xerces/xercesImpl -->
         <!--解决多xml_parser问题 本地不需要，远程部署需要-->
-        <dependency>
+       <!-- <dependency>
             <groupId>xerces</groupId>
             <artifactId>xercesImpl</artifactId>
             <version>2.11.0</version>
-        </dependency>
+        </dependency>-->
         <!--springboot starter-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

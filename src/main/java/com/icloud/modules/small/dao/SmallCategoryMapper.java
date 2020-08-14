@@ -14,4 +14,6 @@ import java.util.Map;
 public interface SmallCategoryMapper extends BaseMapper<SmallCategory> {
 
 	List<SmallCategory> queryMixList(Map<String,Object> map);
+
+	List<SmallCategory> queryList(Map<String, Object> map);
 }
