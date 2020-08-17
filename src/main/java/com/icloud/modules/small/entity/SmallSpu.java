@@ -81,10 +81,16 @@ public class SmallSpu implements Serializable {
    	   	   /* 修改时间 */
        @TableField("modify_time")
        private Date modifyTime;
-
         /* 零售户id*/
         @TableField("retailer_id")
         private Long retailerId;
+        /* 库存 */
+        @TableField("stock")
+        private Integer stock;
+        /* 冻结库存 */
+        @TableField("freeze_stock")
+        private Integer freezeStock;
+
 
         /*关联分类*/
         @TableField(exist = false)
@@ -92,5 +98,11 @@ public class SmallSpu implements Serializable {
         /*消费商户*/
         @TableField(exist = false)
         private SmallRetail smallRetail;
+        /*增加的库存*/
+        @TableField(exist = false)
+        private Integer addStock;
+        /*剩余库存*/
+        @TableField(exist = false)
+        private Integer remainStock;
    	
 }

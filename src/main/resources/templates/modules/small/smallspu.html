@@ -10,6 +10,12 @@
         <script src="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
         <script src="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.extension.js"></script>
         <script src="${request.contextPath}/statics/plugins/treegrid/tree.table.js"></script>
+        <!-- 配置文件 -->
+        <script type="text/javascript" src="${request.contextPath}/statics/ueditor/ueditor.config.js"></script>
+        <!-- 编辑器源码文件 -->
+        <script type="text/javascript" src="${request.contextPath}/statics/ueditor/ueditor.all.js"></script>
+<!--        <script type="text/javascript" charset="utf-8" src="${request.contextPath}/statics/ueditor/ueditor.all.min.js"></script>-->
+        <script type="text/javascript" charset="utf-8" src="${request.contextPath}/statics/ueditor/lang/zh-cn/zh-cn.js"></script>
 </head>
 <body>
 <div id="icloudapp" v-cloak>
@@ -31,7 +37,7 @@
 
     <div v-show="!showList" class="panel panel-default">
         <div class="panel-heading">{{title}}</div>
-        <form class="form-horizontal">
+        <form class="form-horizontal" style="width:100%;width: 70%; margin-right: auto;">
                 <div class="form-group">
                     <div class="col-sm-2 control-label">所属商户</div>
                     <div class="col-sm-10">
@@ -63,6 +69,18 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-sm-2 control-label">剩余库存</div>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" v-model="smallSpu.remainStock" placeholder="剩余库存"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">添加库存</div>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" v-model="smallSpu.addStock" placeholder="添加库存"/>
+                        </div>
+                    </div>
+            <div class="form-group">
                         <div class="col-sm-2 control-label">所属分类</div>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" v-model="smallSpu.smallCategory.title" @click="categroyTree" readonly="readonly"   placeholder="分类id"/>
@@ -85,7 +103,8 @@
 					<div class="form-group">
                         <div class="col-sm-2 control-label">商品详情</div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="smallSpu.detail" placeholder="商品详情"/>
+                            <!--<input type="text" class="form-control" v-model="smallSpu.detail" placeholder="商品详情"/>-->
+                            <script id="detail" type="text/plain" name="detail" v-madel="smallSpu.detail" style="width:100%;height:350px;">{{smallSpu.detail}}</script>
                         </div>
                     </div>
 					<div class="form-group">

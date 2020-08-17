@@ -104,3 +104,31 @@ function getSelectedRows() {
 function isBlank(value) {
     return !value || !/\S/.test(value)
 }
+
+
+function setCookie(name,value)
+{
+	var Days = 30;
+	var exp = new Date();
+	exp.setTime(exp.getTime() + Days*24*60*60*1000);
+	document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+}
+
+function getMyCookie(key){
+	var val = "";
+
+	// 对cookie操作
+	var cookies = document.cookie;
+	cookies = cookies.replace(/\s/,"");
+	var cookie_array = cookies.split(";");
+	for(i=0;i<cookie_array.length;i++){
+		// yh_mch=lilei
+		var cookie = cookie_array[i];
+		var array = cookie.split("=");
+		if(array[0]==key){
+			val = array[1];
+		}
+	}
+
+	return decodeURIComponent(val);
+}

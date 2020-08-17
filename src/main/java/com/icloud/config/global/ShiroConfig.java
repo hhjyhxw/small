@@ -98,6 +98,8 @@ public class ShiroConfig {
         filterMap.put("/wxwiki/**", "anon");//微信服务器信息接收
         filterMap.put("/druid/**", "anon");//sql监控
         filterMap.put("/modules/retail/tologinpage.html", "anon");//用户认证路径放行
+        filterMap.put("/small/ueditor/config", "anon");//文本编辑器方行
+
 
 
         filterMap.put("/**", "authc");

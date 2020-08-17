@@ -552,12 +552,18 @@
             <version>1.3.9</version>
         </dependency>
         <!--数据库文档生成工具 start-->
-        <dependency>
+        <!--<dependency>
             <groupId>cn.smallbun.screw</groupId>
             <artifactId>screw-core</artifactId>
             <version>1.0.3</version>
-        </dependency>
+        </dependency>-->
         <!--数据库文档生成工具 end-->
+
+      <!--  <dependency>
+            <groupId>cn.jasonone.ueditor</groupId>
+            <artifactId>ueditor-spring-boot-starter</artifactId>
+            <version>1.1.4</version>
+        </dependency>-->
     </dependencies>
 
     <dependencyManagement>
@@ -573,7 +579,7 @@
     </dependencyManagement>
 
     <build>
-        <finalName>wxcommon-1.0.0</finalName>
+        <finalName>small-1.0.0</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -1,3 +1,62 @@
+//支持自定义请求
+// var uploadurl = fontbaseURL+"/small/ueditor/config";
+// UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
+// UE.Editor.prototype.getActionUrl = function(action) {
+//     if (action == 'uploadimage' || action == 'uploadscrawl' || action == 'uploadimage') {
+//         return uploadurl; //在这里返回我们实际的上传图片地址
+//     } else {
+//         return this._bkGetActionUrl.call(this, action);
+//     }
+// }
+//实例化编辑器
+var ue = UE.getEditor('detail', {
+    toolbars: [
+        [
+            'undo', //撤销
+            'bold', //加粗
+            'underline', //下划线
+            'preview', //预览
+            'horizontal', //分隔线
+            'inserttitle', //插入标题
+            'cleardoc', //清空文档
+            'fontfamily', //字体
+            'fontsize', //字号
+            'paragraph', //段落格式
+            'simpleupload', //单图上传
+            'insertimage', //多图上传
+            'attachment', //附件
+            'music', //音乐
+            'inserttable', //插入表格
+            'emotion', //表情
+            'insertvideo', //视频
+            'justifyleft', //居左对齐
+            'justifyright', //居右对齐
+            'justifycenter', //居中对
+            'justifyjustify', //两端对齐
+            'forecolor', //字体颜色
+            'fullscreen', //全屏
+            'edittip ', //编辑提示
+            'customstyle', //自定义标题
+            'template', //模板
+        ]
+    ]
+});
+
+//获取sessionid
+var smallSessionId = '';
+function getSessionId(){
+    $.get(baseURL + "small/smallspu/getSessionId/", function(r){
+        console.log("result====="+JSON.stringify(r));
+        smallSessionId = r.sessionId;
+        console.log("smallSessionId======"+smallSessionId);
+        ue.execCommand('serverparam', 'smallSessionId', smallSessionId);
+    });
+}
+//3.按照键值添加参数
+ue.ready(function() {
+    getSessionId();
+});
+
 var setting = {
     data: {
         simpleData: {
@@ -38,9 +97,11 @@ $(function () {
 			{ label: '原价', name: 'price', index: 'price', width: 80 },
 			{ label: '现价', name: 'originalPrice', index: 'original_price', width: 80 }, 			
 			{ label: '商品名称', name: 'title', index: 'title', width: 80 },
-			{ label: '销量', name: 'sales', index: 'sales', width: 80 }, 			
-			// { label: '分类id', name: 'categoryId', index: 'category_id', width: 80 },
-            { label: '分类名称', name: 'smallCategory.title', index: 'category_id', width: 80 },
+			{ label: '销量', name: 'sales', index: 'sales', width: 80 },
+            { label: '总库存', name: 'stock', index: 'stock', width: 80 },
+            { label: '剩余库存', name: 'remainStock', index: 'remainStock', width: 80 },
+            // { label: '分类id', name: 'categoryId', index: 'category_id', width: 80 },
+            { label: '所属分类', name: 'smallCategory.title', index: 'category_id', width: 80 },
             { label: '状态', name: 'status', width: 60, formatter: function(value, options, row){
                     return value === 0 ?
                         '<span class="label label-danger">下架</span>' :
@@ -130,6 +191,7 @@ var vm = new Vue({
 		saveOrUpdate: function (event) {
 		    $('#btnSaveOrUpdate').button('loading').delay(1000).queue(function() {
                 var url = vm.smallSpu.id == null ? "small/smallspu/save" : "small/smallspu/update";
+                console.log("vm.smallSpu==="+JSON.stringify(vm.smallSpu));
                 $.ajax({
                     type: "POST",
                     url: baseURL + url,
@@ -182,6 +244,7 @@ var vm = new Vue({
 		getInfo: function(id){
 			$.get(baseURL + "small/smallspu/info/"+id, function(r){
                 vm.smallSpu = r.smallSpu;
+                console.log("smallSpu==="+JSON.stringify(vm.smallSpu));
                 vm.smallSpu.smallCategory = {
                     title:null
                 };
