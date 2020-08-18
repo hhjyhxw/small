@@ -42,13 +42,46 @@ var ue = UE.getEditor('detail', {
     ]
 });
 
+var ueDescription = UE.getEditor('description', {
+    toolbars: [
+        [
+            'undo', //撤销
+            'bold', //加粗
+            'underline', //下划线
+            'preview', //预览
+            'horizontal', //分隔线
+            'inserttitle', //插入标题
+            'cleardoc', //清空文档
+            'fontfamily', //字体
+            'fontsize', //字号
+            'paragraph', //段落格式
+            'simpleupload', //单图上传
+            'insertimage', //多图上传
+            'attachment', //附件
+            'music', //音乐
+            'inserttable', //插入表格
+            'emotion', //表情
+            'insertvideo', //视频
+            'justifyleft', //居左对齐
+            'justifyright', //居右对齐
+            'justifycenter', //居中对
+            'justifyjustify', //两端对齐
+            'forecolor', //字体颜色
+            'fullscreen', //全屏
+            'edittip ', //编辑提示
+            'customstyle', //自定义标题
+            'template', //模板
+        ]
+    ]
+});
+
 //获取sessionid
 var smallSessionId = '';
 function getSessionId(){
     $.get(baseURL + "small/smallspu/getSessionId/", function(r){
-        console.log("result====="+JSON.stringify(r));
+        // console.log("result====="+JSON.stringify(r));
         smallSessionId = r.sessionId;
-        console.log("smallSessionId======"+smallSessionId);
+        // console.log("smallSessionId======"+smallSessionId);
         ue.execCommand('serverparam', 'smallSessionId', smallSessionId);
     });
 }
@@ -145,6 +178,8 @@ var vm = new Vue({
 		showList: true,
 		title: null,
         // categoryId:0,
+        addStock:null,//用于显示
+        caculatRemainStock:null,
 		smallSpu: {
             categoryId:null,
             smallCategory:{
@@ -156,6 +191,21 @@ var vm = new Vue({
             }
         }
 	},
+
+    watch: {
+        addStock(newV,oldV) {
+            // do something
+            console.log(newV,oldV)
+            var remainStock = vm.caculatRemainStock;//获取原来剩余库存，用于实时计算
+            var pnewV = parseInt(newV);
+            if(pnewV<0){
+                vm.smallSpu.remainStock =  remainStock+pnewV>0?remainStock+pnewV:0;
+            }else{
+                vm.smallSpu.remainStock =  remainStock+pnewV;
+            }
+            vm.smallSpu.addStock = pnewV;
+        }
+    },
 	methods: {
 		query: function () {
 			vm.reload();
@@ -163,6 +213,7 @@ var vm = new Vue({
 		add: function(){
 			vm.showList = false;
 			vm.title = "新增";
+            vm.addStock = null;
 			vm.smallSpu = {
                 categoryId:null,
                 smallCategory:{
@@ -183,7 +234,7 @@ var vm = new Vue({
 			}
 			vm.showList = false;
             vm.title = "修改";
-            
+            vm.addStock = null;
             vm.getInfo(id)
             vm.getCategory();
             vm.getRetailList();
@@ -191,6 +242,9 @@ var vm = new Vue({
 		saveOrUpdate: function (event) {
 		    $('#btnSaveOrUpdate').button('loading').delay(1000).queue(function() {
                 var url = vm.smallSpu.id == null ? "small/smallspu/save" : "small/smallspu/update";
+                // vm.smallSpu.detail = UE.getEditor('detail').getAllHtml();
+                vm.smallSpu.detail = UE.getEditor('detail').getContent();
+                vm.smallSpu.description =  UE.getEditor('description').getContent();
                 console.log("vm.smallSpu==="+JSON.stringify(vm.smallSpu));
                 $.ajax({
                     type: "POST",
@@ -245,6 +299,16 @@ var vm = new Vue({
 			$.get(baseURL + "small/smallspu/info/"+id, function(r){
                 vm.smallSpu = r.smallSpu;
                 console.log("smallSpu==="+JSON.stringify(vm.smallSpu));
+                vm.caculatRemainStock = vm.smallSpu.remainStock;//设置剩余库存:只用于临时计算
+                // ue.setHtml(r.smallSpu.detail);//设置富文本值
+                ue.setContent(r.smallSpu.detail);
+                ueDescription.setContent(r.smallSpu.description);
+                // if(r.smallSpu.detail!=null && r.smallSpu.detail!=''){
+                //     UE.getEditor('detail').setContent(r.smallSpu.detail);
+                // }
+                // if(r.smallSpu.description!=null && r.smallSpu.description!=''){
+                //     UE.getEditor('description').setContent(r.smallSpu.description);
+                // }
                 vm.smallSpu.smallCategory = {
                     title:null
                 };
@@ -268,7 +332,7 @@ var vm = new Vue({
                 ztree = $.fn.zTree.init($("#categroyTree"), setting, r.categoryList);
                 // console.log("ztree====="+JSON.stringify(ztree))
                 var node = ztree.getNodeByParam("id", vm.smallSpu.categoryId);
-                console.log("加载node====="+JSON.stringify(node))
+                // console.log("加载node====="+JSON.stringify(node))
                 if(node!=null){
                     ztree.selectNode(node);
                     vm.smallSpu.smallCategory.title = node.name;
@@ -289,7 +353,7 @@ var vm = new Vue({
                 btn1: function (index) {
                     var node = ztree.getSelectedNodes();
                     //选择分类
-                    console.log("node====="+JSON.stringify(node))
+                    // console.log("node====="+JSON.stringify(node))
                     vm.smallSpu.categoryId = node[0].id;
                     vm.smallSpu.smallCategory.title = node[0].name;
                     layer.close(index);
@@ -301,10 +365,10 @@ var vm = new Vue({
         getRetailList: function(){
             //加载
             $.get(baseURL + "small/smallretail/select", function(r){
-                console.log("r====="+JSON.stringify(r))
+                // console.log("r====="+JSON.stringify(r))
                 retialztree = $.fn.zTree.init($("#retailTree"), settingretail, r.retailList);
                 var node = retialztree.getNodeByParam("id", vm.smallSpu.supplierId);
-                console.log("加载node====="+JSON.stringify(node))
+                // console.log("加载node====="+JSON.stringify(node))
                 if(node!=null){
                     retialztree.selectNode(node);
                     vm.smallSpu.smallRetail.supplierName = node.name;
@@ -326,7 +390,7 @@ var vm = new Vue({
                 btn1: function (index) {
                     var node = retialztree.getSelectedNodes();
                     //选择
-                    console.log("node====="+JSON.stringify(node))
+                    // console.log("node====="+JSON.stringify(node))
                     vm.smallSpu.supplierId = node[0].id;
                     vm.smallSpu.smallRetail.supplierName = node[0].name;
                     layer.close(index);

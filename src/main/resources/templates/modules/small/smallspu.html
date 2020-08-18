@@ -71,13 +71,13 @@
                     <div class="form-group">
                         <div class="col-sm-2 control-label">剩余库存</div>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" v-model="smallSpu.remainStock" placeholder="剩余库存"/>
+                            <input type="number" class="form-control" v-model="smallSpu.remainStock" readonly placeholder="剩余库存"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-2 control-label">添加库存</div>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" v-model="smallSpu.addStock" placeholder="添加库存"/>
+                            <input type="number" class="form-control" v-model="addStock" placeholder="添加库存"/>
                         </div>
                     </div>
             <div class="form-group">
@@ -104,13 +104,15 @@
                         <div class="col-sm-2 control-label">商品详情</div>
                         <div class="col-sm-10">
                             <!--<input type="text" class="form-control" v-model="smallSpu.detail" placeholder="商品详情"/>-->
-                            <script id="detail" type="text/plain" name="detail" v-madel="smallSpu.detail" style="width:100%;height:350px;">{{smallSpu.detail}}</script>
+                            <!--<div id="detail" class="fonts" v-html="smallSpu.detail">{{smallSpu.detail}}</div>-->
+                            <script id="detail" type="text/plain" name="detail" v-html="smallSpu.detail" style="width:100%;height:350px;">{{smallSpu.detail}}</script>
                         </div>
                     </div>
 					<div class="form-group">
                         <div class="col-sm-2 control-label">商品描述</div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="smallSpu.description" placeholder="商品描述"/>
+                            <script id="description" type="text/plain" name="detail" v-html="smallSpu.description" style="width:100%;height:350px;">{{smallSpu.description}}</script>
+                           <!-- <input type="text" class="form-control" v-model="smallSpu.description" placeholder="商品描述"/>-->
                         </div>
                     </div>
 

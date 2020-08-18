@@ -63,7 +63,8 @@ public class SmallSpuController {
     @RequiresPermissions("small:smallspu:info")
     public R info(@PathVariable("id") Long id){
         SmallSpu smallSpu = (SmallSpu)smallSpuService.getById(id);
-
+        Integer remainStock = (smallSpu.getStock()!=null?smallSpu.getStock().intValue():0) - (smallSpu.getFreezeStock()!=null?smallSpu.getFreezeStock().intValue():0);
+        smallSpu.setRemainStock(remainStock>0?remainStock:0);
         return R.ok().put("smallSpu", smallSpu);
     }
 
@@ -74,8 +75,14 @@ public class SmallSpuController {
     @RequiresPermissions("small:smallspu:save")
     public R save(@RequestBody SmallSpu smallSpu){
         log.info("smallSpu==="+ JSON.toJSONString(smallSpu));
+        if(smallSpu.getAddStock()!=null && smallSpu.getAddStock()>0){
+            smallSpu.setFreezeStock(0);
+            smallSpu.setStock(smallSpu.getAddStock());
+        }else{
+            smallSpu.setStock(0);
+            smallSpu.setFreezeStock(0);
+        }
         smallSpuService.save(smallSpu);
-
         return R.ok();
     }
 
@@ -87,6 +94,19 @@ public class SmallSpuController {
     public R update(@RequestBody SmallSpu smallSpu){
         log.info("smallSpu==="+ JSON.toJSONString(smallSpu));
         ValidatorUtils.validateEntity(smallSpu);
+         //增加总库存
+        if(smallSpu.getAddStock()!=null && smallSpu.getAddStock()>0){
+            smallSpu.setStock(smallSpu.getStock()!=null?smallSpu.getStock().intValue()+smallSpu.getAddStock().intValue():smallSpu.getAddStock());
+        //减少总库存
+        }else if(smallSpu.getAddStock()!=null && smallSpu.getAddStock()<=0){
+            Integer stock = smallSpu.getStock()!=null?smallSpu.getStock().intValue()+smallSpu.getAddStock().intValue():smallSpu.getAddStock();
+            //总库存 不能小于已 冻结库存
+            if(stock<=0){
+                smallSpu.setStock(smallSpu.getFreezeStock()!=null?smallSpu.getFreezeStock():0);
+            }else{
+                smallSpu.setStock(stock-(smallSpu.getFreezeStock()!=null?smallSpu.getFreezeStock():0)>0?stock:smallSpu.getFreezeStock());
+            }
+        }
         smallSpuService.updateById(smallSpu);
         
         return R.ok();
