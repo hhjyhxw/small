@@ -1,8 +1,11 @@
 package com.icloud.baidu.ueditor;
 
 import com.icloud.baidu.ueditor.define.ActionMap;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -14,6 +17,7 @@ import java.util.Map;
  * @author hancong03@baidu.com
  *
  */
+@Slf4j
 public final class ConfigManager {
 
 	private final String rootPath;
@@ -153,8 +157,9 @@ public final class ConfigManager {
 		
 		this.parentPath = file.getParent();
 		
-		String configContent = this.readFile( this.getConfigPath() );
-		System.out.println("configContent==="+configContent);
+//		String configContent = this.readFile( this.getConfigPath() );
+		String configContent = this.getUeditorConfig();
+		log.info("configContent==="+configContent);
 		
 		try{
 			JSONObject jsonConfig = new JSONObject( configContent );
@@ -165,7 +170,24 @@ public final class ConfigManager {
 		}
 		
 	}
-	
+
+
+	public String getUeditorConfig() {
+		String msg = "";
+		InputStreamReader intput = null;
+		try {
+			Resource resource = new ClassPathResource("config.json");
+			// 修改部分
+			intput = new InputStreamReader(resource.getInputStream());
+			BufferedReader reader = new BufferedReader(intput);
+			msg = reader.readLine();
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+		return msg;
+	}
+
+
 //	private String getConfigPath () {
 ////		return this.parentPath + File.separator + ConfigManager.configFileName;
 //		return this.parentPath + File.separator + ConfigManager.configFileName;

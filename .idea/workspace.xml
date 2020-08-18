@@ -7,10 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c6fbc680-6164-4f33-9b24-94a00587f493" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallSpuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallSpuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/js/modules/small/smallspu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/js/modules/small/smallspu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ueditor/ueditor.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/ueditor/ueditor.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallspu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallspu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/baidu/ueditor/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/baidu/ueditor/ConfigManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +228,7 @@
       <workItem from="1597365572478" duration="23158000" />
       <workItem from="1597626332088" duration="17204000" />
       <workItem from="1597650241341" duration="13575000" />
-      <workItem from="1597718082227" duration="6424000" />
+      <workItem from="1597718082227" duration="10182000" />
     </task>
     <task id="LOCAL-00001" summary="修改写字楼售bug">
       <created>1574649748896</created>
@@ -308,22 +305,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597628215023" />
-    <state width="1493" height="321" key="GridCell.Tab.0.bottom" timestamp="1597731029496">
+    <state width="1493" height="133" key="GridCell.Tab.0.bottom" timestamp="1597737760809">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="321" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597731029496" />
-    <state width="1493" height="321" key="GridCell.Tab.0.center" timestamp="1597731029495">
+    <state width="1493" height="133" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597737760809" />
+    <state width="1493" height="133" key="GridCell.Tab.0.center" timestamp="1597737760809">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="321" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597731029495" />
-    <state width="1493" height="321" key="GridCell.Tab.0.left" timestamp="1597731029495">
+    <state width="1493" height="133" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597737760809" />
+    <state width="1493" height="133" key="GridCell.Tab.0.left" timestamp="1597737760808">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="321" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597731029495" />
-    <state width="1493" height="321" key="GridCell.Tab.0.right" timestamp="1597731029496">
+    <state width="1493" height="133" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597737760808" />
+    <state width="1493" height="133" key="GridCell.Tab.0.right" timestamp="1597737760809">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="321" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597731029496" />
+    <state width="1493" height="133" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597737760809" />
     <state width="1493" height="112" key="GridCell.Tab.1.bottom" timestamp="1597720888605">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -356,10 +353,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1597310713889" />
-    <state x="431" y="145" width="920" height="678" key="search.everywhere.popup" timestamp="1597127015028">
+    <state x="431" y="145" width="920" height="678" key="search.everywhere.popup" timestamp="1597737746008">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="920" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597127015028" />
+    <state x="431" y="145" width="920" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597737746008" />
     <state x="575" y="313" key="svn.upgradeDialog" timestamp="1597132923287">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
