@@ -175,16 +175,20 @@ public final class ConfigManager {
 	public String getUeditorConfig() {
 		String msg = "";
 		InputStreamReader intput = null;
+		StringBuffer buf = new StringBuffer();
 		try {
 			Resource resource = new ClassPathResource("config.json");
 			// 修改部分
 			intput = new InputStreamReader(resource.getInputStream());
 			BufferedReader reader = new BufferedReader(intput);
-			msg = reader.readLine();
+			while ((msg = reader.readLine())!= null){
+				buf.append(reader.readLine());
+//				msg = reader.readLine();
+			}
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
-		return msg;
+		return buf.toString();
 	}
 
 
