@@ -6,8 +6,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6fbc680-6164-4f33-9b24-94a00587f493" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/ShopApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/interceptor/ApiLoginInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/interceptor/ApiLoginInterceptor_local.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/exceptions/ApiException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/exceptions/ApiGlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/exceptions/ApiResponseBodyHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/basecommon/service/redis/RedisCacheConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/basecommon/service/redis/RedisCacheConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/ShiroConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/interceptor/InterceptorsStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/interceptor/InterceptorsStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/js/modules/bsactivity/bsactivityad.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/js/modules/bsactivity/bsactivityad.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/js/modules/small/smallspu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/js/modules/small/smallspu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallspu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallspu.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +77,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/src/test/java/com/icloud/TimeTest.java&#10;D:/project/myproject/web-project/src/main/resources/application-dev.yml&#10;D:/project/myproject/wx-web-project/src/test/java/com/icloud/NicknameTest.java&#10;D:/project/myproject/web-project/src/main/resources/application.yml&#10;D:/project/myproject/wx-web-project/src/test/java/com/icloud/LongCoinChargeTest.java&#10;D:/project/myproject/web-project/src/main/resources/application-dev-init-bak.yml" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/target/classes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/icloud/exceptions" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -78,28 +88,28 @@
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates\modules\front\" />
-      <recent name="D:\project\myproject\web-project\src\main\resources\statics\third_plugin" />
-      <recent name="D:\project\myproject\web-project\src\main\resources\statics\js" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.icloud" />
       <recent name="com.icloud.modules.mpwx.vo" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.icloud.modules.oss.controller" />
-      <recent name="com.icloud" />
-      <recent name="com.icloud.config.global.wx.handler" />
-      <recent name="com.icloud.wiki.vo" />
-      <recent name="com.icloud.modules.mpwx.service" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\myproject\small\src\main\java\com\icloud\exceptions" />
       <recent name="D:\project\myproject\small\target\classes" />
       <recent name="D:\project\myproject\small\src\main\resources" />
       <recent name="D:\project\myproject\small\src\main\resources\templates" />
       <recent name="D:\project\myproject\small\src\main\java\com\baidu" />
-      <recent name="D:\project\myproject\small\src\main\java\com\icloud\modules" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.icloud.config.interceptor" />
+      <recent name="com.icloud.exceptions" />
+      <recent name="com.icloud.modules.oss.controller" />
+      <recent name="com.icloud" />
+      <recent name="com.icloud.config.global.wx.handler" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates\modules\front\" />
+      <recent name="D:\project\myproject\web-project\src\main\resources\statics\third_plugin" />
+      <recent name="D:\project\myproject\web-project\src\main\resources\statics\js" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Application">
@@ -220,7 +230,7 @@
       <workItem from="1597365572478" duration="23158000" />
       <workItem from="1597626332088" duration="17204000" />
       <workItem from="1597650241341" duration="13575000" />
-      <workItem from="1597718082227" duration="11926000" />
+      <workItem from="1597718082227" duration="15994000" />
     </task>
     <task id="LOCAL-00001" summary="修改写字楼售bug">
       <created>1574649748896</created>
@@ -293,42 +303,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1597648224483" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1597628215023">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1597740574020">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597628215023" />
-    <state width="1493" height="256" key="GridCell.Tab.0.bottom" timestamp="1597739577816">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597740574020" />
+    <state width="1493" height="428" key="GridCell.Tab.0.bottom" timestamp="1597744453380">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="256" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597739577816" />
-    <state width="1493" height="256" key="GridCell.Tab.0.center" timestamp="1597739577816">
+    <state width="1493" height="428" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597744453380" />
+    <state width="1493" height="428" key="GridCell.Tab.0.center" timestamp="1597744453378">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="256" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597739577816" />
-    <state width="1493" height="256" key="GridCell.Tab.0.left" timestamp="1597739577816">
+    <state width="1493" height="428" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597744453378" />
+    <state width="1493" height="428" key="GridCell.Tab.0.left" timestamp="1597744453378">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="256" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597739577816" />
-    <state width="1493" height="256" key="GridCell.Tab.0.right" timestamp="1597739577816">
+    <state width="1493" height="428" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597744453378" />
+    <state width="1493" height="428" key="GridCell.Tab.0.right" timestamp="1597744453379">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="256" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597739577816" />
-    <state width="1493" height="205" key="GridCell.Tab.1.bottom" timestamp="1597739438625">
+    <state width="1493" height="428" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597744453379" />
+    <state width="1493" height="205" key="GridCell.Tab.1.bottom" timestamp="1597739778528">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="205" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597739438625" />
-    <state width="1493" height="205" key="GridCell.Tab.1.center" timestamp="1597739438625">
+    <state width="1493" height="205" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597739778528" />
+    <state width="1493" height="205" key="GridCell.Tab.1.center" timestamp="1597739778528">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="205" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597739438625" />
-    <state width="1493" height="205" key="GridCell.Tab.1.left" timestamp="1597739438625">
+    <state width="1493" height="205" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597739778528" />
+    <state width="1493" height="205" key="GridCell.Tab.1.left" timestamp="1597739778528">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="205" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597739438625" />
-    <state width="1493" height="205" key="GridCell.Tab.1.right" timestamp="1597739438625">
+    <state width="1493" height="205" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597739778528" />
+    <state width="1493" height="205" key="GridCell.Tab.1.right" timestamp="1597739778528">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="205" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597739438625" />
+    <state width="1493" height="205" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597739778528" />
     <state x="502" y="113" key="RollbackChangesDialog" timestamp="1595231170484">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

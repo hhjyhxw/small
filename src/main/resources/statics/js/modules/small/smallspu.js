@@ -1,13 +1,33 @@
-//支持自定义请求
-// var uploadurl = fontbaseURL+"/small/ueditor/config";
-// UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
-// UE.Editor.prototype.getActionUrl = function(action) {
-//     if (action == 'uploadimage' || action == 'uploadscrawl' || action == 'uploadimage') {
-//         return uploadurl; //在这里返回我们实际的上传图片地址
-//     } else {
-//         return this._bkGetActionUrl.call(this, action);
-//     }
-// }
+$(function () {
+    new AjaxUpload('#upload', {
+        action: baseURL + "sys/oss/uploadFront",
+        name: 'file',
+        autoSubmit:true,
+        responseType:"json",
+        onSubmit:function(file, extension){
+            if (!(extension && /^(jpg|jpeg|png|gif)$/.test(extension.toLowerCase()))){
+                alert('只支持jpg、png、gif格式的图片！');
+                return false;
+            }
+        },
+        onComplete : function(file, r){
+            console.log("r=="+JSON.stringify(r));
+            console.log("file=="+file);
+            if(r.code == 0){
+                alert("上传成功!");
+                // vm.optionSucai.localUrls = baseURL + r.url;
+                // vm.sucai.list[vm.selectIndex].localUrls = baseURL + r.url;
+                vm.smallSpu.img = r.url;
+                console.log("vm.smallSpu.img=="+ vm.smallSpu.img);
+                //vm.reload();
+            }else{
+                alert(r.msg);
+            }
+        }
+    });
+});
+
+
 //实例化编辑器
 var ue = UE.getEditor('detail', {
     toolbars: [

@@ -28,6 +28,10 @@ class InterceptorsStack implements WebMvcConfigurer {
     private WxUserLoginInterceptor wxUserLoginInterceptor;
     @Autowired
     private LoginInterceptor_local loginInterceptor_local;
+    @Autowired
+    private ApiLoginInterceptor apiLoginInterceptor;
+    @Autowired
+    private ApiLoginInterceptor_local apiLoginInterceptor_local;
 
 
     @Autowired
@@ -42,8 +46,10 @@ class InterceptorsStack implements WebMvcConfigurer {
         //本地
         if("local".equals(myPropertitys.getActivein())){
             registry.addInterceptor(loginInterceptor_local).addPathPatterns(new String[]{"/frontpage/**"});
+            registry.addInterceptor(apiLoginInterceptor_local).addPathPatterns(new String[]{"/api/**"});
         }else{
             registry.addInterceptor(wxUserLoginInterceptor).addPathPatterns(new String[]{"/frontpage/**"});
+            registry.addInterceptor(apiLoginInterceptor).addPathPatterns(new String[]{"/api/**"});
         }
 
     }

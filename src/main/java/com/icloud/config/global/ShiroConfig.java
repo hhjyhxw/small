@@ -99,6 +99,7 @@ public class ShiroConfig {
         filterMap.put("/druid/**", "anon");//sql监控
         filterMap.put("/modules/retail/tologinpage.html", "anon");//用户认证路径放行
         filterMap.put("/small/ueditor/config", "anon");//文本编辑器方行
+        filterMap.put("/api/**", "anon");//api方行
 
 
 

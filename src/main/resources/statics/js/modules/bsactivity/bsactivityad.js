@@ -58,7 +58,7 @@ $(function () {
     });
 
       new AjaxUpload('#upload', {
-                    action: baseURL + "local/localUplaod/upload",
+                    action: baseURL + "sys/oss/uploadFront",
                     name: 'file',
                     autoSubmit:true,
                     responseType:"json",
@@ -74,7 +74,8 @@ $(function () {
                         if(r.code == 0){
                             alert("上传成功!");
                             vm.bsactivityAd.adImgurl = r.url;
-                            vm.goodsimgshow = imgURL + r.url;
+                            // vm.goodsimgshow = imgURL + r.url;
+                            vm.goodsimgshow = r.url;
                               console.log("vm.goodsimgshow=="+vm.goodsimgshow);
                             //vm.reload();
                         }else{
@@ -167,7 +168,8 @@ var vm = new Vue({
 		getInfo: function(id){
 			$.get(baseURL + "bsactivity/bsactivityad/info/"+id, function(r){
                 vm.bsactivityAd = r.bsactivityAd;
-               vm.goodsimgshow = imgURL + r.bsactivityAd.adImgurl;
+               // vm.goodsimgshow = imgURL + r.bsactivityAd.adImgurl;
+                vm.goodsimgshow =  r.bsactivityAd.adImgurl;
             });
 		},
 		reload: function (event) {

@@ -16,6 +16,8 @@
         <script type="text/javascript" src="${request.contextPath}/statics/ueditor/ueditor.all.js"></script>
 <!--        <script type="text/javascript" charset="utf-8" src="${request.contextPath}/statics/ueditor/ueditor.all.min.js"></script>-->
         <script type="text/javascript" charset="utf-8" src="${request.contextPath}/statics/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <script src="${request.contextPath}/statics/libs/ajaxupload.js"></script>
 </head>
 <body>
 <div id="icloudapp" v-cloak>
@@ -52,8 +54,9 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-2 control-label">商品图片</div>
+                    <img   :src="smallSpu.img" style="width:300px;height:150px;" v-model="smallSpu.img" placeholder="商品图片"/>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" v-model="smallSpu.img" placeholder="商品图片"/>
+                        <a class="btn btn-primary" id="upload" style="margin-left:23.2rem;"><i class="fa fa-plus"></i>&nbsp;上传文件</a>
                     </div>
                 </div>
 				<div class="form-group">
