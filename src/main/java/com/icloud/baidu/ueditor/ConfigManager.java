@@ -179,16 +179,15 @@ public final class ConfigManager {
 		try {
 			Resource resource = new ClassPathResource("config.json");
 			// 修改部分
-			intput = new InputStreamReader(resource.getInputStream());
+			intput = new InputStreamReader(resource.getInputStream(),"UTF-8");
 			BufferedReader reader = new BufferedReader(intput);
 			while ((msg = reader.readLine())!= null){
-				buf.append(reader.readLine());
-//				msg = reader.readLine();
+				buf.append(msg);
 			}
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
-		return buf.toString();
+		return this.filter( buf.toString() );
 	}
 
 
