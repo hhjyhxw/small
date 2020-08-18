@@ -93,8 +93,8 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
     public CookieSerializer cookieSerializer(){
         DefaultCookieSerializer cookieSerializer = new DefaultCookieSerializer();
 		// 取消仅限同一站点设置
-//		cookieSerializer.setUseHttpOnlyCookie(false);
-//		cookieSerializer.setSameSite(null);
+		cookieSerializer.setUseHttpOnlyCookie(false);
+		cookieSerializer.setSameSite(null);
         cookieSerializer.setCookieName(myPropertitys.getSession().getCookieName());//sessionId名称
         return  cookieSerializer;
     }
@@ -108,8 +108,8 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
         CookieHttpSessionIdResolver cookieHttpSessionIdResolver = new CookieHttpSessionIdResolver();
         DefaultCookieSerializer cookieSerializer = new DefaultCookieSerializer();
         cookieSerializer.setCookieName(myPropertitys.getSession().getCookieName());//cookies名称
-//        cookieSerializer.setDomainName(myPropertitys.getSession().getParentDomainName());
-//        cookieSerializer.setCookiePath("/");
+        cookieSerializer.setDomainName(myPropertitys.getSession().getParentDomainName());
+        cookieSerializer.setCookiePath("/");
         cookieSerializer.setUseBase64Encoding(false);
         cookieHttpSessionIdResolver.setCookieSerializer(cookieSerializer);
         return cookieHttpSessionIdResolver;
