@@ -7,7 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c6fbc680-6164-4f33-9b24-94a00587f493" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/font/H5LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/font/H5LoginController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -231,7 +230,7 @@
       <workItem from="1597650241341" duration="13575000" />
       <workItem from="1597718082227" duration="16986000" />
       <workItem from="1597797793579" duration="8333000" />
-      <workItem from="1597885245054" duration="8725000" />
+      <workItem from="1597885245054" duration="11690000" />
     </task>
     <task id="LOCAL-00001" summary="修改写字楼售bug">
       <created>1574649748896</created>
