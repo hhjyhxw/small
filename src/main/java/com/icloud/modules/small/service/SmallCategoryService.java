@@ -30,6 +30,11 @@ public class SmallCategoryService extends BaseServiceImpl<SmallCategoryMapper,Sm
     @Override
     public PageUtils<SmallCategory> findByPage(int pageNo, int pageSize, Map<String, Object> query) {
         PageHelper.startPage(pageNo, pageSize);
+        try {
+            query =  MapEntryUtils.mapvalueToBeanValueAndBeanProperyToColum(query, SmallCategory.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         List<SmallCategory> list = smallCategoryMapper.queryMixList(MapEntryUtils.clearNullValue(query));
         PageInfo<SmallCategory> pageInfo = new PageInfo<SmallCategory>(list);
         PageUtils<SmallCategory> page = new PageUtils<SmallCategory>(list,(int)pageInfo.getTotal(),pageSize,pageNo);

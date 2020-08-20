@@ -31,6 +31,11 @@ public class SmallSpuService extends BaseServiceImpl<SmallSpuMapper,SmallSpu> {
     @Override
     public PageUtils<SmallSpu> findByPage(int pageNo, int pageSize, Map<String, Object> query) {
         PageHelper.startPage(pageNo, pageSize);
+        try {
+            query =  MapEntryUtils.mapvalueToBeanValueAndBeanProperyToColum(query, SmallSpu.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         List<SmallSpu> list = smallSpuMapper.queryMixList(MapEntryUtils.clearNullValue(query));
         PageInfo<SmallSpu> pageInfo = new PageInfo<SmallSpu>(list);
         PageUtils<SmallSpu> page = new PageUtils<SmallSpu>(list,(int)pageInfo.getTotal(),pageSize,pageNo);

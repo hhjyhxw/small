@@ -45,7 +45,7 @@ public class SmallRetailController {
 
 
     /**
-     * 选择部门(添加、修改菜单)
+     * 选择所属店铺
      */
     @RequestMapping("/select")
     @RequiresPermissions("small:smallcategory:update")

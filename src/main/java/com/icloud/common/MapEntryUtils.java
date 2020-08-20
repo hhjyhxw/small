@@ -253,7 +253,7 @@ public class MapEntryUtils {
      * @return
      * @throws Exception
      */
-    public static Map<String, Object> mapvalueToBeanValueAndBeanProperyToColum(Map<String, Object> mapResult, Class<?> clazz) throws Exception {
+    public static Map<String, Object>  mapvalueToBeanValueAndBeanProperyToColum(Map<String, Object> mapResult, Class<?> clazz) throws Exception {
         Object obj = clazz.newInstance();
         Map<String, Object> columResult = new HashMap<String, Object>();
         if(mapResult != null && mapResult.size() > 0) {

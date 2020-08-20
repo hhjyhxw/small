@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.small.dao.SmallSellCategoryMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.small.entity.SmallSellCategory" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="title" column="title"/>
+     <result property="parentId" column="parent_id"/>
+     <result property="picUrl" column="pic_url"/>
+     <result property="level" column="level"/>
+     <result property="status" column="status"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+     <result property="sortNum" column="sort_num"/>
+     <result property="supplierId" column="supplier_id"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,title,parent_id,pic_url,level,status,create_time,modify_time,sort_num,supplier_id
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_small_sell_category t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="title != null">
+    and t.title = #{title}
+</if>
+<if test="parent_id != null">
+    and t.parent_id = #{parent_id}
+</if>
+<if test="supplier_id != null">
+    and t.supplier_id = #{supplier_id}
+</if>
+<if test="pic_url != null">
+    and t.pic_url = #{pic_url}
+</if>
+<if test="level != null">
+    and t.level = #{level}
+</if>
+<if test="status != null">
+    and t.status = #{status}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+<if test="modify_time != null">
+    and t.modify_time = #{modify_time}
+</if>
+<if test="sort_num != null">
+    and t.sort_num = #{sort_num}
+</if>
+</where>
+</select>
+
+
+    <select id="queryList" resultType="com.icloud.modules.small.entity.SmallSellCategory" resultMap="BaseResultMap">
+        select t1.id,t1.title,t1.parent_id,t1.status,t1.sort_num,t1.title name,(select t2.title from t_small_sell_category t2 where t2.id=t1.parent_id) parentName from t_small_sell_category t1
+        <if test="sql_filter != null">
+            and ${sql_filter}
+        </if>
+    </select>
+
+    <select id="queryDetpIdList" resultType="long">
+		select id from t_small_category where parent_id = #{value}
+	</select>
+
+</mapper>

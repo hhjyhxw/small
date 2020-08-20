@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>店铺个性化商品分类</title>
+		<#include "/header.html">
+        <link rel="stylesheet" href="${request.contextPath}/statics/css/bootstrap-table.min.css">
+        <link rel="stylesheet" href="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.css">
+        <script src="${request.contextPath}/statics/libs/bootstrap-table.min.js"></script>
+        <script src="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.min.js"></script>
+        <script src="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
+        <script src="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.extension.js"></script>
+        <script src="${request.contextPath}/statics/plugins/treegrid/tree.table.js"></script>
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("small:smallsellcategory:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("small:smallsellcategory:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("small:smallsellcategory:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">分类名称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallSellCategory.title" placeholder="分类名称"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">所属店铺</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallSellCategory.smallRetail.supplierName" @click="retailTree" readonly="readonly" placeholder="所属商户"/>
+                        </div>
+                    </div>
+						<!--					                    <div class="form-group">
+                        <div class="col-sm-2 control-label">父类id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallSellCategory.parentId" placeholder="父类id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">分类图标地址</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallSellCategory.picUrl" placeholder="分类图标地址"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">分类级别</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallSellCategory.level" placeholder="分类级别"/>
+                        </div>
+                    </div>-->
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">状态</div>
+                        <label class="radio-inline">
+                            <input type="radio" name="status" value="1" v-model="smallSellCategory.status"/> 使用
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="status" value="0" v-model="smallSellCategory.status"/> 停用
+                        </label>
+                    </div>
+					<div class="form-group">
+                     <!--   <div class="col-sm-2 control-label">创建时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallSellCategory.createTime" placeholder="创建时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">修改时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallSellCategory.modifyTime" placeholder="修改时间"/>
+                        </div>
+                    </div>-->
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">排序</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallSellCategory.sortNum" placeholder="排序"/>
+                        </div>
+                    </div>
+					<!--<div class="form-group">
+                        <div class="col-sm-2 control-label">所属店铺</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallSellCategory.supplierId" placeholder="所属店铺"/>
+                        </div>
+                    </div>-->
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- 零售户树 -->
+<div id="retailLayer" style="display: none;padding:10px;">
+    <ul id="retailTree" class="ztree"></ul>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/small/smallsellcategory.js?_${.now?long}"></script>
+</body>
+</html>
