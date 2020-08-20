@@ -53,7 +53,7 @@ public class H5LoginController {
             }else{
                 redirect_url = redirect_url+"?token="+h5token;
             }
-            response.sendRedirect(redirect_url+"?token="+ h5token);
+            response.sendRedirect(redirect_url);
             return null;
         }catch (Exception e){
             e.printStackTrace();
