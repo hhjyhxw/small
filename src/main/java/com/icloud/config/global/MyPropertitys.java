@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Map;
+
 @Data
 @ConfigurationProperties(prefix="mypros")//加载自定义属性
 @Configuration
@@ -15,15 +17,16 @@ public class MyPropertitys {
     private String uploadpath;
     //判断是在本地调试还是发布服务器
     private String activein;
-    //微信公众号参数配置
+    //作为第三方接口的 微信公众号参数配置 （弃用)
     private Wx wx;
-    //龙币接口相关参数
+    //龙币接口相关参数（弃用)
     private LongCoin longcoin;
-    //龙币接口相关参数
+    //
     private Session session;
-    //用户登陆认证地址
+    //用户登陆认证地址(弃用)
     private String usercheckurl;
-
+    //用户登陆认证地址(弃用)
+    private Map<String,String> thirdloginUrlMap;
 
     /**
      * 微信相关参数

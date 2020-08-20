@@ -164,4 +164,5 @@ public class WxUserLoginInterceptor implements HandlerInterceptor {
         response.sendRedirect(redirectUrl);
 	}
 
+
 }
