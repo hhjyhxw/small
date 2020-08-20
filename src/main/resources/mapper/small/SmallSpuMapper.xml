@@ -26,6 +26,8 @@
      <result property="iselect" column="iselect"/>
      <result property="createTime" column="create_time"/>
      <result property="modifyTime" column="modify_time"/>
+    <result property="stock" column="stock"/>
+    <result property="freezeStock" column="freeze_stock"/>
     </resultMap>
 
    <!-- 基础字段列 -->
@@ -35,7 +37,7 @@ id,price,original_price,vip_price,title,sales,img,detail,description,category_id
 
 
 <select id="queryMixList" resultMap="BaseResultMap">
-select * from t_small_spu t
+select t.*,(t.stock-t.freeze_stock) as remainStock from t_small_spu t
 <where>
 <if test="id != null">
     and t.id = #{id}

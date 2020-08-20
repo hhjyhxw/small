@@ -6,18 +6,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6fbc680-6164-4f33-9b24-94a00587f493" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/ShopApiController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/interceptor/ApiLoginInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/interceptor/ApiLoginInterceptor_local.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/exceptions/ApiException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/exceptions/ApiGlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/exceptions/ApiResponseBodyHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_2_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/CartApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/OrderApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/UserApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_18_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_20.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_22.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_20.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_22.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_attoparser_attoparser_2_0_5_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_2_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_extras_thymeleaf_extras_java8time_3_0_4_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_3_0_11_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring5_3_0_11_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_6_RELEASE.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/ShiroConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/small.iml" beforeDir="false" afterPath="$PROJECT_DIR$/small.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/ShopApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/ShopApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/SwaggerConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/interceptor/InterceptorsStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/interceptor/InterceptorsStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/js/modules/bsactivity/bsactivityad.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/js/modules/bsactivity/bsactivityad.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/js/modules/small/smallspu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/js/modules/small/smallspu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallspu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallspu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallSpuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallSpuService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/small/SmallSpuMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/small/SmallSpuMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,9 +97,21 @@
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates\modules\front\" />
+      <recent name="D:\project\myproject\web-project\src\main\resources\statics\third_plugin" />
+      <recent name="D:\project\myproject\web-project\src\main\resources\statics\js" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.icloud" />
       <recent name="com.icloud.modules.mpwx.vo" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.icloud.api.small" />
+      <recent name="com.icloud.config.interceptor" />
+      <recent name="com.icloud.exceptions" />
+      <recent name="com.icloud.modules.oss.controller" />
+      <recent name="com.icloud" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\project\myproject\small\src\main\java\com\icloud\exceptions" />
@@ -99,20 +120,8 @@
       <recent name="D:\project\myproject\small\src\main\resources\templates" />
       <recent name="D:\project\myproject\small\src\main\java\com\baidu" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.icloud.config.interceptor" />
-      <recent name="com.icloud.exceptions" />
-      <recent name="com.icloud.modules.oss.controller" />
-      <recent name="com.icloud" />
-      <recent name="com.icloud.config.global.wx.handler" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates\modules\front\" />
-      <recent name="D:\project\myproject\web-project\src\main\resources\statics\third_plugin" />
-      <recent name="D:\project\myproject\web-project\src\main\resources\statics\js" />
-    </key>
   </component>
-  <component name="RunManager" selected="Application.Application">
+  <component name="RunManager" selected="Spring Boot.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.icloud.Application" />
       <module name="small" />
@@ -158,10 +167,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="small" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.icloud.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Application" />
       <item itemvalue="JUnit.ForestHttpBeanTest.test" />
       <item itemvalue="JUnit.ScrewDatabaseDocTest.contextLoads" />
+      <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
@@ -230,7 +247,9 @@
       <workItem from="1597365572478" duration="23158000" />
       <workItem from="1597626332088" duration="17204000" />
       <workItem from="1597650241341" duration="13575000" />
-      <workItem from="1597718082227" duration="15994000" />
+      <workItem from="1597718082227" duration="16986000" />
+      <workItem from="1597797793579" duration="8333000" />
+      <workItem from="1597885245054" duration="539000" />
     </task>
     <task id="LOCAL-00001" summary="修改写字楼售bug">
       <created>1574649748896</created>
@@ -307,22 +326,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597740574020" />
-    <state width="1493" height="428" key="GridCell.Tab.0.bottom" timestamp="1597744453380">
+    <state width="1493" height="151" key="GridCell.Tab.0.bottom" timestamp="1597808395167">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="428" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597744453380" />
-    <state width="1493" height="428" key="GridCell.Tab.0.center" timestamp="1597744453378">
+    <state width="1493" height="151" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597808395167" />
+    <state width="1493" height="151" key="GridCell.Tab.0.center" timestamp="1597808395166">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="428" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597744453378" />
-    <state width="1493" height="428" key="GridCell.Tab.0.left" timestamp="1597744453378">
+    <state width="1493" height="151" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597808395166" />
+    <state width="1493" height="151" key="GridCell.Tab.0.left" timestamp="1597808395166">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="428" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597744453378" />
-    <state width="1493" height="428" key="GridCell.Tab.0.right" timestamp="1597744453379">
+    <state width="1493" height="151" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597808395166" />
+    <state width="1493" height="151" key="GridCell.Tab.0.right" timestamp="1597808395166">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="428" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597744453379" />
+    <state width="1493" height="151" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597808395166" />
     <state width="1493" height="205" key="GridCell.Tab.1.bottom" timestamp="1597739778528">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -351,14 +370,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="178" y="72" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1597049144988" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1597310713889">
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1597803688829">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1597310713889" />
-    <state x="431" y="145" width="920" height="678" key="search.everywhere.popup" timestamp="1597737746008">
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1597803688829" />
+    <state x="431" y="145" width="920" height="678" key="search.everywhere.popup" timestamp="1597799335325">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="920" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597737746008" />
+    <state x="431" y="145" width="920" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597799335325" />
     <state x="575" y="313" key="svn.upgradeDialog" timestamp="1597132923287">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -35,17 +35,17 @@ public class SwaggerConfig{
             //加了ApiOperation注解的类，生成接口文档
             .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
             //包下的类，生成接口文档
-            //.apis(RequestHandlerSelectors.basePackage("modules.job.controller"))
+            .apis(RequestHandlerSelectors.basePackage("com.icloud.api.small"))
             .paths(PathSelectors.any())
             .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-            .title("通用后台")
-            .description("common-web-admin文档")
-            .termsOfServiceUrl("http://www.scrol.top")
-            .version("4.0.0")
+            .title("微店api接口")
+            .description("微店api接口文档")
+            .termsOfServiceUrl("")
+            .version("1.0.0")
             .build();
     }
 
