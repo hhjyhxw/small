@@ -270,18 +270,15 @@ var vm = new Vue({
                 smallCategory:{
                     title:null
                 },
-                supplierId:null,
+                retailerId:null,
                 smallRetail:{
                     supplierName:null
                 },
                 sellcategoryId:null,
                 smallSellCategory:{
                     title:null
-                },
-                sellcategoryId:null,
-                smallSellCategory:{
-                    title:null
                 }
+
             };
             vm.getCategory();
             vm.getRetailList();
@@ -295,8 +292,7 @@ var vm = new Vue({
             vm.title = "修改";
             vm.addStock = null;
             vm.getInfo(id)
-            vm.getCategory();
-            vm.getRetailList();
+
 		},
 		saveOrUpdate: function (event) {
 		    $('#btnSaveOrUpdate').button('loading').delay(1000).queue(function() {
@@ -377,6 +373,12 @@ var vm = new Vue({
                 vm.smallSpu.smallSellCategory = {
                     title:null
                 };
+                //加载商品分类
+                vm.getCategory();
+                //加载零售户
+                vm.getRetailList();
+                //加载商户自定义分类
+                vm.getSellCategory(vm.smallSpu.supplierId)//加载对应店铺的个性分类
             });
 		},
 		reload: function (event) {
@@ -416,8 +418,10 @@ var vm = new Vue({
                     var node = ztree.getSelectedNodes();
                     //选择分类
                     // console.log("node====="+JSON.stringify(node))
-                    vm.smallSpu.categoryId = node[0].id;
-                    vm.smallSpu.smallCategory.title = node[0].name;
+                    if(node!=null) {
+                        vm.smallSpu.categoryId = node[0].id;
+                        vm.smallSpu.smallCategory.title = node[0].name;
+                    }
                     layer.close(index);
                 }
             });
@@ -453,11 +457,12 @@ var vm = new Vue({
                     var node = retialztree.getSelectedNodes();
                     //选择
                     // console.log("node====="+JSON.stringify(node))
-                    vm.smallSpu.supplierId = node[0].id;
-                    vm.smallSpu.smallRetail.supplierName = node[0].name;
-
-                    //加载店铺对应的个性化商品分类
-                    vm.getSellCategory(node[0].id);
+                    if(node!=null){
+                        vm.smallSpu.supplierId = node[0].id;
+                        vm.smallSpu.smallRetail.supplierName = node[0].name;
+                        //加载店铺对应的个性化商品分类
+                        vm.getSellCategory(node[0].id);
+                    }
                     layer.close(index);
                 }
             });
@@ -492,8 +497,10 @@ var vm = new Vue({
                     var node = sellCategoryztree.getSelectedNodes();
                     //选择分类
                     // console.log("node====="+JSON.stringify(node))
-                    vm.smallSpu.categoryId = node[0].id;
-                    vm.smallSpu.smallCategory.title = node[0].name;
+                    if(node!=null){
+                        vm.smallSpu.sellcategoryId = node[0].id;
+                        vm.smallSpu.smallSellCategory.title = node[0].name;
+                    }
                     layer.close(index);
                 }
             });

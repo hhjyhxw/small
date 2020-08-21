@@ -6,16 +6,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6fbc680-6164-4f33-9b24-94a00587f493" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xercesImpl_2_11_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_4_01.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xercesImpl_2_6_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_0_b2.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xercesImpl_2_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_0_b2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/aspect/ApiLogAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xercesImpl_2_11_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_4_01.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/small.iml" beforeDir="false" afterPath="$PROJECT_DIR$/small.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/ShopApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/ShopApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallSpu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallSpu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/interceptor/InterceptorsStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/interceptor/InterceptorsStack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/statics/js/modules/small/smallspu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/js/modules/small/smallspu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallspu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallspu.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,9 +87,21 @@
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates\modules\front\" />
+      <recent name="D:\project\myproject\web-project\src\main\resources\statics\third_plugin" />
+      <recent name="D:\project\myproject\web-project\src\main\resources\statics\js" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.icloud" />
       <recent name="com.icloud.modules.mpwx.vo" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.icloud.aspect" />
+      <recent name="com.icloud.api.small" />
+      <recent name="com.icloud.config.interceptor" />
+      <recent name="com.icloud.exceptions" />
+      <recent name="com.icloud.modules.oss.controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\project\myproject\small\src\main\resources" />
@@ -96,18 +109,6 @@
       <recent name="D:\project\myproject\small\src\main\resources\templates\modules\h5login" />
       <recent name="D:\project\myproject\small\src\main\java\com\icloud\exceptions" />
       <recent name="D:\project\myproject\small\target\classes" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.icloud.api.small" />
-      <recent name="com.icloud.config.interceptor" />
-      <recent name="com.icloud.exceptions" />
-      <recent name="com.icloud.modules.oss.controller" />
-      <recent name="com.icloud" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates\modules\front\" />
-      <recent name="D:\project\myproject\web-project\src\main\resources\statics\third_plugin" />
-      <recent name="D:\project\myproject\web-project\src\main\resources\statics\js" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Application">
@@ -239,7 +240,7 @@
       <workItem from="1597718082227" duration="16986000" />
       <workItem from="1597797793579" duration="8333000" />
       <workItem from="1597885245054" duration="18035000" />
-      <workItem from="1597970406147" duration="2895000" />
+      <workItem from="1597970406147" duration="8942000" />
     </task>
     <task id="LOCAL-00001" summary="修改写字楼售bug">
       <created>1574649748896</created>
@@ -288,6 +289,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="533" y="0" key="#Auto_Import" timestamp="1597978600473">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="533" y="0" key="#Auto_Import/0.0.1536.824@0.0.1536.824" timestamp="1597978600473" />
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597739388981">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -316,38 +321,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597740574020" />
-    <state width="1493" height="237" key="GridCell.Tab.0.bottom" timestamp="1597972774721">
+    <state width="1493" height="25" key="GridCell.Tab.0.bottom" timestamp="1597977836413">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="237" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597972774721" />
-    <state width="1493" height="237" key="GridCell.Tab.0.center" timestamp="1597972774721">
+    <state width="1493" height="25" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597977836413" />
+    <state width="1493" height="25" key="GridCell.Tab.0.center" timestamp="1597977836413">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="237" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597972774721" />
-    <state width="1493" height="237" key="GridCell.Tab.0.left" timestamp="1597972774721">
+    <state width="1493" height="25" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597977836413" />
+    <state width="1493" height="25" key="GridCell.Tab.0.left" timestamp="1597977836413">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="237" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597972774721" />
-    <state width="1493" height="237" key="GridCell.Tab.0.right" timestamp="1597972774721">
+    <state width="1493" height="25" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597977836413" />
+    <state width="1493" height="25" key="GridCell.Tab.0.right" timestamp="1597977836413">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="237" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597972774721" />
-    <state width="1493" height="237" key="GridCell.Tab.1.bottom" timestamp="1597972774722">
+    <state width="1493" height="25" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597977836413" />
+    <state width="1493" height="25" key="GridCell.Tab.1.bottom" timestamp="1597977836414">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="237" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597972774722" />
-    <state width="1493" height="237" key="GridCell.Tab.1.center" timestamp="1597972774722">
+    <state width="1493" height="25" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597977836414" />
+    <state width="1493" height="25" key="GridCell.Tab.1.center" timestamp="1597977836414">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="237" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597972774722" />
-    <state width="1493" height="237" key="GridCell.Tab.1.left" timestamp="1597972774722">
+    <state width="1493" height="25" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597977836414" />
+    <state width="1493" height="25" key="GridCell.Tab.1.left" timestamp="1597977836413">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="237" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597972774722" />
-    <state width="1493" height="237" key="GridCell.Tab.1.right" timestamp="1597972774722">
+    <state width="1493" height="25" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597977836413" />
+    <state width="1493" height="25" key="GridCell.Tab.1.right" timestamp="1597977836414">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="237" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597972774722" />
+    <state width="1493" height="25" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597977836414" />
     <state x="502" y="113" key="RollbackChangesDialog" timestamp="1595231170484">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

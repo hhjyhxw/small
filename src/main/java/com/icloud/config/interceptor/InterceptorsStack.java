@@ -77,6 +77,10 @@ class InterceptorsStack implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("support/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/templates/**")
+                .addResourceLocations("classpath:/META-INF/resources/templates/");
     }
 
     @Bean
