@@ -8,6 +8,7 @@ import com.icloud.modules.small.entity.SmallCart;
 import com.icloud.modules.small.entity.SmallSpu;
 import com.icloud.modules.small.service.SmallCartService;
 import com.icloud.modules.small.service.SmallSpuService;
+import com.icloud.modules.small.util.CartOrderUtil;
 import com.icloud.modules.small.vo.CartTotalVo;
 import com.icloud.modules.small.vo.CartVo;
 import com.icloud.modules.wx.entity.WxUser;
@@ -55,7 +56,7 @@ public class CartApiController {
         params.put("user_id",user.getId());
         params.put("supplier_id",supplierId);
         List<CartVo> list  = smallCartService.getCartVoList(params);
-        CartTotalVo total = getTotal(list);
+        CartTotalVo total = CartOrderUtil.getTotal(list);
         return R.ok().put("list",list).put("totalAmout",total.getTotalAmout()).put("totalNum",total.getTotalNum());
     }
 
