@@ -83,12 +83,13 @@
                             <input type="number" class="form-control" v-model="addStock" placeholder="添加库存"/>
                         </div>
                     </div>
-            <div class="form-group">
+                    <div class="form-group">
                         <div class="col-sm-2 control-label">所属分类</div>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" v-model="smallSpu.smallCategory.title" @click="categroyTree" readonly="readonly"   placeholder="分类id"/>
                         </div>
                     </div>
+
 					<!--						                    <div class="form-group">
                         <div class="col-sm-2 control-label">vip价</div>
                         <div class="col-sm-10">
@@ -131,6 +132,12 @@
                             <input type="text" class="form-control" v-model="smallSpu.unit" placeholder="计量单位"/>
                         </div>
                     </div>-->
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">店铺个性化分类</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallSpu.smallSellCategory.title" @click="sellcategroyTree" readonly="readonly"   placeholder="分类id"/>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="col-sm-2 control-label">状态</div>
                         <label class="radio-inline">
@@ -195,6 +202,12 @@
 <div id="retailLayer" style="display: none;padding:10px;">
     <ul id="retailTree" class="ztree"></ul>
 </div>
+
+<!-- 店铺个性化分类树 -->
+<div id="sellCategoryLayer" style="display: none;padding:10px;">
+    <ul id="sellCategoryTree" class="ztree"></ul>
+</div>
+
 <script src="${request.contextPath}/statics/js/modules/small/smallspu.js?_${.now?long}"></script>
 </body>
 </html>

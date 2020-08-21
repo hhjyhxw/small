@@ -90,7 +90,9 @@ public class SmallSpu implements Serializable {
         /* 冻结库存 */
         @TableField("freeze_stock")
         private Integer freezeStock;
-
+        /* 店铺个性分类id */
+        @TableField("sellcategory_id")
+        private Long sellcategoryId;
 
         /*关联分类*/
         @TableField(exist = false)
@@ -98,6 +100,9 @@ public class SmallSpu implements Serializable {
         /*消费商户*/
         @TableField(exist = false)
         private SmallRetail smallRetail;
+        /*关联商户个性化分类*/
+        @TableField(exist = false)
+        private SmallSellCategory smallSellCategory;
         /*增加的库存*/
         @TableField(exist = false)
         private Integer addStock;

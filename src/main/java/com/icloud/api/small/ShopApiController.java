@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Api("店铺与商品相关接口")
@@ -75,23 +76,27 @@ public class ShopApiController {
      * @return
      */
     @ApiOperation(value="获取商品列表", notes="")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "pageNum", value = "页码", required = false, paramType = "query", dataType = "Integer"),
-            @ApiImplicitParam(name = "pageSize", value = "每页多少记录", required = false, paramType = "query", dataType = "Integer"),
-            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "Long"),
-            @ApiImplicitParam(name = "categoryId", value = "分类id", required = false, paramType = "query", dataType = "Long"),
-
-    })
+//    @ApiImplicitParams({
+//            @ApiImplicitParam(name = "pageNum", value = "页码", required = false, paramType = "query", dataType = "Integer"),
+//            @ApiImplicitParam(name = "pageSize", value = "每页多少记录", required = false, paramType = "query", dataType = "Integer"),
+//            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "Long"),
+//            @ApiImplicitParam(name = "categoryId", value = "分类id", required = false, paramType = "query", dataType = "Long"),
+//
+//    })
     @RequestMapping(value = "/goodsList",method = {RequestMethod.GET})
     @ResponseBody
     @AuthIgnore
-    public R goodsList(@RequestParam String pageNum,@RequestParam String pageSize,@RequestParam Long supplierId,@RequestParam String categoryId) {
+//    public R goodsList(@RequestParam String pageNum,@RequestParam String pageSize,@RequestParam Long supplierId,@RequestParam String categoryId) {
+    public R goodsList(@RequestParam Map<String,Object> params) {
+        if(!params.containsKey("supplierId")){
+            return R.error("商户id为空");
+        }
         Query query = new Query(new HashMap<>());
         query.put("status",1);
-        query.put("page",pageNum);
-        query.put("limit",pageSize);
-        query.put("supplierId",supplierId);
-        query.put("categoryId",categoryId);
+        query.put("page",params.get("pageNum"));
+        query.put("limit",params.get("pageSize"));
+        query.put("supplierId",params.get("supplierId"));
+        query.put("categoryId",params.get("categoryId"));
         PageUtils<SmallSpu> page = smallSpuService.findByPage(query.getPageNum(),query.getPageSize(), query);
         return R.ok().put("page", page);
     }

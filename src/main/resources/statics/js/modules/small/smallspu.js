@@ -110,6 +110,10 @@ ue.ready(function() {
     getSessionId();
 });
 
+/**
+ * 商品分类选择树
+ * @type {{data: {simpleData: {idKey: string, enable: boolean, pIdKey: string, rootPId: number}, key: {url: string}}}}
+ */
 var setting = {
     data: {
         simpleData: {
@@ -125,6 +129,29 @@ var setting = {
 };
 var ztree;
 
+
+/**
+ * 店铺个性化分类选中树
+ */
+var sellCategorySetting = {
+    data: {
+        simpleData: {
+            enable: true,
+            idKey: "id",
+            pIdKey: "parentId",
+            rootPId: -1
+        },
+        key: {
+            url:"nourl"
+        }
+    }
+};
+var sellCategoryztree;
+
+/**
+ * 店铺选址数
+ * @type {{data: {simpleData: {idKey: string, enable: boolean, pIdKey: string, rootPId: number}, key: {url: string}}}}
+ */
 var settingretail = {
     data: {
         simpleData: {
@@ -208,6 +235,10 @@ var vm = new Vue({
             supplierId:null,
             smallRetail:{
                 supplierName:null
+            },
+            sellcategoryId:null,
+            smallSellCategory:{
+                title:null
             }
         }
 	},
@@ -242,6 +273,14 @@ var vm = new Vue({
                 supplierId:null,
                 smallRetail:{
                     supplierName:null
+                },
+                sellcategoryId:null,
+                smallSellCategory:{
+                    title:null
+                },
+                sellcategoryId:null,
+                smallSellCategory:{
+                    title:null
                 }
             };
             vm.getCategory();
@@ -335,6 +374,9 @@ var vm = new Vue({
                 vm.smallSpu.smallRetail = {
                     supplierName:null
                 };
+                vm.smallSpu.smallSellCategory = {
+                    title:null
+                };
             });
 		},
 		reload: function (event) {
@@ -413,9 +455,51 @@ var vm = new Vue({
                     // console.log("node====="+JSON.stringify(node))
                     vm.smallSpu.supplierId = node[0].id;
                     vm.smallSpu.smallRetail.supplierName = node[0].name;
+
+                    //加载店铺对应的个性化商品分类
+                    vm.getSellCategory(node[0].id);
                     layer.close(index);
                 }
             });
         },
+
+        //加载店铺个性化分类树
+        getSellCategory: function(supplierId){
+            //加载分类树
+            $.get(baseURL + "small/smallsellcategory/select?supplierId="+supplierId, function(r){
+                sellCategoryztree = $.fn.zTree.init($("#sellCategoryTree"), sellCategorySetting, r.list);
+                // console.log("ztree====="+JSON.stringify(ztree))
+                var node = sellCategoryztree.getNodeByParam("id", vm.smallSpu.sellcategoryId);
+                // console.log("加载node====="+JSON.stringify(node))
+                if(node!=null){
+                    sellCategoryztree.selectNode(node);
+                    vm.smallSpu.smallSellCategory.title = node.name;
+                }
+            })
+        },
+        sellcategroyTree: function(){
+            layer.open({
+                type: 1,
+                offset: '50px',
+                skin: 'layui-layer-molv',
+                title: "选择个性化分类",
+                area: ['300px', '300px'],
+                shade: 0,
+                shadeClose: false,
+                content: jQuery("#sellCategoryLayer"),
+                btn: ['确定', '取消'],
+                btn1: function (index) {
+                    var node = sellCategoryztree.getSelectedNodes();
+                    //选择分类
+                    // console.log("node====="+JSON.stringify(node))
+                    vm.smallSpu.categoryId = node[0].id;
+                    vm.smallSpu.smallCategory.title = node[0].name;
+                    layer.close(index);
+                }
+            });
+        },
+
+
+
 	}
 });
