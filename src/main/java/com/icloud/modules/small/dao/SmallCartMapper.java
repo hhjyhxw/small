@@ -2,6 +2,8 @@ package com.icloud.modules.small.dao;
 
 import com.icloud.modules.small.entity.SmallCart;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.icloud.modules.small.vo.CartVo;
+
 import java.util.List;
 import java.util.Map;
 
@@ -14,4 +16,6 @@ import java.util.Map;
 public interface SmallCartMapper extends BaseMapper<SmallCart> {
 
 	List<SmallCart> queryMixList(Map<String,Object> map);
+
+    List<CartVo> getCartVoList(Map map);
 }

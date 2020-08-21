@@ -13,6 +13,8 @@ import com.icloud.modules.small.entity.SmallSpu;
 import com.icloud.modules.small.service.SmallCategoryService;
 import com.icloud.modules.small.service.SmallSellCategoryService;
 import com.icloud.modules.small.service.SmallSpuService;
+import com.icloud.modules.small.vo.CategoryAndGoodListVo;
+import com.icloud.modules.small.vo.SpuVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -20,6 +22,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -51,11 +54,12 @@ public class ShopApiController {
        return R.ok().put("list",list);
     }
 
+
     /**
      * 获取商品分类列表
      * @return
      */
-    @ApiOperation(value="获取商品分类", notes="")
+/*    @ApiOperation(value="获取商品分类", notes="")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "Long")
     })
@@ -70,6 +74,69 @@ public class ShopApiController {
         }else{
             List<SmallCategory> lists  = smallCategoryService.list(new QueryWrapper<SmallCategory>().eq("status",1));
             return R.ok().put("list",lists);
+        }
+    }*/
+
+
+    /**
+     * 获取商品分类列表(关联相关商品)
+     * @return
+     */
+    @ApiOperation(value="获取商品分类", notes="")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "Long")
+    })
+    @RequestMapping(value = "/categoryList",method = {RequestMethod.GET})
+    @ResponseBody
+    @AuthIgnore
+    public R categoryList(@RequestParam Long supplierId) {
+        List<CategoryAndGoodListVo> categoryvolist  = new ArrayList<CategoryAndGoodListVo>();
+        List<SpuVo> spuListvo  = null;
+        //先获取店铺个性化分类，如果店铺个性化分类不存在，则获取公共商品分类
+        List<SmallSellCategory> list  = smallSellCategoryService.list(new QueryWrapper<SmallSellCategory>().eq("status",1).eq("supplier_id",supplierId));
+        List<SmallSpu> spuList = smallSpuService.list(new QueryWrapper<SmallSpu>().eq("status",1).eq("supplier_id",supplierId));
+        if(list!=null && list.size()>0){
+            for(SmallSellCategory category:list){
+                CategoryAndGoodListVo categoryvo= new CategoryAndGoodListVo();
+                categoryvo.setId(category.getId());
+                categoryvo.setTitile(category.getTitle());
+                spuListvo = new ArrayList<SpuVo>();
+                for(SmallSpu spu:spuList){
+                    if(spu.getCategoryId().longValue()==category.getId().longValue()){
+                        SpuVo spuvo = new SpuVo();
+                        spuvo.setId(spu.getId());
+                        spuvo.setImg(spu.getImg());
+                        spuvo.setPrice(spu.getPrice());
+                        spuvo.setTitle(spu.getTitle());
+                        spuListvo.add(spuvo);
+                    }
+                }
+                categoryvo.setList(spuListvo);
+                categoryvolist.add(categoryvo);
+            }
+
+            return R.ok().put("list",categoryvolist);
+        }else{
+            List<SmallCategory> lists  = smallCategoryService.list(new QueryWrapper<SmallCategory>().eq("status",1));
+            for(SmallCategory category:lists){
+                CategoryAndGoodListVo categoryvo= new CategoryAndGoodListVo();
+                categoryvo.setId(category.getId());
+                categoryvo.setTitile(category.getTitle());
+                spuListvo = new ArrayList<SpuVo>();
+                for(SmallSpu spu:spuList){
+                    if(spu.getCategoryId().longValue()==category.getId().longValue()){
+                        SpuVo spuvo = new SpuVo();
+                        spuvo.setId(spu.getId());
+                        spuvo.setImg(spu.getImg());
+                        spuvo.setPrice(spu.getPrice());
+                        spuvo.setTitle(spu.getTitle());
+                        spuListvo.add(spuvo);
+                    }
+                }
+                categoryvo.setList(spuListvo);
+                categoryvolist.add(categoryvo);
+            }
+            return R.ok().put("list",categoryvolist);
         }
     }
 

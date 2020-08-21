@@ -40,4 +40,21 @@ select * from t_small_cart t
 </if>
 </where>
 </select>
+
+    <select id="getCartVoList" resultType="com.icloud.modules.small.vo.CartVo">
+        select * from t_small_cart t,t_small_spu p
+        <where>
+            t.sku_id = p.id
+            <if test="sku_id != null">
+                and t.sku_id = #{sku_id}
+            </if>
+            <if test="user_id != null">
+                and t.user_id = #{user_id}
+            </if>
+            <if test="supplier_id != null">
+                and p.supplier_id = #{supplier_id}
+            </if>
+        </where>
+    </select>
+
 </mapper>

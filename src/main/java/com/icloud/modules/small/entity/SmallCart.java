@@ -25,11 +25,14 @@ public class SmallCart implements Serializable {
        @TableId(value="id", type= IdType.AUTO)
        private Long id;
    	   	   /* 商品id */
-       @TableField("sku_id")
+       @TableField("sku_id")//因为目前采用单商品模式，这里替换成 spuId
        private Long skuId;
    	   	   /* 用户id */
        @TableField("user_id")
        private Long userId;
+        /* 用户id */
+        @TableField("supplier_id")
+        private Long supplierId;
    	   	   /* 数量 */
        @TableField("num")
        private Integer num;
