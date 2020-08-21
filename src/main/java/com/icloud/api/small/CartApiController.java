@@ -5,6 +5,7 @@ import com.icloud.annotation.LoginUser;
 import com.icloud.common.R;
 import com.icloud.modules.bsactivity.service.BsactivityAdService;
 import com.icloud.modules.small.entity.SmallCart;
+import com.icloud.modules.small.entity.SmallSpu;
 import com.icloud.modules.small.service.SmallCartService;
 import com.icloud.modules.small.service.SmallSpuService;
 import com.icloud.modules.small.vo.CartTotalVo;
@@ -70,6 +71,10 @@ public class CartApiController {
     public R addCart(@RequestParam Long supplierId,@RequestParam Long skuId,@LoginUser WxUser user) {
         if(supplierId==null || skuId==null){
             return R.error("缺少参数");
+        }
+        //库存校验
+        if(!checkStock(skuId,1L)){
+            return R.error("库存不足");
         }
         SmallCart cart = new SmallCart();
         List<SmallCart> list  = smallCartService.list(new QueryWrapper<SmallCart>()
@@ -186,21 +191,25 @@ public class CartApiController {
     @ApiOperation(value="更新购物车", notes="")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "购车和id", required = true, paramType = "query", dataType = "Long"),
+            @ApiImplicitParam(name = "skuId", value = "商品id", required = true, paramType = "query", dataType = "Long"),
             @ApiImplicitParam(name = "num", value = "商品数量", required = true, paramType = "query", dataType = "Long"),
     })
     @RequestMapping(value = "/updateCart",method = {RequestMethod.GET})
     @ResponseBody
-    public R updateCart(@RequestParam Long id,@RequestParam Long num,@LoginUser WxUser user) {
-        if(id==null){
+    public R updateCart(@RequestParam Long id,@RequestParam Long skuId,@RequestParam Long num,@LoginUser WxUser user) {
+        if(id==null || skuId==null){
             return R.error("id为空");
         }
-        if(id==num || num.intValue()<0 || num.intValue()>100){
+        if(id==num || num.intValue()<=0 ){
             return R.error("num不正确");
+        }
+        if(!checkStock(skuId,num)){
+            return R.error("库存不足");
         }
         SmallCart cart = new SmallCart();
         cart.setNum(num.intValue());
         cart.setModifyTime(new Date());
-        boolean result = smallCartService.update(new QueryWrapper<SmallCart>()
+        boolean result = smallCartService.update(cart,new QueryWrapper<SmallCart>()
                 .eq("user_id",user.getId())
                 .eq("id", id));
         return result?R.ok():R.error();
@@ -221,6 +230,15 @@ public class CartApiController {
                 .eq("user_id",user.getId())
                 .eq("supplier_id", supplierId));
         return R.ok().put("totalNum",num);
+    }
+
+    public boolean checkStock(Long id, Long num){
+        SmallSpu smallSpu = (SmallSpu) smallSpuService.getById(id);
+        int kuncun = smallSpu.getStock()-(smallSpu.getFreezeStock()!=null?smallSpu.getFreezeStock():0);
+        if(kuncun>=num.intValue()){
+            return true;
+        }
+        return false;
     }
 
 
