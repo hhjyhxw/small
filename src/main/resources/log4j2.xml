@@ -40,7 +40,12 @@
 
 
 		<!--建立一个默认的root的logger -->
-		<root level="trace">
+	<!--	<root level="trace">
+			<appender-ref ref="rollingFile" />
+			<appender-ref ref="console" />
+			<appender-ref ref="templog" />
+		</root>-->
+		<root level="info">
 			<appender-ref ref="rollingFile" />
 			<appender-ref ref="console" />
 			<appender-ref ref="templog" />
