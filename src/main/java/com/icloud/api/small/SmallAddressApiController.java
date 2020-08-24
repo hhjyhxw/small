@@ -43,7 +43,6 @@ public class SmallAddressApiController {
     })
     @RequestMapping(value = "/addresslist",method = {RequestMethod.GET})
     @ResponseBody
-//    @AuthIgnore
     public R addresslist(@LoginUser WxUser user) {
         List<SmallAddress> smallAddressList = smallAddressService.list(new QueryWrapper<SmallAddress>().eq("user_id",user.getId()));
        return R.ok().put("list",smallAddressList);

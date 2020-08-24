@@ -3,17 +3,22 @@ package com.icloud.api.small;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.icloud.annotation.LoginUser;
 import com.icloud.common.R;
+import com.icloud.common.beanutils.ColaBeanUtils;
 import com.icloud.common.util.StringUtil;
 import com.icloud.modules.small.entity.SmallAddress;
+import com.icloud.modules.small.entity.SmallOrder;
+import com.icloud.modules.small.entity.SmallOrderDetail;
 import com.icloud.modules.small.entity.SmallSpu;
 import com.icloud.modules.small.service.SmallAddressService;
+import com.icloud.modules.small.service.SmallOrderDetailService;
 import com.icloud.modules.small.service.SmallOrderService;
 import com.icloud.modules.small.service.SmallSpuService;
 import com.icloud.modules.small.util.CartOrderUtil;
-import com.icloud.modules.small.vo.CartTotalVo;
-import com.icloud.modules.small.vo.CartVo;
-import com.icloud.modules.small.vo.PreOrder;
+import com.icloud.modules.small.vo.*;
 import com.icloud.modules.wx.entity.WxUser;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Api("订单相关接口")
 @RestController
 @RequestMapping("/api/order")
 public class OrderApiController {
@@ -30,6 +36,8 @@ public class OrderApiController {
     private SmallSpuService smallSpuService;
     @Autowired
     private SmallOrderService smallOrderService;
+    @Autowired
+    private SmallOrderDetailService smallOrderDetailService;
     @Autowired
     private SmallAddressService smallAddressService;
 
@@ -106,6 +114,47 @@ public class OrderApiController {
             return R.error(e.getMessage());
         }
     }
+
+
+
+    /**
+     * 用户订单列表
+     * @return
+     */
+    @ApiOperation(value="用户订单列表", notes="")
+    @RequestMapping(value = "/orderlist",method = {RequestMethod.GET})
+    @ResponseBody
+    public R orderlist(@LoginUser WxUser user) {
+        List<SmallOrder> orderlist = smallOrderService.list(new QueryWrapper<SmallOrder>().eq("user_id",user.getId()));
+        return R.ok().put("list",orderlist);
+    }
+
+    /**
+     * 订单详情
+     * @return
+     */
+    @ApiOperation(value="订单详情", notes="")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "订单id", required = true, paramType = "query", dataType = "Long")
+    })
+    @RequestMapping(value = "/orderdetail",method = {RequestMethod.GET})
+    @ResponseBody
+    public R orderdetail(@RequestParam Long id,@LoginUser WxUser user) throws Exception {
+
+        List<SmallOrder> orderlist = smallOrderService.list(new QueryWrapper<SmallOrder>().eq("user_id",user.getId()).eq("id",id));
+        if(orderlist==null || orderlist.size()<=0){
+            return R.error();
+        }
+        OrderVo orderVo = new OrderVo();
+        BeanUtils.copyProperties(orderVo,orderlist.get(0));
+        List<SmallOrderDetail> detaillist =  smallOrderDetailService.list(new QueryWrapper<SmallOrderDetail>().eq("order_id",orderVo.getId()));
+        List<OrderDetailVo> detaillistvo = ColaBeanUtils.copyListProperties(detaillist , OrderDetailVo::new, (articleEntity, articleVo) -> {
+            // 回调处理
+        });
+        orderVo.setDetaillist(detaillistvo);
+        return R.ok().put("order",orderVo);
+    }
+
 
 
 }

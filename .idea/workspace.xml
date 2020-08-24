@@ -6,12 +6,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6fbc680-6164-4f33-9b24-94a00587f493" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/SmallAddressApiController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/vo/AddressVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/vo/OrderDetailVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/vo/OrderVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/vo/UserVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/common/validator/ValidatorUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/common/validator/ValidatorUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallAddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallAddressService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/OrderApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/OrderApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/SmallAddressApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/SmallAddressApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/UserApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/UserApiController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +237,7 @@
       <workItem from="1597797793579" duration="8333000" />
       <workItem from="1597885245054" duration="18035000" />
       <workItem from="1597970406147" duration="23180000" />
-      <workItem from="1598229315371" duration="16244000" />
+      <workItem from="1598229315371" duration="19181000" />
     </task>
     <task id="LOCAL-00001" summary="修改写字楼售bug">
       <created>1574649748896</created>
@@ -321,38 +322,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597740574020" />
-    <state width="1493" height="309" key="GridCell.Tab.0.bottom" timestamp="1598251631645">
+    <state width="1493" height="313" key="GridCell.Tab.0.bottom" timestamp="1598255094587">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="309" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598251631645" />
-    <state width="1493" height="309" key="GridCell.Tab.0.center" timestamp="1598251631645">
+    <state width="1493" height="313" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598255094587" />
+    <state width="1493" height="313" key="GridCell.Tab.0.center" timestamp="1598255094586">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="309" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598251631645" />
-    <state width="1493" height="309" key="GridCell.Tab.0.left" timestamp="1598251631644">
+    <state width="1493" height="313" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598255094586" />
+    <state width="1493" height="313" key="GridCell.Tab.0.left" timestamp="1598255094585">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="309" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598251631644" />
-    <state width="1493" height="309" key="GridCell.Tab.0.right" timestamp="1598251631645">
+    <state width="1493" height="313" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598255094585" />
+    <state width="1493" height="313" key="GridCell.Tab.0.right" timestamp="1598255094586">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="309" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598251631645" />
-    <state width="1493" height="309" key="GridCell.Tab.1.bottom" timestamp="1598251631645">
+    <state width="1493" height="313" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598255094586" />
+    <state width="1493" height="313" key="GridCell.Tab.1.bottom" timestamp="1598255094588">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="309" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598251631645" />
-    <state width="1493" height="309" key="GridCell.Tab.1.center" timestamp="1598251631645">
+    <state width="1493" height="313" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598255094588" />
+    <state width="1493" height="313" key="GridCell.Tab.1.center" timestamp="1598255094587">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="309" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1598251631645" />
-    <state width="1493" height="309" key="GridCell.Tab.1.left" timestamp="1598251631645">
+    <state width="1493" height="313" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1598255094587" />
+    <state width="1493" height="313" key="GridCell.Tab.1.left" timestamp="1598255094587">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="309" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1598251631645" />
-    <state width="1493" height="309" key="GridCell.Tab.1.right" timestamp="1598251631645">
+    <state width="1493" height="313" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1598255094587" />
+    <state width="1493" height="313" key="GridCell.Tab.1.right" timestamp="1598255094587">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="309" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1598251631645" />
+    <state width="1493" height="313" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1598255094587" />
     <state x="502" y="113" key="RollbackChangesDialog" timestamp="1595231170484">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
