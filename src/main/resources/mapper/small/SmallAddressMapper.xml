@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.small.dao.SmallAddressMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.small.entity.SmallAddress" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="province" column="province"/>
+     <result property="city" column="city"/>
+     <result property="county" column="county"/>
+     <result property="address" column="address"/>
+     <result property="defaultAddress" column="default_address"/>
+     <result property="userId" column="user_id"/>
+     <result property="phone" column="phone"/>
+     <result property="name" column="name"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,province,city,county,address,default_address,user_id,phone,name,create_time,modify_time
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_small_address t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="province != null">
+    and t.province = #{province}
+</if>
+<if test="city != null">
+    and t.city = #{city}
+</if>
+<if test="county != null">
+    and t.county = #{county}
+</if>
+<if test="address != null">
+    and t.address = #{address}
+</if>
+<if test="default_address != null">
+    and t.default_address = #{default_address}
+</if>
+<if test="user_id != null">
+    and t.user_id = #{user_id}
+</if>
+<if test="phone != null">
+    and t.phone = #{phone}
+</if>
+<if test="name != null">
+    and t.name = #{name}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+</where>
+</select>
+</mapper>

@@ -15,7 +15,7 @@ public class CartOrderUtil {
         int totalNum = 0;
         CartTotalVo total = new CartTotalVo();
         for (CartVo temp:list){
-            totalAmout+=temp.getPrice();
+            totalAmout+=temp.getPrice()*temp.getNum();
             totalNum+=temp.getNum();
         }
         total.setTotalAmout(totalAmout);
