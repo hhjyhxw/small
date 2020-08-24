@@ -2,6 +2,7 @@ package com.icloud.modules.small.vo;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -17,9 +18,9 @@ public class OrderDetailVo {
     /* 数量 */
     private Integer num;
     /* 原价 */
-    private Integer originalPrice;
+    private BigDecimal originalPrice;
     /* 现价 */
-    private Integer price;
+    private BigDecimal price;
     /* spu图片 */
     private String spuImg;
     /* 创建时间 */

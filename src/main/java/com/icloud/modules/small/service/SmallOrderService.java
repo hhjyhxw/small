@@ -1,7 +1,6 @@
 package com.icloud.modules.small.service;
 
 import cn.hutool.core.lang.Snowflake;
-import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.icloud.basecommon.service.BaseServiceImpl;
 import com.icloud.basecommon.service.redislock.DistributedLock;
@@ -18,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -45,20 +45,22 @@ public class SmallOrderService extends BaseServiceImpl<SmallOrderMapper,SmallOrd
     public static int  dataCenterId = JvmUtils.jvmPid()+JvmUtils.getSysinfo();
 
     public R createOrder(PreOrder preOrder, WxUser user,SmallAddress address) {
-
-        int totalAmout = 0;//订单总金额
+        BigDecimal totalAmout = new BigDecimal(0);//订单总金额
+//        int totalAmout = 0;
         int totalNum = 0;//总数量
         //1、库存校验
         for(int i=0;i<preOrder.getSkuId().length;i++){
-            log.info("spu==="+ JSON.toJSONString(preOrder.getSkuId()[i]));
             SmallSpu spu = (SmallSpu) smallSpuService.getById(preOrder.getSkuId()[i]);
+            if(spu.getSupplierId().longValue()!=preOrder.getSupplierId().longValue()){
+                return R.error(spu.getTitle()+" 与商户对应不上");
+            }
             //剩余库存
-            log.info("spu==="+ JSON.toJSONString(spu));
             int remainStock = spu.getStock()-(spu.getFreezeStock()!=null?spu.getFreezeStock():0);
             if(remainStock<=0 || remainStock<preOrder.getNum()[i]){
                 return R.error(spu.getTitle()+" 库存不足");
             }
-            totalAmout+=spu.getPrice()*preOrder.getNum()[i];
+//            totalAmout+=spu.getPrice()*preOrder.getNum()[i];
+            totalAmout = totalAmout.add(spu.getPrice().multiply(new BigDecimal(preOrder.getNum()[i])).setScale(2,BigDecimal.ROUND_HALF_UP));
             totalNum+=preOrder.getNum()[i];
         }
         //2、冻结库存

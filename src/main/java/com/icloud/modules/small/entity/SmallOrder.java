@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -50,25 +51,25 @@ public class SmallOrder implements Serializable {
        private Integer shipStatus;
    	   	   /* 商品(sku)原始价总额 */
        @TableField("sku_original_total_price")
-       private Integer skuOriginalTotalPrice;
+       private BigDecimal skuOriginalTotalPrice;
    	   	   /* 商品(sku)现价总额 */
        @TableField("sku_total_price")
-       private Integer skuTotalPrice;
+       private BigDecimal skuTotalPrice;
    	   	   /* 运费 */
        @TableField("freight_price")
-       private Integer freightPrice;
+       private BigDecimal freightPrice;
    	   	   /* 代金券优惠价 */
        @TableField("coupon_price")
-       private Integer couponPrice;
+       private BigDecimal couponPrice;
    	   	   /* 代金券id */
        @TableField("coupon_id")
        private Long couponId;
    	   	   /* 实付订单金额 */
        @TableField("actual_price")
-       private Integer actualPrice;
+       private BigDecimal actualPrice;
    	   	   /* 支付金额 */
        @TableField("pay_price")
-       private Integer payPrice;
+       private BigDecimal payPrice;
    	   	   /* 支付流水id(本地支付流水) */
        @TableField("pay_id")
        private Long payId;

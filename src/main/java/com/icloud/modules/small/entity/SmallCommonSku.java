@@ -1,12 +1,13 @@
 package com.icloud.modules.small.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -38,13 +39,13 @@ public class SmallCommonSku implements Serializable {
        private String img;
    	   	   /* 原始价 */
        @TableField("original_price")
-       private Integer originalPrice;
+       private BigDecimal originalPrice;
    	   	   /* 现价 */
        @TableField("price")
-       private Integer price;
+       private BigDecimal price;
    	   	   /* vip价 */
        @TableField("vip_price")
-       private Integer vipPrice;
+       private BigDecimal vipPrice;
    	   	   /* 库存 */
        @TableField("stock")
        private Integer stock;

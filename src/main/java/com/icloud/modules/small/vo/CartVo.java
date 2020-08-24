@@ -2,6 +2,8 @@ package com.icloud.modules.small.vo;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 public class CartVo {
 
@@ -13,9 +15,9 @@ public class CartVo {
     /* 商品id*/
     private Long skuId;////因为目前采用单商品模式，这里替换成 spuId
     /* 原价(按分存) */
-    private Integer price;
+    private BigDecimal price;
     /* 现价 */
-    private Integer originalPrice;
+    private BigDecimal originalPrice;
     /* 商品名称 */
     private String title;
     /* 商品图片 */

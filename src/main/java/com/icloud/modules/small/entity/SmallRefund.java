@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -32,7 +33,7 @@ public class SmallRefund implements Serializable {
        private String refundSn;
    	   	   /* 退款金额 */
        @TableField("refund_amount")
-       private Integer refundAmount;
+       private BigDecimal refundAmount;
    	   	   /* 退款时间 */
        @TableField("refund_time")
        private Date refundTime;

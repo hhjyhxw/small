@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -35,10 +36,10 @@ public class SmallPayment implements Serializable {
        private Integer payWay;
    	   	   /* 支付金额 以分为单位 */
        @TableField("pay_amount")
-       private Integer payAmount;
+       private BigDecimal payAmount;
    	   	   /* 支付手续费 */
        @TableField("pay_fee")
-       private Integer payFee;
+       private BigDecimal payFee;
    	   	   /* 用户id */
        @TableField("user_id")
        private Long userId;

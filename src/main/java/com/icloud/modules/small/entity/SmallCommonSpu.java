@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -26,13 +27,13 @@ public class SmallCommonSpu implements Serializable {
        private Long id;
    	   	   /* 原价(按分存) */
        @TableField("price")
-       private Integer price;
+       private BigDecimal price;
    	   	   /* 现价 */
        @TableField("original_price")
-       private Integer originalPrice;
+       private BigDecimal originalPrice;
    	   	   /* vip价 */
        @TableField("vip_price")
-       private Integer vipPrice;
+       private BigDecimal vipPrice;
    	   	   /* 商品名称 */
        @TableField("title")
        private String title;

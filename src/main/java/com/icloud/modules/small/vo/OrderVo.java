@@ -2,6 +2,7 @@ package com.icloud.modules.small.vo;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -22,9 +23,9 @@ public class OrderVo {
     /* 0未发货、1发货中、2已发货 */
     private Integer shipStatus;
     /* 商品(sku)现价总额 */
-    private Integer skuTotalPrice;
+    private BigDecimal skuTotalPrice;
     /* 实付订单金额 */
-    private Integer actualPrice;
+    private BigDecimal actualPrice;
     /* 省 */
     private String province;
     /* 市 */
