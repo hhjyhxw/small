@@ -2,7 +2,6 @@ package com.icloud.font;
 
 import cn.hutool.captcha.generator.RandomGenerator;
 import com.icloud.basecommon.service.redis.RedisService;
-import com.icloud.common.MD5Utils;
 import com.icloud.common.util.StringUtil;
 import com.icloud.config.global.MyPropertitys;
 import com.icloud.modules.wx.entity.WxUser;
@@ -46,7 +45,8 @@ public class H5LoginController {
 //                return "modules/h5login/error";//
 //            }
             String h5token = new RandomGenerator(12).generate();
-            redisService.set(MD5Utils.encode2hex(h5token),user,3000L);//兼容h5、APP 前端服务 登陆
+//            redisService.set(MD5Utils.encode2hex(h5token),user,3000L);//兼容h5、APP 前端服务 登陆
+            redisService.set(h5token,user,3000L);//兼容h5、APP 前端服务 登陆
             log.info("redirect_url=="+ redirect_url);
             if(redirect_url.indexOf("?")>=0){
                 redirect_url = redirect_url+"&token="+h5token;
