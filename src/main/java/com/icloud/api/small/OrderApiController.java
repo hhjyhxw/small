@@ -47,7 +47,7 @@ public class OrderApiController {
     @ApiOperation(value="订单确认", notes="")
     @RequestMapping(value = "/preOrder",method = {RequestMethod.POST})
     @ResponseBody
-    public R preOrder(@RequestBody PreOrder preOrder, @LoginUser WxUser user) throws Exception {
+    public R preOrder(@RequestBody PresOrder preOrder, @LoginUser WxUser user) throws Exception {
 
         if(preOrder==null || !StringUtil.checkStr(preOrder.getTypes())){
             return R.error("参数为空");

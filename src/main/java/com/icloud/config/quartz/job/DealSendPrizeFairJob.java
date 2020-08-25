@@ -7,9 +7,7 @@ package com.icloud.config.quartz.job;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
@@ -41,7 +39,7 @@ public class DealSendPrizeFairJob {
 	//每天9点运行
 //	@Scheduled(cron = "0 0 9  * * ? ")
 	//每20分钟运行一次（秒 分 时 ）
-	@Scheduled(cron = "0 0/10 * * * ?")
+//	@Scheduled(cron = "0 0/10 * * * ?")
 	//每5妙运行一次
 //	@Scheduled(cron = "0/5 * * * * ?")
 	public void todDalSendPrizeFairJob() throws Exception{

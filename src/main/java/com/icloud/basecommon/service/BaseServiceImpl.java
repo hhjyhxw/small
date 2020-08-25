@@ -17,6 +17,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl imp
     @Override
     public PageUtils<T> findByPage(int pageNo, int pageSize, Map<String, Object> query) {
         try {
+            getClass().getName();
             Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[1];
             query =  MapEntryUtils.mapvalueToBeanValueAndBeanProperyToColum(query, clazz);
             for(String key:query.keySet()){
