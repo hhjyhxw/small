@@ -2,6 +2,8 @@ package com.icloud.api.small;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.icloud.annotation.LoginUser;
+import com.icloud.basecommon.model.Query;
+import com.icloud.common.PageUtils;
 import com.icloud.common.R;
 import com.icloud.common.beanutils.ColaBeanUtils;
 import com.icloud.common.util.StringUtil;
@@ -25,6 +27,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Api("订单相关接口")
@@ -122,11 +125,20 @@ public class OrderApiController {
      * @return
      */
     @ApiOperation(value="用户订单列表", notes="")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "pageNum", value = "页码", required = false, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "pageSize", value = "每页多少记录", required = false, paramType = "query", dataType = "String")
+    })
     @RequestMapping(value = "/orderlist",method = {RequestMethod.GET})
     @ResponseBody
-    public R orderlist(@LoginUser WxUser user) {
-        List<SmallOrder> orderlist = smallOrderService.list(new QueryWrapper<SmallOrder>().eq("user_id",user.getId()));
-        return R.ok().put("list",orderlist);
+    public R orderlist(@LoginUser WxUser user,String pageNum,String pageSize) {
+        Query query = new Query(new HashMap<>());
+        query.put("page",pageNum);
+        query.put("limit",pageSize);
+        query.put("userId",user.getId());
+//        List<SmallOrder> orderlist = smallOrderService.list(new QueryWrapper<SmallOrder>().eq("user_id",user.getId()));
+        PageUtils<SmallOrder> page = smallOrderService.findByPage(query.getPageNum(),query.getPageSize(), query);
+        return R.ok().put("page", page);
     }
 
     /**
