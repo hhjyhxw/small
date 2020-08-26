@@ -51,6 +51,58 @@ $(function () {
         	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" }); 
         }
     });
+
+        var obj1 = new AjaxUpload('#upload', {
+            action: baseURL + "sys/oss/uploadFront",
+            name: 'file',
+            autoSubmit:true,
+            responseType:"json",
+            onSubmit:function(file, extension){
+                if (!(extension && /^(jpg|jpeg|png|gif)$/.test(extension.toLowerCase()))){
+                    alert('只支持jpg、png、gif格式的图片！');
+                    return false;
+                }
+            },
+            onComplete : function(file, r){
+                console.log("r=="+JSON.stringify(r));
+                console.log("file=="+file);
+                if(r.code == 0){
+                    alert("上传成功!");
+                    vm.smallRetail.headImg = r.url;
+                    console.log("vm.smallRetail=="+vm.smallRetail.headImg);
+                    //vm.reload();
+                }else{
+                    alert(r.msg);
+                }
+            }
+        });
+
+        var obj2 = new AjaxUpload('#upload2', {
+            action: baseURL + "sys/oss/uploadFront",
+            name: 'file',
+            autoSubmit:true,
+            responseType:"json",
+            onSubmit:function(file, extension){
+                if (!(extension && /^(jpg|jpeg|png|gif)$/.test(extension.toLowerCase()))){
+                    alert('只支持jpg、png、gif格式的图片！');
+                    return false;
+                }
+            },
+            onComplete : function(file, r){
+                console.log("r=="+JSON.stringify(r));
+                console.log("file=="+file);
+                if(r.code == 0){
+                    alert("上传成功!");
+                    vm.smallRetail.payImg = r.url;
+                    console.log("vm.payImg=="+vm.smallRetail.payImg);
+                    //vm.reload();
+                }else{
+                    alert(r.msg);
+                }
+            }
+        });
+
+
 });
 
 var vm = new Vue({
@@ -58,7 +110,10 @@ var vm = new Vue({
 	data:{
 		showList: true,
 		title: null,
-		smallRetail: {}
+		smallRetail: {
+            headImg:null,
+            payImg:null
+        }
 	},
 	methods: {
 		query: function () {
@@ -67,7 +122,10 @@ var vm = new Vue({
 		add: function(){
 			vm.showList = false;
 			vm.title = "新增";
-			vm.smallRetail = {};
+			vm.smallRetail = {
+                headImg:null,
+                payImg:null
+            };
 		},
 		update: function (event) {
 			var id = getSelectedRow();

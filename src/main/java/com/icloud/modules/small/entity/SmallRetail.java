@@ -88,5 +88,9 @@ public class SmallRetail implements Serializable {
    	   	   /* 纬度 */
        @TableField("lat")
        private BigDecimal lat;
+        /* 店铺头像 */
+        @TableField("pay_img")
+        private String payImg;
+
    	
 }

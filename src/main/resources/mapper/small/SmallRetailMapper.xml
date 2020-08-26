@@ -28,6 +28,7 @@
      <result property="modifyTime" column="modify_time"/>
      <result property="lnt" column="lnt"/>
      <result property="lat" column="lat"/>
+     <result property="payImg" column="pay_img"/>
     </resultMap>
 
    <!-- 基础字段列 -->

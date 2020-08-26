@@ -77,7 +77,7 @@ public class SmallAddressApiController {
         SmallAddress smallAddress = new SmallAddress();
         BeanUtils.copyProperties(addressVo,smallAddress);
         boolean resutl = smallAddressService.saveOrUpdate(smallAddress);
-        return resutl?R.ok():R.error();
+        return resutl?R.ok().put("address",smallAddress):R.error();
     }
 
     /**

@@ -7,6 +7,7 @@ import com.icloud.basecommon.service.redislock.DistributedLock;
 import com.icloud.basecommon.service.redislock.DistributedLockUtil;
 import com.icloud.common.JvmUtils;
 import com.icloud.common.R;
+import com.icloud.config.threadpool.ThreadPoodExecuteService;
 import com.icloud.exceptions.ApiException;
 import com.icloud.modules.small.dao.SmallOrderMapper;
 import com.icloud.modules.small.entity.*;
@@ -30,7 +31,8 @@ import java.util.Date;
 @Service
 @Transactional
 public class SmallOrderService extends BaseServiceImpl<SmallOrderMapper,SmallOrder> {
-
+    @Autowired
+    private SmallPlaceOrderNotifyService smallPlaceOrderNotifyService;
     @Autowired
     private SmallOrderMapper smallOrderMapper;
     @Autowired
@@ -39,6 +41,8 @@ public class SmallOrderService extends BaseServiceImpl<SmallOrderMapper,SmallOrd
     private SmallOrderDetailService smallOrderDetailService;
     @Autowired
     private SmallCartService smallCartService;
+    @Autowired
+    private SmallRetailService smallRetailService;
 
     @Autowired
     private DistributedLockUtil distributedLockUtil;
@@ -46,7 +50,6 @@ public class SmallOrderService extends BaseServiceImpl<SmallOrderMapper,SmallOrd
 
     public R createOrder(PreOrder preOrder, WxUser user,SmallAddress address) {
         BigDecimal totalAmout = new BigDecimal(0);//订单总金额
-//        int totalAmout = 0;
         int totalNum = 0;//总数量
         //1、库存校验
         for(int i=0;i<preOrder.getSkuId().length;i++){
@@ -115,6 +118,7 @@ public class SmallOrderService extends BaseServiceImpl<SmallOrderMapper,SmallOrd
         order.setShipStatus(0);
         smallOrderMapper.insert(order);
 
+        String productInfo = "";
         for(int i=0;i<preOrder.getSkuId().length;i++){
             SmallSpu spu = (SmallSpu) smallSpuService.getById(preOrder.getSkuId()[i]);
             SmallOrderDetail detail = new SmallOrderDetail();
@@ -126,6 +130,7 @@ public class SmallOrderService extends BaseServiceImpl<SmallOrderMapper,SmallOrd
             detail.setSkuTitle(spu.getTitle());
             detail.setSpuImg(spu.getImg());
             detail.setPrice(spu.getPrice());
+            productInfo+=spu.getTitle()+"x"+detail.getNum()+";";
 //            detail
             smallOrderDetailService.save(detail);
         }
@@ -137,7 +142,13 @@ public class SmallOrderService extends BaseServiceImpl<SmallOrderMapper,SmallOrd
                     .eq("supplier_id",preOrder.getSupplierId()));
 
         }
-        return R.ok().put("orderNo",order.getOrderNo());
+        SmallRetail retail = (SmallRetail) smallRetailService.getById(preOrder.getSupplierId());
+        //设置需要发送的消息
+        smallPlaceOrderNotifyService.setNotifyInof(order,user,retail,productInfo);
+        //异步执行发送任务
+        ThreadPoodExecuteService.getTaskExecutor().execute(smallPlaceOrderNotifyService);
+
+        return R.ok().put("orderNo",order.getOrderNo()).put("url",retail.getPayImg());
     }
 }
 

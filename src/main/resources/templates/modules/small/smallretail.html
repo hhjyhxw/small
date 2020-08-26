@@ -3,6 +3,7 @@
 <head>
     <title>零售户</title>
 		<#include "/header.html">
+    <script src="${request.contextPath}/statics/libs/ajaxupload.js"></script>
 </head>
 <body>
 <div id="icloudapp" v-cloak>
@@ -29,6 +30,20 @@
                         <div class="col-sm-2 control-label">零售户名称</div>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" v-model="smallRetail.supplierName" placeholder="零售户名称"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">店铺图标</div>
+                        <img   :src="smallRetail.headImg" style="width:300px;height:150px;" v-model="smallRetail.headImg" placeholder="店铺图标"/>
+                        <div class="col-sm-10">
+                            <a class="btn btn-primary" id="upload" style="margin-left:11rem;"><i class="fa fa-plus"></i>&nbsp;上传文件</a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">收款二维码</div>
+                        <img   :src="smallRetail.payImg" style="width:300px;height:150px;" v-model="smallRetail.payImg" placeholder="收款二维码"/>
+                        <div class="col-sm-10">
+                            <a class="btn btn-primary" id="upload2" style="margin-left:11rem;"><i class="fa fa-plus"></i>&nbsp;上传文件</a>
                         </div>
                     </div>
 											                    <div class="form-group">
