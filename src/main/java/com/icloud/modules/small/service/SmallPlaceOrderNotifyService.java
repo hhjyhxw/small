@@ -1,7 +1,7 @@
 package com.icloud.modules.small.service;
 
 
-import com.icloud.common.ThreadLocalVars;
+import com.icloud.common.SpringContextHolder;
 import com.icloud.modules.small.entity.SmallOrder;
 import com.icloud.modules.small.entity.SmallRetail;
 import com.icloud.modules.wx.entity.WxUser;
@@ -9,30 +9,35 @@ import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.kefu.WxMpKefuMessage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
-@Service
-@Transactional
+//@Service
+//@Transactional
 public class SmallPlaceOrderNotifyService implements Runnable{
 
-    @Autowired
     private WxMpService wxMpService;
+
+    private WxMpKefuMessage comsueUserMessage;
+
+    private WxMpKefuMessage retailUserMessage;
+
+    public SmallPlaceOrderNotifyService(){
+        this.wxMpService = SpringContextHolder.getBean("wxMpService");
+    }
 
     @Override
     public void run() {
 
         try {
             //发送客服消息通知消费者
-            wxMpService.getKefuService().sendKefuMessage((WxMpKefuMessage) ThreadLocalVars.get("comsueUserMessage"));
+            wxMpService.getKefuService().sendKefuMessage(comsueUserMessage);
         } catch (WxErrorException e) {
             e.printStackTrace();
         }
         try {
             //发送客服消息通知店家
-            wxMpService.getKefuService().sendKefuMessage((WxMpKefuMessage) ThreadLocalVars.get("retailUserMessage"));
+//            WxMpKefuServiceImpl wxMpServiceKefuService = (WxMpKefuServiceImpl) wxMpService.getKefuService();
+            wxMpService.getKefuService().sendKefuMessage(retailUserMessage);
         } catch (WxErrorException e) {
             e.printStackTrace();
         }
@@ -49,7 +54,8 @@ public class SmallPlaceOrderNotifyService implements Runnable{
                         +"店铺联系方式："+retail.getPhone()+"\r\n"
                         +"店铺收款码：<a href=\""+retail.getPayImg()+"\">点击二维码付款</a>")
                 .build();
-        ThreadLocalVars.put("comsueUserMessage",comsueUserMessage);
+        setComsueUserMessage(comsueUserMessage);
+//        ThreadLocalVars.put("comsueUserMessage",comsueUserMessage);
 
         WxMpKefuMessage retailUserMessage = WxMpKefuMessage
                 .TEXT()
@@ -60,6 +66,23 @@ public class SmallPlaceOrderNotifyService implements Runnable{
                         +"用户联系方式："+order.getPhone()+"\r\n"
                         )
                 .build();
-        ThreadLocalVars.put("retailUserMessage",retailUserMessage);
+        setRetailUserMessage(retailUserMessage);
+//        ThreadLocalVars.put("retailUserMessage",retailUserMessage);
+    }
+
+    public WxMpKefuMessage getComsueUserMessage() {
+        return comsueUserMessage;
+    }
+
+    public void setComsueUserMessage(WxMpKefuMessage comsueUserMessage) {
+        this.comsueUserMessage = comsueUserMessage;
+    }
+
+    public WxMpKefuMessage getRetailUserMessage() {
+        return retailUserMessage;
+    }
+
+    public void setRetailUserMessage(WxMpKefuMessage retailUserMessage) {
+        this.retailUserMessage = retailUserMessage;
     }
 }

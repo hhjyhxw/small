@@ -31,8 +31,7 @@ import java.util.Date;
 @Service
 @Transactional
 public class SmallOrderService extends BaseServiceImpl<SmallOrderMapper,SmallOrder> {
-    @Autowired
-    private SmallPlaceOrderNotifyService smallPlaceOrderNotifyService;
+
     @Autowired
     private SmallOrderMapper smallOrderMapper;
     @Autowired
@@ -43,7 +42,6 @@ public class SmallOrderService extends BaseServiceImpl<SmallOrderMapper,SmallOrd
     private SmallCartService smallCartService;
     @Autowired
     private SmallRetailService smallRetailService;
-
     @Autowired
     private DistributedLockUtil distributedLockUtil;
     public static int  dataCenterId = JvmUtils.jvmPid()+JvmUtils.getSysinfo();
@@ -143,7 +141,9 @@ public class SmallOrderService extends BaseServiceImpl<SmallOrderMapper,SmallOrd
 
         }
         SmallRetail retail = (SmallRetail) smallRetailService.getById(preOrder.getSupplierId());
-        //设置需要发送的消息
+
+        //生成发送通知消息任务，设置需要发送的消息
+        SmallPlaceOrderNotifyService smallPlaceOrderNotifyService = new SmallPlaceOrderNotifyService();
         smallPlaceOrderNotifyService.setNotifyInof(order,user,retail,productInfo);
         //异步执行发送任务
         ThreadPoodExecuteService.getTaskExecutor().execute(smallPlaceOrderNotifyService);
