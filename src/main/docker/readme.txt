@@ -1,0 +1,1 @@
+Dockerfile的内容如下，就是将工程构建完毕后的jar包复制到HOME_PATH目录，然后构建镜像：

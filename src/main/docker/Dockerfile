@@ -1,0 +1,9 @@
+ENV ARTIFACTID small
+ENV ARTIFACTVERSION 0.0.1-SNAPSHOT
+ENV HOME_PATH /data/imcc/webapps/small
+
+ADD /$ARTIFACTID-$ARTIFACTVERSION.jar $HOME_PATH/small.jar
+
+WORKDIR $HOME_PATH
+
+ENTRYPOINT ["java","-jar","small.jar"]
