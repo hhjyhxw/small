@@ -678,7 +678,7 @@
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>0.4.12</version>
+                <version>0.4.14</version>
                 <!--docker镜像相关的配置信息-->
                 <configuration>
                     <!--镜像名，这里用工程名-->
