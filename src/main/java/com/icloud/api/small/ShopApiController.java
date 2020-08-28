@@ -8,17 +8,21 @@ import com.icloud.common.R;
 import com.icloud.modules.bsactivity.entity.BsactivityAd;
 import com.icloud.modules.bsactivity.service.BsactivityAdService;
 import com.icloud.modules.small.entity.SmallCategory;
+import com.icloud.modules.small.entity.SmallRetail;
 import com.icloud.modules.small.entity.SmallSellCategory;
 import com.icloud.modules.small.entity.SmallSpu;
 import com.icloud.modules.small.service.SmallCategoryService;
+import com.icloud.modules.small.service.SmallRetailService;
 import com.icloud.modules.small.service.SmallSellCategoryService;
 import com.icloud.modules.small.service.SmallSpuService;
 import com.icloud.modules.small.vo.CategoryAndGoodListVo;
+import com.icloud.modules.small.vo.ShopInfo;
 import com.icloud.modules.small.vo.SpuVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +44,32 @@ public class ShopApiController {
     private SmallSellCategoryService smallSellCategoryService;
     @Autowired
     private SmallSpuService smallSpuService;
+    @Autowired
+    private SmallRetailService smallRetailService;
+
+    /**
+     * 获取商品分详细
+     * @return
+     */
+    @ApiOperation(value="获取商家信息", notes="")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "商家id", required = true, paramType = "query", dataType = "Long"),
+    })
+    @RequestMapping(value = "/shopInfo",method = {RequestMethod.GET})
+    @ResponseBody
+    @AuthIgnore
+    public R shopInfo(@RequestParam Long id)  {
+        if(id==null){
+            return R.error("商家id不能为空");
+        }
+        Object shop = smallRetailService.getById(id);
+        ShopInfo shopInfo = new ShopInfo();
+        if(shop!=null){
+            BeanUtils.copyProperties((SmallRetail)shop,shopInfo);
+        }
+        return R.ok().put("shopInfo",shopInfo);
+    }
+
 
     /**
      * 获取滚动广告列表

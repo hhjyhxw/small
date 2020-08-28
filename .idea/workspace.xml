@@ -6,18 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6fbc680-6164-4f33-9b24-94a00587f493" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_dblock_oshi_core_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_dblock_oshi_json_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_java_dev_jna_jna_4_5_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_java_dev_jna_jna_platform_4_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_javax_json_1_0_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/vo/ShopInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/small.iml" beforeDir="false" afterPath="$PROJECT_DIR$/small.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/OrderApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/OrderApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/exceptions/ApiGlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/exceptions/ApiGlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallAddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/service/SmallAddressService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/thirdinterfaces/apiservice/SmallCreateOrderApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/thirdinterfaces/apiservice/SmallCreateOrderApiService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/icloud/ForestHttpCreateOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/icloud/ForestHttpCreateOrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/ShopApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/ShopApiController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +267,7 @@
       <workItem from="1598412904267" duration="2914000" />
       <workItem from="1598488256780" duration="456000" />
       <workItem from="1598490669092" duration="6020000" />
-      <workItem from="1598578095096" duration="3464000" />
+      <workItem from="1598578095096" duration="4401000" />
     </task>
     <task id="LOCAL-00001" summary="修改写字楼售bug">
       <created>1574649748896</created>
