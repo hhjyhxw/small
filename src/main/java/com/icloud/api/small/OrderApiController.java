@@ -47,49 +47,53 @@ public class OrderApiController {
     @ApiOperation(value="订单确认", notes="")
     @RequestMapping(value = "/preOrder",method = {RequestMethod.POST})
     @ResponseBody
-    public R preOrder(@RequestBody PresOrder preOrder, @LoginUser WxUser user) throws Exception {
-
-        if(preOrder==null || !StringUtil.checkStr(preOrder.getTypes())){
-            return R.error("参数为空");
-        }
-        if(preOrder.getNum()==null || preOrder.getNum().length==0 || preOrder.getSkuId()==null || preOrder.getNum().length!=preOrder.getSkuId().length){
-            return R.error("参数不正确");
-        }
-        SmallAddress address = null;
-        List<SmallAddress> addressList = smallAddressService.list(new QueryWrapper<SmallAddress>().eq("user_id",user.getId()));
-        for (SmallAddress temp:addressList){
-            if(temp.getDefaultAddress()!=null && temp.getDefaultAddress().intValue()==1){
-                address = temp;
-                break;
+    public R preOrder(@RequestBody PresOrder preOrder, @LoginUser WxUser user)  {
+        try{
+            if(preOrder==null || !StringUtil.checkStr(preOrder.getTypes())){
+                return R.error("参数为空");
             }
-        }
-        if(address==null && addressList!=null && addressList.size()>0){
-            address = addressList.get(0);
-        }
-
-        List<CartVo> list  = new ArrayList<CartVo>();
-        for(int i=0;i<preOrder.getSkuId().length;i++){
-            CartVo vo = new CartVo();
-            SmallSpu spu = (SmallSpu) smallSpuService.getById(preOrder.getSkuId()[i]);
-            BeanUtils.copyProperties(vo,spu);
-            vo.setNum(preOrder.getNum()[i].intValue());
-            vo.setUserId(user.getId().longValue());
-            if(vo.getNum().intValue()<=0){
-                vo.setNum(1);
+            if(preOrder.getNum()==null || preOrder.getNum().length==0 || preOrder.getSkuId()==null || preOrder.getNum().length!=preOrder.getSkuId().length){
+                return R.error("参数不正确");
             }
-            vo.setSkuId(vo.getId());
-            vo.setId(null);
-            list.add(vo);
+            SmallAddress address = null;
+            List<SmallAddress> addressList = smallAddressService.list(new QueryWrapper<SmallAddress>().eq("user_id",user.getId()));
+            for (SmallAddress temp:addressList){
+                if(temp.getDefaultAddress()!=null && temp.getDefaultAddress().intValue()==1){
+                    address = temp;
+                    break;
+                }
+            }
+            if(address==null && addressList!=null && addressList.size()>0){
+                address = addressList.get(0);
+            }
+
+            List<CartVo> list  = new ArrayList<CartVo>();
+            for(int i=0;i<preOrder.getSkuId().length;i++){
+                CartVo vo = new CartVo();
+                SmallSpu spu = (SmallSpu) smallSpuService.getById(preOrder.getSkuId()[i]);
+                BeanUtils.copyProperties(vo,spu);
+                vo.setNum(preOrder.getNum()[i].intValue());
+                vo.setUserId(user.getId().longValue());
+                if(vo.getNum().intValue()<=0){
+                    vo.setNum(1);
+                }
+                vo.setSkuId(vo.getId());
+                vo.setId(null);
+                list.add(vo);
+            }
+            CartTotalVo total = CartOrderUtil.getTotal(list);
+            return R.ok().put("list",list).put("totalAmout",total.getTotalAmout()).put("totalNum",total.getTotalNum()).put("address",address);
+        }catch (Exception e){
+            e.printStackTrace();
+            return R.error(e.getMessage());
         }
-        CartTotalVo total = CartOrderUtil.getTotal(list);
-        return R.ok().put("list",list).put("totalAmout",total.getTotalAmout()).put("totalNum",total.getTotalNum()).put("address",address);
     }
 
 
     @ApiOperation(value="生成订单", notes="")
     @RequestMapping(value = "/createOrder",method = {RequestMethod.POST})
     @ResponseBody
-    public R createOrder(@RequestBody PreOrder preOrder, @LoginUser WxUser user) throws Exception {
+    public R createOrder(@RequestBody PreOrder preOrder, @LoginUser WxUser user) {
         try {
 
             if(preOrder==null || !StringUtil.checkStr(preOrder.getTypes())){

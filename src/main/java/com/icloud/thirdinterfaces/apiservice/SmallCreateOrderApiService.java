@@ -10,7 +10,7 @@ public interface SmallCreateOrderApiService {
             url = "${url}",
             headers = {
                     "Content-Type: application/json",
-                    "accessToken: v85xycypcxb2"
+                    "accessToken: z346yenzetp4"
             },
             type="POST"
     )

@@ -23,8 +23,7 @@ public class ApiGlobalExceptionHandler {
         R response = new R();
         response.put("code", 134);
         response.put("msg", e.getMessage());
-        String result = JSONObject.toJSONString(response);
-        logger.info("[用户请求] ApiException, response=" + JSONObject.toJSONString(result));
+        logger.info("[用户请求] ApiException, response=" + JSONObject.toJSONString(response));
 		return response;
 	}
 
@@ -39,8 +38,7 @@ public class ApiGlobalExceptionHandler {
         R response = new R();
         response.put("code", 500);
         response.put("msg", e.getMessage());
-        String result = JSONObject.toJSONString(response);
-        logger.info("[用户请求] ApiException, response=" + JSONObject.toJSONString(result));
+        logger.info("[用户请求] ApiException, response=" + JSONObject.toJSONString(response));
         return response;
     }
 

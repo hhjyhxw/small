@@ -22,6 +22,7 @@ public class ForestHttpCreateOrderTest {
 //
     public static String url = "";
     public static String createOrderUrl="http://zl.haiyunzy.com/small/api/order/createOrder";
+//public static String createOrderUrl="http://zl.haiyunzy.com/small/api/order/preOrder";
 
 
     @Autowired

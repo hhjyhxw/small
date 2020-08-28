@@ -1,5 +1,6 @@
 package com.icloud.modules.small.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.icloud.basecommon.service.BaseServiceImpl;
 import com.icloud.modules.small.dao.SmallAddressMapper;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 
@@ -26,7 +28,8 @@ public class SmallAddressService extends BaseServiceImpl<SmallAddressMapper,Smal
 
     public boolean saveOrUpdate(SmallAddress smallAddress){
         int flag = 1;
-        if (smallAddress.getDefaultAddress().intValue()==1) {
+        List<SmallAddress> list = smallAddressMapper.selectList(new QueryWrapper<SmallAddress>().eq("user_id", smallAddress.getUserId()));
+        if (list!=null && list.size()>0 && smallAddress.getDefaultAddress().intValue()==1) {
             SmallAddress preDefault = new SmallAddress();
             preDefault.setDefaultAddress(0);
             //传入entity以及更新条件进行更新信息
