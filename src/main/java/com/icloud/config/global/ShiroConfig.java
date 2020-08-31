@@ -100,6 +100,8 @@ public class ShiroConfig {
         filterMap.put("/modules/retail/tologinpage.html", "anon");//用户认证路径放行
         filterMap.put("/small/ueditor/config", "anon");//文本编辑器方行
         filterMap.put("/api/**", "anon");//api方行
+        filterMap.put("/oauth2/**", "anon");//模拟微信授权方行
+
 
 
 

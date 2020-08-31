@@ -73,4 +73,8 @@ public class WxUser implements Serializable {
     @TableField(exist = false)
     private String lat;
 
+    /* 临时存储用户位置纬度的值  */
+    @TableField(exist = false)
+    private String access_token;
+
 }
