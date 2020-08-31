@@ -1,8 +1,6 @@
 package com.icloud.config.starttask;
 
 import com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.icloud.common.ObjectShallowSizeUtil;
 import com.icloud.config.redis.RedisUtils;
 import com.icloud.modules.sys.entity.SysMenuEntity;
 import com.icloud.modules.sys.service.SysMenuService;
@@ -42,10 +40,11 @@ public class ApplicationRunnerImpl implements ApplicationRunner {
         }
         redisUtils.set("allmenu",menuList);
         logger.info("加载所有菜单存入缓存===:"+JSON.toJSONString(menuList));
-        userList= wxUserService.list(new QueryWrapper());
-        long onesize = ObjectShallowSizeUtil.sizeOf(userList.get(0));
-        logger.info("单个对象大小(字节)===:"+onesize);
-        logger.info("总用户对象大小(字节)===:"+onesize*userList.size());
-        logger.info("总用户对象大小(M)===:"+onesize*userList.size()/1024/1024);
+        userList= wxUserService.list();
+        logger.info("总用户对象大小(个数)===:"+userList.size());
+//        long onesize = ObjectShallowSizeUtil.sizeOf(userList.get(0));
+//        logger.info("单个对象大小(字节)===:"+onesize);
+//        logger.info("总用户对象大小(字节)===:"+onesize*userList.size());
+//        logger.info("总用户对象大小(M)===:"+onesize*userList.size()/1024/1024);
     }
 }
