@@ -2,10 +2,14 @@ package com.icloud.modules.small.service;
 
 import cn.hutool.core.lang.Snowflake;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.icloud.basecommon.service.BaseServiceImpl;
 import com.icloud.basecommon.service.redislock.DistributedLock;
 import com.icloud.basecommon.service.redislock.DistributedLockUtil;
 import com.icloud.common.JvmUtils;
+import com.icloud.common.MapEntryUtils;
+import com.icloud.common.PageUtils;
 import com.icloud.common.R;
 import com.icloud.config.threadpool.ThreadPoodExecuteService;
 import com.icloud.exceptions.ApiException;
@@ -20,6 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 订单表
@@ -45,6 +51,21 @@ public class SmallOrderService extends BaseServiceImpl<SmallOrderMapper,SmallOrd
     @Autowired
     private DistributedLockUtil distributedLockUtil;
     public static int  dataCenterId = JvmUtils.jvmPid()+JvmUtils.getSysinfo();
+
+
+    @Override
+    public PageUtils<SmallOrder> findByPage(int pageNo, int pageSize, Map<String, Object> query) {
+        try {
+            query =  MapEntryUtils.mapvalueToBeanValueAndBeanProperyToColum(query, SmallOrder.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        PageHelper.startPage(pageNo, pageSize);
+        List<SmallOrder> list = smallOrderMapper.queryMixList(MapEntryUtils.clearNullValue(query));
+        PageInfo<SmallOrder> pageInfo = new PageInfo<SmallOrder>(list);
+        PageUtils<SmallOrder> page = new PageUtils<SmallOrder>(list,(int)pageInfo.getTotal(),pageSize,pageNo);
+        return page;
+    }
 
     public R createOrder(PreOrder preOrder, WxUser user,SmallAddress address) {
         BigDecimal totalAmout = new BigDecimal(0);//订单总金额

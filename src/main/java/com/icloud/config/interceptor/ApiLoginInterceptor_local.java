@@ -38,7 +38,8 @@ public class ApiLoginInterceptor_local extends HandlerInterceptorAdapter {
         HttpSession session = request.getSession();
         WxUser user = (WxUser) session.getAttribute("wx_user");
         if(null==user){
-            user = wxUserService.findByOpenId("ofRrGw7QmxMLBiklzEP1jGM_kMts");
+//            user = wxUserService.findByOpenId("ofRrGw7QmxMLBiklzEP1jGM_kMts");
+            user = (WxUser) wxUserService.getById(942);
             session.setAttribute("wx_user",user);
         }
         request.setAttribute(Constants.USER_KEY, user);

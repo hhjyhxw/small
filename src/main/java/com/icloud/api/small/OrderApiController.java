@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Api("订单相关接口")
 @RestController
@@ -136,10 +137,12 @@ public class OrderApiController {
     @RequestMapping(value = "/orderlist",method = {RequestMethod.GET})
     @ResponseBody
     public R orderlist(@LoginUser WxUser user,String pageNum,String pageSize) {
-        Query query = new Query(new HashMap<>());
-        query.put("page",pageNum);
-        query.put("limit",pageSize);
-        query.put("userId",user.getId());
+        Map parma = new HashMap();
+        parma.put("page",pageNum);
+        parma.put("limit",pageSize);
+        parma.put("userId",user.getId());
+        Query query = new Query(parma);
+
 //        List<SmallOrder> orderlist = smallOrderService.list(new QueryWrapper<SmallOrder>().eq("user_id",user.getId()));
         PageUtils<SmallOrder> page = smallOrderService.findByPage(query.getPageNum(),query.getPageSize(), query);
         return R.ok().put("page", page);
