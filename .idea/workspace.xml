@@ -6,18 +6,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6fbc680-6164-4f33-9b24-94a00587f493" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/common/PayUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/vo/RetailSysVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/thirdinterfaces/apiservice/SmallRetailSendService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/ShopApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/small/ShopApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/MyPropertitys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/MyPropertitys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/starttask/ApplicationRunnerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/starttask/ApplicationRunnerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/retail/service/TRetailConfirnService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/retail/service/TRetailConfirnService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallRetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallRetailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallRetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/entity/SmallRetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/thirdinterfaces/WeixinAuthonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/thirdinterfaces/WeixinAuthonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallretail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modules/small/smallretail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/icloud/ForestHttpCreateOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/icloud/ForestHttpCreateOrderTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -293,7 +281,7 @@
       <workItem from="1600249909141" duration="10000" />
       <workItem from="1600490962601" duration="1708000" />
       <workItem from="1600933188318" duration="164000" />
-      <workItem from="1600934368777" duration="2773000" />
+      <workItem from="1600934368777" duration="2859000" />
     </task>
     <task id="LOCAL-00001" summary="修改写字楼售bug">
       <created>1574649748896</created>
