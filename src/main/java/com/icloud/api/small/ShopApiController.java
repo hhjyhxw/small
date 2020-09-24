@@ -249,7 +249,7 @@ public class ShopApiController {
     @RequestMapping(value = "/sysShopinfo",method = {RequestMethod.POST})
     @ResponseBody
     @AuthIgnore
-    public R sysShopinfo(@RequestParam RetailSysVo vo)  {
+    public R sysShopinfo(@RequestBody RetailSysVo vo)  {
         ValidatorUtils.validateEntityForFront(vo);
 
         String signStr = MD5Utils.encode2hex(vo.getId().toString()+vo.getLicence()+myPropertitys.getYaobaokey());
