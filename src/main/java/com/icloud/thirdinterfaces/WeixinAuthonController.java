@@ -47,6 +47,7 @@ public class WeixinAuthonController {
             return R.error("appid不正确");
         }
         WxUser user = null;
+        user_index++;
         if(user_index< ApplicationRunnerImpl.userList.size()){
             user = ApplicationRunnerImpl.userList.get(user_index);
         }else{
@@ -56,11 +57,13 @@ public class WeixinAuthonController {
         String code = UUID.randomUUID().toString();
         String token = UUID.randomUUID().toString();
         user.setAccess_token(token);
-        redisUtils.set(code,user,30);
-        redisUtils.set(token,user,30);
+        redisUtils.set(code,user,300);
+        redisUtils.set(token,user,300);
 //        usermap.put(code,user);
-        response.sendRedirect(redirect_uri+"?code="+code+"&state="+state);
+        redirect_uri=redirect_uri+"?code="+code+"&state="+state;
+        log.warn("redirect_uri===:"+redirect_uri);
         log.warn("authorize cost time:" + (System.currentTimeMillis() - startTime)+ "ms");
+        response.sendRedirect(redirect_uri);
         return null;
     }
 

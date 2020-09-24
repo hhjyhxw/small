@@ -1,13 +1,13 @@
 package com.icloud.modules.small.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -34,6 +34,9 @@ public class SmallRetail implements Serializable {
    	   	   /* 许可证号 */
        @TableField("licence")
        private String licence;
+       /* 联系人 */
+       @TableField("contact_man")
+       private String contactMan;
    	   	   /* 电话号码 */
        @TableField("phone")
        private String phone;
@@ -91,6 +94,10 @@ public class SmallRetail implements Serializable {
         /* 店铺头像 */
         @TableField("pay_img")
         private String payImg;
+        /* 店铺状态 0停用 1启用 */
+        @TableField("status")
+        private String status;
+
 
    	
 }

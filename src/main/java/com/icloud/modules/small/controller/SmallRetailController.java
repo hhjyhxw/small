@@ -1,20 +1,23 @@
 package com.icloud.modules.small.controller;
 
 import com.icloud.basecommon.model.Query;
+import com.icloud.common.MD5Utils;
 import com.icloud.common.PageUtils;
 import com.icloud.common.R;
 import com.icloud.common.validator.ValidatorUtils;
+import com.icloud.config.global.MyPropertitys;
 import com.icloud.modules.small.entity.SmallRetail;
 import com.icloud.modules.small.service.SmallRetailService;
+import com.icloud.modules.small.vo.RetailSysVo;
 import com.icloud.modules.small.vo.RetailVo;
+import com.icloud.thirdinterfaces.apiservice.SmallRetailSendService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -25,11 +28,17 @@ import java.util.Map;
  * @date 2020-08-13 14:34:02
  * 菜单主连接： modules/small/smallretail.html
  */
+@Slf4j
 @RestController
 @RequestMapping("small/smallretail")
 public class SmallRetailController {
     @Autowired
     private SmallRetailService smallRetailService;
+
+    @Autowired
+    private MyPropertitys myPropertitys;
+    @Autowired
+    private SmallRetailSendService smallRetailSendService;
 
     /**
      * 列表
@@ -83,8 +92,20 @@ public class SmallRetailController {
     @RequestMapping("/save")
     @RequiresPermissions("small:smallretail:save")
     public R save(@RequestBody SmallRetail smallRetail){
-        smallRetailService.save(smallRetail);
-
+        smallRetail.setCreateTime(new Date());
+        boolean resutl = smallRetailService.save(smallRetail);
+        if(resutl){
+            RetailSysVo vo = new RetailSysVo();
+            BeanUtils.copyProperties(smallRetail,vo);
+            String signStr = MD5Utils.encode2hex(smallRetail.getId().toString()+smallRetail.getLicence()+myPropertitys.getYaobaokey());
+            vo.setSign(signStr);
+            try {
+               String sysresult = smallRetailSendService.sysRetailInfo(myPropertitys.getYaobaourl(),vo);
+               log.info("save同步店铺信息结果====="+sysresult);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
         return R.ok();
     }
 
@@ -95,8 +116,20 @@ public class SmallRetailController {
     @RequiresPermissions("small:smallretail:update")
     public R update(@RequestBody SmallRetail smallRetail){
         ValidatorUtils.validateEntity(smallRetail);
-        smallRetailService.updateById(smallRetail);
-        
+        smallRetail.setModifyTime(new Date());
+        boolean resutl = smallRetailService.updateById(smallRetail);
+        if(resutl){
+            RetailSysVo vo = new RetailSysVo();
+            BeanUtils.copyProperties(smallRetail,vo);
+            String signStr = MD5Utils.encode2hex(smallRetail.getId().toString()+smallRetail.getLicence()+myPropertitys.getYaobaokey());
+            vo.setSign(signStr);
+            try {
+                String sysresult = smallRetailSendService.sysRetailInfo(myPropertitys.getYaobaourl(),vo);
+                log.info("update同步店铺信息结果====="+sysresult);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
         return R.ok();
     }
 

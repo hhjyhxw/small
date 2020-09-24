@@ -3,8 +3,11 @@ package com.icloud.api.small;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.icloud.annotation.AuthIgnore;
 import com.icloud.basecommon.model.Query;
+import com.icloud.common.MD5Utils;
 import com.icloud.common.PageUtils;
 import com.icloud.common.R;
+import com.icloud.common.validator.ValidatorUtils;
+import com.icloud.config.global.MyPropertitys;
 import com.icloud.modules.bsactivity.entity.BsactivityAd;
 import com.icloud.modules.bsactivity.service.BsactivityAdService;
 import com.icloud.modules.small.entity.SmallCategory;
@@ -16,6 +19,7 @@ import com.icloud.modules.small.service.SmallRetailService;
 import com.icloud.modules.small.service.SmallSellCategoryService;
 import com.icloud.modules.small.service.SmallSpuService;
 import com.icloud.modules.small.vo.CategoryAndGoodListVo;
+import com.icloud.modules.small.vo.RetailSysVo;
 import com.icloud.modules.small.vo.ShopInfo;
 import com.icloud.modules.small.vo.SpuVo;
 import io.swagger.annotations.Api;
@@ -46,6 +50,8 @@ public class ShopApiController {
     private SmallSpuService smallSpuService;
     @Autowired
     private SmallRetailService smallRetailService;
+    @Autowired
+    private MyPropertitys myPropertitys;
 
     /**
      * 获取商品分详细
@@ -233,5 +239,34 @@ public class ShopApiController {
         Object smallSpu = smallSpuService.getById(id);
         return R.ok().put("goods",smallSpu);
     }
+
+
+    /**
+     * 同步店铺信息
+     * @return
+     */
+    @ApiOperation(value="同步店铺信息", notes="")
+    @RequestMapping(value = "/sysShopinfo",method = {RequestMethod.POST})
+    @ResponseBody
+    @AuthIgnore
+    public R sysShopinfo(@RequestParam RetailSysVo vo)  {
+        ValidatorUtils.validateEntityForFront(vo);
+
+        String signStr = MD5Utils.encode2hex(vo.getId().toString()+vo.getLicence()+myPropertitys.getYaobaokey());
+        if(!signStr.equals(vo.getSign())){
+            return R.error("签名错误");
+        }
+        Object shop = smallRetailService.getById(vo.getId());
+        SmallRetail smallRetail = new SmallRetail();
+        BeanUtils.copyProperties(vo,smallRetail);
+        if(shop==null){
+            smallRetailService.save(smallRetail);
+        }else{
+            smallRetailService.updateById(smallRetail);
+        }
+        return R.ok("同步成功");
+    }
+
+
 
 }

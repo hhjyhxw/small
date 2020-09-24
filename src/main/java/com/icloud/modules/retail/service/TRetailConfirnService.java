@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Transactional
 public class TRetailConfirnService extends BaseServiceImpl<TRetailConfirnMapper,TRetailConfirn> {
 
+
     @Autowired
     private TRetailConfirnMapper rRetailConfirnMapper;
 }

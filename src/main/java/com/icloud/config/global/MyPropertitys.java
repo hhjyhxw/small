@@ -27,6 +27,10 @@ public class MyPropertitys {
     private String usercheckurl;
     //用户登陆认证地址(弃用)
     private Map<String,String> thirdloginUrlMap;
+    //烟包支付店铺信息同步key
+    private String yaobaokey;
+    //烟包支付店铺信息同步url
+    private String yaobaourl;
 
     /**
      * 微信相关参数
