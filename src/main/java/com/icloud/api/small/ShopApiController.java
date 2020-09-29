@@ -307,14 +307,17 @@ public class ShopApiController {
     @RequestMapping(value = "/getGoodsList",method = {RequestMethod.GET})
     @ResponseBody
     @AuthIgnore
-    public R getGoodsList(String pageNum,String pageSize,@RequestParam Long supplierId,
-            @RequestParam String categoryId,String keeperOpenid,String sign) {
+    public R getGoodsList(String pageNum,String pageSize,@RequestParam Long supplierId, String sign,@RequestParam String keeperOpenid) {
         //店主设置验证
       /*  SmallRetail retail = (SmallRetail) smallSpuService.getById(supplierId);
         String signStr = MD5Utils.encode2hex(retail.getId().toString()+retail.getLicence()+myPropertitys.getYaobaokey());
         if(!signStr.equals(sign)){
             return R.error("签名错误");
         }*/
+        List<SmallRetail> retailList = smallRetailService.list(new QueryWrapper<SmallRetail>().eq("id",Long.valueOf(supplierId)).eq("keeper_openid",keeperOpenid));
+        if(retailList==null || retailList.size()==0){
+            return R.error("不是店主");
+        }
         Query query = new Query(new HashMap<>());
         query.put("status",1);
         query.put("page",pageNum);
@@ -326,6 +329,11 @@ public class ShopApiController {
             List<SmallSpu> list = (List<SmallSpu>) page.getList();
             List<SpuVo> volist = ColaBeanUtils.copyListProperties(list , SpuVo::new, (articleEntity, articleVo) -> {
                 // 回调处理
+            });
+            volist.forEach(p->{
+                if(p.getShowFlag()==null){
+                    p.setShowFlag(0);
+                }
             });
             page.setList(volist);
         }
@@ -350,6 +358,10 @@ public class ShopApiController {
         }
         if(goods.getSpuIds().length!=goods.getShowFlag().length){
             return R.error("商品选择与属性不一致");
+        }
+        List<SmallRetail> retailList = smallRetailService.list(new QueryWrapper<SmallRetail>().eq("id",goods.getSupplierId()).eq("keeper_openid",goods.getKeeperOpenid()));
+        if(retailList==null || retailList.size()==0){
+            return R.error("不是店主");
         }
         //店主设置验证
        /* SmallRetail retail = (SmallRetail) smallSpuService.getById(goods.getSupplierId());

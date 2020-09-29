@@ -13,7 +13,8 @@ public class SetShowGoods {
     private Integer[] showFlag;
     @NotNull(message = "店铺id不能为空")
     private Long supplierId;
-
     private String sign;
+    @NotNull(message = "店主openid不能为空")
+    private String keeperOpenid;
 
 }
