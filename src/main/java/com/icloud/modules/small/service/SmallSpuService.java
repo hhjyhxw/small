@@ -56,6 +56,9 @@ public class SmallSpuService extends BaseServiceImpl<SmallSpuMapper,SmallSpu> {
                 SmallSpu spu = list.get(i);
                 for (int j = 0; j<spuIds.length ; j++) {
                     if(spuIds[j].longValue()==spu.getId().longValue()){
+                        if(goods.getShowFlag()[j]!=1){
+                            continue;
+                        }
                         SmallSpu sonparam = new SmallSpu();
                         sonparam.setId(spu.getId());
                         sonparam.setShowFlag(goods.getShowFlag()[j]);
