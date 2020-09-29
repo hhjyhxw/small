@@ -94,6 +94,9 @@ public class SmallSpu implements Serializable {
         /* 店铺个性分类id */
         @TableField("sellcategory_id")
         private Long sellcategoryId;
+        /* 是否展示在烟包支付系统（1展示 0不展示） */
+        @TableField("show_flag")
+        private Integer showFlag;
 
         /*关联分类*/
         @TableField(exist = false)

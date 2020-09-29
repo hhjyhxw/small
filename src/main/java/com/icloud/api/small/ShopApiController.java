@@ -18,10 +18,7 @@ import com.icloud.modules.small.service.SmallCategoryService;
 import com.icloud.modules.small.service.SmallRetailService;
 import com.icloud.modules.small.service.SmallSellCategoryService;
 import com.icloud.modules.small.service.SmallSpuService;
-import com.icloud.modules.small.vo.CategoryAndGoodListVo;
-import com.icloud.modules.small.vo.RetailSysVo;
-import com.icloud.modules.small.vo.ShopInfo;
-import com.icloud.modules.small.vo.SpuVo;
+import com.icloud.modules.small.vo.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -241,6 +238,7 @@ public class ShopApiController {
     }
 
 
+
     /**
      * 同步店铺信息
      * @return
@@ -265,6 +263,91 @@ public class ShopApiController {
             smallRetailService.updateById(smallRetail);
         }
         return R.ok("同步成功");
+    }
+
+
+    /**
+     * 查询展示在烟包系统的商品信息
+     * @return
+     */
+    @ApiOperation(value="查询展示在烟包系统的商品信息", notes="")
+    @RequestMapping(value = "/getShowGoods",method = {RequestMethod.POST})
+    @ResponseBody
+    @AuthIgnore
+    public R getShowGoods(@RequestBody RetailGoodsVo vo)  {
+
+        ValidatorUtils.validateEntityForFront(vo);
+        String signStr = MD5Utils.encode2hex(vo.getId().toString()+vo.getLicence()+myPropertitys.getYaobaokey());
+        if(!signStr.equals(vo.getSign())){
+            return R.error("签名错误");
+        }
+        List<SmallSpu> list = smallSpuService.list(new QueryWrapper<SmallSpu>().eq("supplier_id",vo.getId()));
+        return R.ok().put("list",list);
+    }
+
+
+
+    /**
+     * 获取店铺商品用于设置展示在烟包支付系统
+     * @return
+     */
+    @ApiOperation(value="获取店铺商品用于设置展示在烟包支付系统", notes="")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "pageNum", value = "页码", required = false, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "pageSize", value = "每页多少记录", required = false, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "Long"),
+            @ApiImplicitParam(name = "keeperOpenid", value = "店主openid", required = false, paramType = "query", dataType = "Long"),
+            @ApiImplicitParam(name = "sign", value = "签名", required = false, paramType = "query", dataType = "Long"),
+
+    })
+    @RequestMapping(value = "/goodsList",method = {RequestMethod.GET})
+    @ResponseBody
+    @AuthIgnore
+    public R goodsList(String pageNum,String pageSize,@RequestParam Long supplierId,
+            @RequestParam String categoryId,String keeperOpenid,String sign) {
+        //店主设置验证
+      /*  SmallRetail retail = (SmallRetail) smallSpuService.getById(supplierId);
+        String signStr = MD5Utils.encode2hex(retail.getId().toString()+retail.getLicence()+myPropertitys.getYaobaokey());
+        if(!signStr.equals(sign)){
+            return R.error("签名错误");
+        }*/
+        Query query = new Query(new HashMap<>());
+        query.put("status",1);
+        query.put("page",pageNum);
+        query.put("limit",pageSize);
+        query.put("supplierId",supplierId);
+
+        PageUtils<SmallSpu> page = smallSpuService.findByPage(query.getPageNum(),query.getPageSize(), query);
+        return R.ok().put("page", page);
+    }
+
+    /**
+     * 设置展示在烟包支付系统的商品
+     * @return
+     */
+    @ApiOperation(value="设置展示在烟包支付系统的商品", notes="")
+    @RequestMapping(value = "/saveShowsmokeGoodList",method = {RequestMethod.POST})
+    @ResponseBody
+    @AuthIgnore
+    public R saveShowsmokeGoodList(@RequestBody SetShowGoods goods)  {
+        ValidatorUtils.validateEntityForFront(goods);
+        if(goods.getSpuIds().length==0){
+            return R.error("商品ids不能为空");
+        }
+        if(goods.getShowFlag().length==0){
+            return R.error("showFlag不能为空");
+        }
+        if(goods.getSpuIds().length!=goods.getShowFlag().length){
+            return R.error("商品选择与属性不一致");
+        }
+        //店主设置验证
+       /* SmallRetail retail = (SmallRetail) smallSpuService.getById(goods.getSupplierId());
+        String signStr = MD5Utils.encode2hex(retail.getId().toString()+retail.getLicence()+myPropertitys.getYaobaokey());
+        if(!signStr.equals(goods.getSign())){
+            return R.error("签名错误");
+        }*/
+        smallSpuService.saveShowsmokeGoodList(goods);
+        return R.ok();
     }
 
 
