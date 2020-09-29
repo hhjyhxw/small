@@ -31,6 +31,10 @@ public class MyPropertitys {
     private String yaobaokey;
     //烟包支付店铺信息同步url
     private String yaobaourl;
+    //发送模板消息url
+    private String sendurl;
+    //签名key
+    private String sendkey;
 
     /**
      * 微信相关参数

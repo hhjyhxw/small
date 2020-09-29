@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.scanactivity.dao.ScanactivityVerificationUserMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.scanactivity.entity.ScanactivityVerificationUser" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="name" column="name"/>
+     <result property="phone" column="phone"/>
+     <result property="openid" column="openid"/>
+     <result property="uninid" column="uninid"/>
+     <result property="createTime" column="create_time"/>
+     <result property="bindTime" column="bind_time"/>
+     <result property="createMan" column="create_man"/>
+     <result property="modfiyTime" column="modfiy_time"/>
+     <result property="modifyNan" column="modify_nan"/>
+     <result property="status" column="status"/>
+     <result property="roleType" column="role_type"/>
+     <result property="provinceName" column="province_name"/>
+     <result property="provinceCode" column="province_code"/>
+     <result property="cityName" column="city_name"/>
+     <result property="cityCode" column="city_code"/>
+     <result property="countyName" column="county_name"/>
+     <result property="countyCode" column="county_code"/>
+     <result property="address" column="address"/>
+     <result property="shopName" column="shop_name"/>
+     <result property="shopLicense" column="shop_license"/>
+     <result property="configId" column="config_id"/>
+     <result property="lnt" column="lnt"/>
+     <result property="lat" column="lat"/>
+     <result property="sendStatus" column="send_status"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,name,phone,openid,uninid,create_time,bind_time,create_man,modfiy_time,modify_nan,status,role_type,province_name,province_code,city_name,city_code,county_name,county_code,address,shop_name,shop_license,config_id,lnt,lat,send_status
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_scanactivity_verification_user t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="name != null">
+    and t.name = #{name}
+</if>
+<if test="phone != null">
+    and t.phone = #{phone}
+</if>
+<if test="openid != null">
+    and t.openid = #{openid}
+</if>
+<if test="uninid != null">
+    and t.uninid = #{uninid}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+<if test="bind_time != null">
+    and t.bind_time = #{bind_time}
+</if>
+<if test="create_man != null">
+    and t.create_man = #{create_man}
+</if>
+<if test="modfiy_time != null">
+    and t.modfiy_time = #{modfiy_time}
+</if>
+<if test="modify_nan != null">
+    and t.modify_nan = #{modify_nan}
+</if>
+<if test="status != null">
+    and t.status = #{status}
+</if>
+<if test="role_type != null">
+    and t.role_type = #{role_type}
+</if>
+<if test="province_name != null">
+    and t.province_name = #{province_name}
+</if>
+<if test="province_code != null">
+    and t.province_code = #{province_code}
+</if>
+<if test="city_name != null">
+    and t.city_name = #{city_name}
+</if>
+<if test="city_code != null">
+    and t.city_code = #{city_code}
+</if>
+<if test="county_name != null">
+    and t.county_name = #{county_name}
+</if>
+<if test="county_code != null">
+    and t.county_code = #{county_code}
+</if>
+<if test="address != null">
+    and t.address = #{address}
+</if>
+<if test="shop_name != null">
+    and t.shop_name = #{shop_name}
+</if>
+<if test="shop_license != null">
+    and t.shop_license = #{shop_license}
+</if>
+<if test="config_id != null">
+    and t.config_id = #{config_id}
+</if>
+<if test="lnt != null">
+    and t.lnt = #{lnt}
+</if>
+<if test="lat != null">
+    and t.lat = #{lat}
+</if>
+</where>
+</select>
+</mapper>
