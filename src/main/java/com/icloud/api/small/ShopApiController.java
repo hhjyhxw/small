@@ -300,7 +300,7 @@ public class ShopApiController {
             @ApiImplicitParam(name = "pageNum", value = "页码", required = false, paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "pageSize", value = "每页多少记录", required = false, paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "Long"),
-            @ApiImplicitParam(name = "keeperOpenid", value = "店主openid", required = false, paramType = "query", dataType = "Long"),
+            @ApiImplicitParam(name = "keeperOpenid", value = "店主openid", required = false, paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "sign", value = "签名", required = false, paramType = "query", dataType = "Long"),
 
     })
