@@ -148,7 +148,7 @@ public class ScanactivityVerificationUserController {
         vo.setKeyword2("配方调整");
         vo.setKeyword3("2020年9月30日");
         vo.setKeyword4("2020年10月31日前");
-        vo.setRemark("尊敬的龙粉，为了给您带来更好的测试体验，真龙新品在吸味上还需做进一步的优化调整，因此真龙新品预计10月31日前会寄出，感谢您的支持，我们不见不散!如有疑问请于工作日上班时间，咨询真龙微信在线客服或致电客服热线：4008792099。");
+        vo.setRemark("尊敬的龙粉，为了给您带来更好的测试体验，真龙新品在吸味上还需做进一步的优化调整，因此真龙新品预计10月31日前会寄出，感谢您的支持，我们不见不散!客服热线：4008792099。");
         vo.setOpenId(user.getOpenid());
         vo.setTemplateId(templateId);
         vo.setVisitUrl(null);
