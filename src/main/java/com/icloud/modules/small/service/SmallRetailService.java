@@ -18,5 +18,9 @@ public class SmallRetailService extends BaseServiceImpl<SmallRetailMapper,SmallR
 
     @Autowired
     private SmallRetailMapper smallRetailMapper;
+
+    public void saveSelf(SmallRetail smallRetail) {
+        smallRetailMapper.saveSelf(smallRetail);
+    }
 }
 

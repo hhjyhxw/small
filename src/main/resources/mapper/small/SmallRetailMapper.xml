@@ -36,6 +36,14 @@
 id,supplier_name,address,licence,phone,keeper_openid,balance,frozen_balance,bank_cart,bank_name,bank_phone,bank_keeper,licence_img,head_img,boss,password,max_cash,pay_openid,create_time,modify_time,lnt,lat
     </sql>
 
+    <insert id="saveSelf" parameterType="com.icloud.modules.small.entity.SmallRetail" >
+    insert into t_small_retail (id, supplier_name, licence,
+      contact_man, phone, keeper_openid,create_time
+    )
+    values (#{id,jdbcType=BIGINT}, #{supplierName,jdbcType=VARCHAR}, #{licence,jdbcType=VARCHAR},
+      #{contactMan,jdbcType=BIGINT}, #{phone,jdbcType=VARCHAR}, #{keeperOpenid,jdbcType=TIMESTAMP},
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
 
 <select id="queryMixList" resultMap="BaseResultMap">
 select * from t_small_retail t

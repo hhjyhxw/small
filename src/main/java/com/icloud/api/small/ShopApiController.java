@@ -29,6 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -259,7 +260,8 @@ public class ShopApiController {
         SmallRetail smallRetail = new SmallRetail();
         BeanUtils.copyProperties(vo,smallRetail);
         if(shop==null){
-            smallRetailService.save(smallRetail);
+            smallRetail.setCreateTime(new Date());
+            smallRetailService.saveSelf(smallRetail);
         }else{
             smallRetailService.updateById(smallRetail);
         }

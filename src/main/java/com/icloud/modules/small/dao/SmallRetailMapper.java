@@ -14,4 +14,6 @@ import java.util.Map;
 public interface SmallRetailMapper extends BaseMapper<SmallRetail> {
 
 	List<SmallRetail> queryMixList(Map<String,Object> map);
+
+    public int saveSelf(SmallRetail smallRetail);
 }
