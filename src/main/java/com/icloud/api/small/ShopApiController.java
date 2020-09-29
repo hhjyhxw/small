@@ -300,10 +300,10 @@ public class ShopApiController {
             @ApiImplicitParam(name = "sign", value = "签名", required = false, paramType = "query", dataType = "Long"),
 
     })
-    @RequestMapping(value = "/goodsList",method = {RequestMethod.GET})
+    @RequestMapping(value = "/getGoodsList",method = {RequestMethod.GET})
     @ResponseBody
     @AuthIgnore
-    public R goodsList(String pageNum,String pageSize,@RequestParam Long supplierId,
+    public R getGoodsList(String pageNum,String pageSize,@RequestParam Long supplierId,
             @RequestParam String categoryId,String keeperOpenid,String sign) {
         //店主设置验证
       /*  SmallRetail retail = (SmallRetail) smallSpuService.getById(supplierId);
