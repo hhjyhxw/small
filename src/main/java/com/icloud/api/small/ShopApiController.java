@@ -6,6 +6,7 @@ import com.icloud.basecommon.model.Query;
 import com.icloud.common.MD5Utils;
 import com.icloud.common.PageUtils;
 import com.icloud.common.R;
+import com.icloud.common.beanutils.ColaBeanUtils;
 import com.icloud.common.validator.ValidatorUtils;
 import com.icloud.config.global.MyPropertitys;
 import com.icloud.modules.bsactivity.entity.BsactivityAd;
@@ -282,7 +283,10 @@ public class ShopApiController {
             return R.error("签名错误");
         }
         List<SmallSpu> list = smallSpuService.list(new QueryWrapper<SmallSpu>().eq("supplier_id",vo.getId()));
-        return R.ok().put("list",list);
+        List<SpuVo> volist = ColaBeanUtils.copyListProperties(list , SpuVo::new, (articleEntity, articleVo) -> {
+            // 回调处理
+        });
+        return R.ok().put("list",volist);
     }
 
 
@@ -318,6 +322,13 @@ public class ShopApiController {
         query.put("supplierId",supplierId);
 
         PageUtils<SmallSpu> page = smallSpuService.findByPage(query.getPageNum(),query.getPageSize(), query);
+        if(page.getList()!=null && page.getList().size()>0){
+            List<SmallSpu> list = (List<SmallSpu>) page.getList();
+            List<SpuVo> volist = ColaBeanUtils.copyListProperties(list , SpuVo::new, (articleEntity, articleVo) -> {
+                // 回调处理
+            });
+            page.setList(volist);
+        }
         return R.ok().put("page", page);
     }
 
