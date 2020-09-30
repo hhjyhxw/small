@@ -50,7 +50,7 @@ public class H5LoginController {
             log.info("redirect_url=="+ redirect_url);
             //如果历史连接带上token,去掉
             if(redirect_url.indexOf("token")>=0){
-                redirect_url.replace("token","oldd");
+                redirect_url =  redirect_url.replace("token","oldd");
             }
             if(redirect_url.indexOf("?")>=0){
                 redirect_url = redirect_url+"&token="+h5token;
