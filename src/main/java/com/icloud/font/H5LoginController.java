@@ -67,9 +67,11 @@ public class H5LoginController {
     }
 
     @RequestMapping("/loginYaobao")
-    public String loginYaobao(String redirect_url,String tempUrl,Long supplierId,String keeperOpenid){
+    public String loginYaobao(String redirect_url,String tempUrl,Long suplierId,String keeperOpenid){
         log.info("redirect_url=="+redirect_url);
         log.info("tempUrl=="+tempUrl);
+        log.info("suplierId=="+ suplierId);
+        log.info("keeperOpenid=="+ keeperOpenid);
         if(!StringUtil.checkStr(redirect_url)){
             log.info("redirect_url");
             return "modules/h5login/error";//
@@ -78,7 +80,7 @@ public class H5LoginController {
             WxUser user = (WxUser)request.getSession().getAttribute("wx_user");
             String h5token = new RandomGenerator(12).generate();
             redisService.set(h5token,user,3000L);//兼容h5、APP 前端服务 登陆
-            log.info("redirect_url=="+ redirect_url);
+
             //如果历史连接带上token,去掉
             if(redirect_url.indexOf("token")>=0){
                 redirect_url =  redirect_url.replace("token","oldd");
