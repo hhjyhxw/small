@@ -48,6 +48,10 @@ public class H5LoginController {
 //            redisService.set(MD5Utils.encode2hex(h5token),user,3000L);//兼容h5、APP 前端服务 登陆
             redisService.set(h5token,user,3000L);//兼容h5、APP 前端服务 登陆
             log.info("redirect_url=="+ redirect_url);
+            //如果历史连接带上token,去掉
+            if(redirect_url.indexOf("token")>=0){
+                redirect_url.replace("token","oldd");
+            }
             if(redirect_url.indexOf("?")>=0){
                 redirect_url = redirect_url+"&token="+h5token;
             }else{
