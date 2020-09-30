@@ -6,7 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6fbc680-6164-4f33-9b24-94a00587f493" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/font/H5LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/font/H5LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/vo/SmallSpuVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallSpuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/small/controller/SmallSpuController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,7 +292,7 @@
       <workItem from="1601370391278" duration="1337000" />
       <workItem from="1601374602921" duration="475000" />
       <workItem from="1601446881825" duration="1654000" />
-      <workItem from="1601451068290" duration="2440000" />
+      <workItem from="1601451068290" duration="4269000" />
     </task>
     <task id="LOCAL-00001" summary="修改写字楼售bug">
       <created>1574649748896</created>

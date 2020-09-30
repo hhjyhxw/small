@@ -7,8 +7,10 @@ import com.icloud.common.R;
 import com.icloud.common.validator.ValidatorUtils;
 import com.icloud.modules.small.entity.SmallSpu;
 import com.icloud.modules.small.service.SmallSpuService;
+import com.icloud.modules.small.vo.SmallSpuVo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -73,8 +75,11 @@ public class SmallSpuController {
      */
     @RequestMapping("/save")
     @RequiresPermissions("small:smallspu:save")
-    public R save(@RequestBody SmallSpu smallSpu){
+    public R save(@RequestBody SmallSpuVo vo){
+        SmallSpu smallSpu = new SmallSpu();
         log.info("smallSpu==="+ JSON.toJSONString(smallSpu));
+        BeanUtils.copyProperties(vo,smallSpu);
+        smallSpu.setSupplierId(Long.valueOf(vo.getSupplierId()));
         if(smallSpu.getAddStock()!=null && smallSpu.getAddStock()>0){
             smallSpu.setFreezeStock(0);
             smallSpu.setStock(smallSpu.getAddStock());
@@ -91,9 +96,12 @@ public class SmallSpuController {
      */
     @RequestMapping("/update")
     @RequiresPermissions("small:smallspu:update")
-    public R update(@RequestBody SmallSpu smallSpu){
-        log.info("smallSpu==="+ JSON.toJSONString(smallSpu));
-        ValidatorUtils.validateEntity(smallSpu);
+    public R update(@RequestBody SmallSpuVo vo){
+        log.info("vo==="+ JSON.toJSONString(vo));
+        ValidatorUtils.validateEntity(vo);
+        SmallSpu smallSpu = new SmallSpu();
+        BeanUtils.copyProperties(vo,smallSpu);
+        smallSpu.setSupplierId(Long.valueOf(vo.getSupplierId()));
          //增加总库存
         if(smallSpu.getAddStock()!=null && smallSpu.getAddStock()>0){
             smallSpu.setStock(smallSpu.getStock()!=null?smallSpu.getStock().intValue()+smallSpu.getAddStock().intValue():smallSpu.getAddStock());
