@@ -86,9 +86,9 @@ public class H5LoginController {
                 redirect_url =  redirect_url.replace("token","oldd");
             }
             if(redirect_url.indexOf("?")>=0){
-                redirect_url = redirect_url+"&token="+h5token+"&keeperOpenid="+keeperOpenid+"&supplierId="+supplierId;
+                redirect_url = redirect_url+"&token="+h5token+"&keeperOpenid="+keeperOpenid+"&suplierId="+suplierId;
             }else{
-                redirect_url = redirect_url+"?token="+h5token+"&keeperOpenid="+keeperOpenid+"&supplierId="+supplierId;
+                redirect_url = redirect_url+"?token="+h5token+"&keeperOpenid="+keeperOpenid+"&suplierId="+suplierId;
             }
             redirect_url = redirect_url.replace("?","#/"+tempUrl+"?");
             log.info("loginYaobao_redirect_url=="+ redirect_url);
