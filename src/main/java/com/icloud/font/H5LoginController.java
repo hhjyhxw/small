@@ -87,7 +87,7 @@ public class H5LoginController {
             }else{
                 redirect_url = redirect_url+"?token="+h5token;
             }
-            redirect_url.replace("?","#"+tempUrl+"?");
+            redirect_url.replace("?","#/"+tempUrl+"?");
             log.info("loginYaobao_redirect_url=="+ redirect_url);
             response.sendRedirect(redirect_url);
             return null;
