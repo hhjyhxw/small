@@ -65,4 +65,35 @@ public class H5LoginController {
         }
         return "modules/h5login/error";
     }
+
+    @RequestMapping("/loginYaobao")
+    public String loginYaobao(String redirect_url,String tempUrl){
+        log.info("redirect_url=="+redirect_url);
+        if(!StringUtil.checkStr(redirect_url)){
+            log.info("redirect_url");
+            return "modules/h5login/error";//
+        }
+        try {
+            WxUser user = (WxUser)request.getSession().getAttribute("wx_user");
+            String h5token = new RandomGenerator(12).generate();
+            redisService.set(h5token,user,3000L);//兼容h5、APP 前端服务 登陆
+            log.info("redirect_url=="+ redirect_url);
+            //如果历史连接带上token,去掉
+            if(redirect_url.indexOf("token")>=0){
+                redirect_url =  redirect_url.replace("token","oldd");
+            }
+            if(redirect_url.indexOf("?")>=0){
+                redirect_url = redirect_url+"&token="+h5token;
+            }else{
+                redirect_url = redirect_url+"?token="+h5token;
+            }
+            redirect_url.replace("?","#"+tempUrl+"?");
+            log.info("loginYaobao_redirect_url=="+ redirect_url);
+            response.sendRedirect(redirect_url);
+            return null;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "modules/h5login/error";
+    }
 }
