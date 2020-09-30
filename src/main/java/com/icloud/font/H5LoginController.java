@@ -67,7 +67,7 @@ public class H5LoginController {
     }
 
     @RequestMapping("/loginYaobao")
-    public String loginYaobao(String redirect_url,String tempUrl){
+    public String loginYaobao(String redirect_url,String tempUrl,Long supplierId,String keeperOpenid){
         log.info("redirect_url=="+redirect_url);
         log.info("tempUrl=="+tempUrl);
         if(!StringUtil.checkStr(redirect_url)){
@@ -84,9 +84,9 @@ public class H5LoginController {
                 redirect_url =  redirect_url.replace("token","oldd");
             }
             if(redirect_url.indexOf("?")>=0){
-                redirect_url = redirect_url+"&token="+h5token;
+                redirect_url = redirect_url+"&token="+h5token+"&keeperOpenid="+keeperOpenid+"&supplierId="+supplierId;
             }else{
-                redirect_url = redirect_url+"?token="+h5token;
+                redirect_url = redirect_url+"?token="+h5token+"&keeperOpenid="+keeperOpenid+"&supplierId="+supplierId;
             }
             redirect_url = redirect_url.replace("?","#/"+tempUrl+"?");
             log.info("loginYaobao_redirect_url=="+ redirect_url);
