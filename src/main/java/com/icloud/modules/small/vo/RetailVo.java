@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class RetailVo {
-    private Long id;
-    private Long parentId;
+    private String id;
+    private String parentId;
     private String name;
     private String parentName;
 

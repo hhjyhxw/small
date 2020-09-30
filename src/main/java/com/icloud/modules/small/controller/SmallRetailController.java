@@ -65,7 +65,7 @@ public class SmallRetailController {
         if(list!=null){
             for (SmallRetail smallRetail : retailList) {
                 vo =  new RetailVo();
-                vo.setId(smallRetail.getId());
+                vo.setId(smallRetail.getId().toString());
                 vo.setName(smallRetail.getSupplierName());
                 vo.setParentId(null);
                 vo.setParentName(null);
