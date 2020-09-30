@@ -69,6 +69,7 @@ public class H5LoginController {
     @RequestMapping("/loginYaobao")
     public String loginYaobao(String redirect_url,String tempUrl){
         log.info("redirect_url=="+redirect_url);
+        log.info("tempUrl=="+tempUrl);
         if(!StringUtil.checkStr(redirect_url)){
             log.info("redirect_url");
             return "modules/h5login/error";//
@@ -87,7 +88,7 @@ public class H5LoginController {
             }else{
                 redirect_url = redirect_url+"?token="+h5token;
             }
-            redirect_url.replace("?","#/"+tempUrl+"?");
+            redirect_url = redirect_url.replace("?","#/"+tempUrl+"?");
             log.info("loginYaobao_redirect_url=="+ redirect_url);
             response.sendRedirect(redirect_url);
             return null;
