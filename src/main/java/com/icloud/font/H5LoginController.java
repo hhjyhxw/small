@@ -24,21 +24,19 @@ public class H5LoginController {
     @Autowired
     private HttpServletRequest request;
     @Autowired
-    private HttpServletResponse response;
-    @Autowired
     private MyPropertitys myPropertitys;
     @Autowired
     private RedisService redisService;
 
     @RequestMapping("/login")
-    public void login(String redirect_url){
-        log.info("redirect_url=="+redirect_url);
-        if(!StringUtil.checkStr(redirect_url)){
-            log.info("redirect_url");
-//            return "modules/h5login/error";//
-            return;
-        }
+    public String login(String redirect_url,HttpServletResponse response){
+
         try {
+            log.info("redirect_url=="+redirect_url);
+            if(!StringUtil.checkStr(redirect_url)){
+                log.info("redirect_url");
+                return "modules/h5login/error";//
+            }
             WxUser user = (WxUser)request.getSession().getAttribute("wx_user");
 //            Map<String,String> map = myPropertitys.getThirdloginUrlMap();
 //            if(!map.containsKey(fromType)){
@@ -60,16 +58,15 @@ public class H5LoginController {
             }
             log.info("最终redirect_url=="+ redirect_url);
             response.sendRedirect(redirect_url);
-            return;
+            return null;
         }catch (Exception e){
             e.printStackTrace();
         }
-        return;
-//        return "modules/h5login/error";
+        return "modules/h5login/error";
     }
 
     @RequestMapping("/loginYaobao")
-    public String loginYaobao(String redirect_url,String tempUrl,Long suplierId,String keeperOpenid){
+    public String loginYaobao(String redirect_url,String tempUrl,Long suplierId,String keeperOpenid,HttpServletResponse response){
         log.info("redirect_url=="+redirect_url);
         log.info("tempUrl=="+tempUrl);
         log.info("suplierId=="+ suplierId);
