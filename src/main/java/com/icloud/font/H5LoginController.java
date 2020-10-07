@@ -31,11 +31,12 @@ public class H5LoginController {
     private RedisService redisService;
 
     @RequestMapping("/login")
-    public String login(String redirect_url){
+    public void login(String redirect_url){
         log.info("redirect_url=="+redirect_url);
         if(!StringUtil.checkStr(redirect_url)){
             log.info("redirect_url");
-            return "modules/h5login/error";//
+//            return "modules/h5login/error";//
+            return;
         }
         try {
             WxUser user = (WxUser)request.getSession().getAttribute("wx_user");
@@ -59,11 +60,12 @@ public class H5LoginController {
             }
             log.info("最终redirect_url=="+ redirect_url);
             response.sendRedirect(redirect_url);
-            return null;
+            return;
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "modules/h5login/error";
+        return;
+//        return "modules/h5login/error";
     }
 
     @RequestMapping("/loginYaobao")
