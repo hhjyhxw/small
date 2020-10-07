@@ -1,6 +1,7 @@
 package com.icloud.font;
 
 import cn.hutool.captcha.generator.RandomGenerator;
+import com.alibaba.fastjson.JSON;
 import com.icloud.basecommon.service.redis.RedisService;
 import com.icloud.common.util.StringUtil;
 import com.icloud.config.global.MyPropertitys;
@@ -84,12 +85,15 @@ public class H5LoginController {
             String h5token = new RandomGenerator(12).generate();
             redisService.set(h5token,user,3000L);//兼容h5、APP 前端服务 登陆
             Object obj = smallRetailService.getById(suplierId);
+            log.info("obj=="+ JSON.toJSONString(obj));
             SmallRetail smallRetail = null;
             if(obj!=null){
                 smallRetail = (SmallRetail)obj;
+                log.info("smallRetail=="+ JSON.toJSONString(smallRetail));
                 if(smallRetail.getUserId()==null){
                     smallRetail.setUserId(user.getId().longValue());
-                    smallRetailService.updateById(smallRetail);
+                    boolean result = smallRetailService.updateById(smallRetail);
+                    log.info("update_result=="+ JSON.toJSONString(result));
                 }
 
             }
