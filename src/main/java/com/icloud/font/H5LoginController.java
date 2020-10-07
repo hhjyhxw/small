@@ -4,6 +4,8 @@ import cn.hutool.captcha.generator.RandomGenerator;
 import com.icloud.basecommon.service.redis.RedisService;
 import com.icloud.common.util.StringUtil;
 import com.icloud.config.global.MyPropertitys;
+import com.icloud.modules.small.entity.SmallRetail;
+import com.icloud.modules.small.service.SmallRetailService;
 import com.icloud.modules.wx.entity.WxUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,8 @@ public class H5LoginController {
     private MyPropertitys myPropertitys;
     @Autowired
     private RedisService redisService;
+    @Autowired
+    private SmallRetailService smallRetailService;
 
     @RequestMapping("/login")
     public String login(String redirect_url,HttpServletResponse response){
@@ -79,7 +83,16 @@ public class H5LoginController {
             WxUser user = (WxUser)request.getSession().getAttribute("wx_user");
             String h5token = new RandomGenerator(12).generate();
             redisService.set(h5token,user,3000L);//兼容h5、APP 前端服务 登陆
+            Object obj = smallRetailService.getById(suplierId);
+            SmallRetail smallRetail = null;
+            if(obj!=null){
+                smallRetail = (SmallRetail)obj;
+                if(smallRetail.getUserId()==null){
+                    smallRetail.setUserId(user.getId().longValue());
+                    smallRetailService.updateById(smallRetail);
+                }
 
+            }
             //如果历史连接带上token,去掉
             if(redirect_url.indexOf("token")>=0){
                 redirect_url =  redirect_url.replace("token","oldd");

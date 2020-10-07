@@ -1,12 +1,15 @@
 package com.icloud.api.small;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.icloud.annotation.AuthIgnore;
+import com.icloud.annotation.LoginUser;
 import com.icloud.basecommon.model.Query;
 import com.icloud.common.MD5Utils;
 import com.icloud.common.PageUtils;
 import com.icloud.common.R;
 import com.icloud.common.beanutils.ColaBeanUtils;
+import com.icloud.common.util.StringUtil;
 import com.icloud.common.validator.ValidatorUtils;
 import com.icloud.config.global.MyPropertitys;
 import com.icloud.modules.bsactivity.entity.BsactivityAd;
@@ -20,10 +23,12 @@ import com.icloud.modules.small.service.SmallRetailService;
 import com.icloud.modules.small.service.SmallSellCategoryService;
 import com.icloud.modules.small.service.SmallSpuService;
 import com.icloud.modules.small.vo.*;
+import com.icloud.modules.wx.entity.WxUser;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +39,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
+@Slf4j
 @Api("店铺与商品相关接口")
 @RestController
 @RequestMapping("/api/shop")
@@ -308,15 +314,23 @@ public class ShopApiController {
     })
     @RequestMapping(value = "/getGoodsList",method = {RequestMethod.GET})
     @ResponseBody
-    @AuthIgnore
-    public R getGoodsList(String pageNum,String pageSize,@RequestParam Long supplierId, String sign,@RequestParam String keeperOpenid) {
+//    @AuthIgnore
+    public R getGoodsList(String pageNum, String pageSize, @RequestParam Long supplierId, String sign, @RequestParam String keeperOpenid, @LoginUser WxUser user) {
         //店主设置验证
       /*  SmallRetail retail = (SmallRetail) smallSpuService.getById(supplierId);
         String signStr = MD5Utils.encode2hex(retail.getId().toString()+retail.getLicence()+myPropertitys.getYaobaokey());
         if(!signStr.equals(sign)){
             return R.error("签名错误");
         }*/
-        List<SmallRetail> retailList = smallRetailService.list(new QueryWrapper<SmallRetail>().eq("id",Long.valueOf(supplierId)).eq("keeper_openid",keeperOpenid));
+        List<SmallRetail> retailList = null;
+        if(StringUtil.checkStr(keeperOpenid)){
+            retailList = smallRetailService.list(new QueryWrapper<SmallRetail>().eq("id",Long.valueOf(supplierId)).eq("keeper_openid",keeperOpenid));
+            log.info("keeperOpenid:retailList==="+ JSON.toJSONString(retailList));
+        }
+        if(retailList==null || retailList.size()==0){
+            retailList = smallRetailService.list(new QueryWrapper<SmallRetail>().eq("user_id",user.getId().longValue()));
+            log.info("loginUser:retailList==="+ JSON.toJSONString(retailList));
+        }
         if(retailList==null || retailList.size()==0){
             return R.error("不是店主");
         }

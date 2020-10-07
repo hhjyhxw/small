@@ -97,6 +97,8 @@ public class SmallRetail implements Serializable {
         /* 店铺状态 0停用 1启用 */
         @TableField("status")
         private String status;
+        @TableField("user_id")
+        private Long userId;
 
 
    	
