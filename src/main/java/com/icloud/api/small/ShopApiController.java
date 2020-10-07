@@ -334,6 +334,7 @@ public class ShopApiController {
         if(retailList==null || retailList.size()==0){
             return R.error("不是店主");
         }
+        supplierId = retailList.get(0).getId();
         Query query = new Query(new HashMap<>());
         query.put("status",1);
         query.put("page",pageNum);
