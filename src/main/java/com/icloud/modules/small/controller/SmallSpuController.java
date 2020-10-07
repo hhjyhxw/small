@@ -87,6 +87,7 @@ public class SmallSpuController {
             smallSpu.setStock(0);
             smallSpu.setFreezeStock(0);
         }
+        smallSpu.setShowFlag(0);
         smallSpuService.save(smallSpu);
         return R.ok();
     }
