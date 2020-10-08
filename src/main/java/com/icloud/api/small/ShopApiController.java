@@ -3,7 +3,6 @@ package com.icloud.api.small;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.icloud.annotation.AuthIgnore;
-import com.icloud.annotation.LoginUser;
 import com.icloud.basecommon.model.Query;
 import com.icloud.common.MD5Utils;
 import com.icloud.common.PageUtils;
@@ -33,6 +32,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -314,20 +314,22 @@ public class ShopApiController {
     })
     @RequestMapping(value = "/getGoodsList",method = {RequestMethod.GET})
     @ResponseBody
-//    @AuthIgnore
-    public R getGoodsList(String pageNum, String pageSize, @RequestParam Long supplierId, String sign, @RequestParam String keeperOpenid, @LoginUser WxUser user) {
+    @AuthIgnore
+    public R getGoodsList(String pageNum, String pageSize, @RequestParam Long supplierId, String sign, @RequestParam String keeperOpenid, HttpServletRequest request) {
         //店主设置验证
       /*  SmallRetail retail = (SmallRetail) smallSpuService.getById(supplierId);
         String signStr = MD5Utils.encode2hex(retail.getId().toString()+retail.getLicence()+myPropertitys.getYaobaokey());
         if(!signStr.equals(sign)){
             return R.error("签名错误");
         }*/
+
         List<SmallRetail> retailList = null;
         if(StringUtil.checkStr(keeperOpenid)){
             retailList = smallRetailService.list(new QueryWrapper<SmallRetail>().eq("id",Long.valueOf(supplierId)).eq("keeper_openid",keeperOpenid));
             log.info("keeperOpenid:retailList==="+ JSON.toJSONString(retailList));
         }
         if(retailList==null || retailList.size()==0){
+            WxUser user = (WxUser)request.getSession().getAttribute("wx_user");
             retailList = smallRetailService.list(new QueryWrapper<SmallRetail>().eq("user_id",user.getId().longValue()));
             log.info("loginUser:retailList==="+ JSON.toJSONString(retailList));
         }
