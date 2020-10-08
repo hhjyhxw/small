@@ -54,7 +54,7 @@ public class CartApiController {
         }
         Map<String,Object> params = new HashMap<String,Object>();
         params.put("user_id",user.getId());
-        params.put("supplier_id",supplierId);
+        params.put("supplier_id",Long.valueOf(supplierId));
         List<CartVo> list  = smallCartService.getCartVoList(params);
         CartTotalVo total = CartOrderUtil.getTotal(list);
         return R.ok().put("list",list).put("totalAmout",total.getTotalAmout()).put("totalNum",total.getTotalNum());
@@ -81,7 +81,7 @@ public class CartApiController {
         List<SmallCart> list  = smallCartService.list(new QueryWrapper<SmallCart>()
                 .eq("user_id",user.getId())
                 .eq("sku_id",skuId)
-                .eq("supplier_id",supplierId));
+                .eq("supplier_id",Long.valueOf(supplierId)));
         if (!CollectionUtils.isEmpty(list)) {
             //若非空
             cart.setId(list.get(0).getId());
@@ -114,7 +114,7 @@ public class CartApiController {
         List<SmallCart> list  = smallCartService.list(new QueryWrapper<SmallCart>()
                 .eq("user_id",user.getId())
                 .eq("sku_id",skuId)
-                .eq("supplier_id",supplierId));
+                .eq("supplier_id",Long.valueOf(supplierId)));
         if (!CollectionUtils.isEmpty(list)) {
 
             boolean result = false;
@@ -181,7 +181,7 @@ public class CartApiController {
         }
         boolean result = smallCartService.remove(new QueryWrapper<SmallCart>()
                 .eq("user_id",user.getId())
-                .eq("supplier_id", supplierId));
+                .eq("supplier_id", Long.valueOf(supplierId)));
 
         return result?R.ok():R.error();
     }
@@ -229,7 +229,7 @@ public class CartApiController {
         }
         int num = smallCartService.count(new QueryWrapper<SmallCart>()
                 .eq("user_id",user.getId())
-                .eq("supplier_id", supplierId));
+                .eq("supplier_id", Long.valueOf(supplierId)));
         return R.ok().put("totalNum",num);
     }
 

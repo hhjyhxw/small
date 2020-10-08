@@ -134,8 +134,8 @@ public class ShopApiController {
         List<CategoryAndGoodListVo> categoryvolist  = new ArrayList<CategoryAndGoodListVo>();
         List<SpuVo> spuListvo  = null;
         //先获取店铺个性化分类，如果店铺个性化分类不存在，则获取公共商品分类
-        List<SmallSellCategory> list  = smallSellCategoryService.list(new QueryWrapper<SmallSellCategory>().eq("status",1).eq("supplier_id",supplierId));
-        List<SmallSpu> spuList = smallSpuService.list(new QueryWrapper<SmallSpu>().eq("status",1).eq("supplier_id",supplierId));
+        List<SmallSellCategory> list  = smallSellCategoryService.list(new QueryWrapper<SmallSellCategory>().eq("status",1).eq("supplier_id",Long.valueOf(supplierId)));
+        List<SmallSpu> spuList = smallSpuService.list(new QueryWrapper<SmallSpu>().eq("status",1).eq("supplier_id",Long.valueOf(supplierId)));
         if(list!=null && list.size()>0){
             for(SmallSellCategory category:list){
                 CategoryAndGoodListVo categoryvo= new CategoryAndGoodListVo();
@@ -214,7 +214,7 @@ public class ShopApiController {
 //        query.put("categoryId",params.get("categoryId"));
         query.put("page",pageNum);
         query.put("limit",pageSize);
-        query.put("supplierId",supplierId);
+        query.put("supplierId",Long.valueOf(supplierId));
         List<SmallSellCategory> list  = smallSellCategoryService.list(new QueryWrapper<SmallSellCategory>().eq("status",1).eq("supplier_id",supplierId));
         //有自定义分类。查询自定义分类；没有则查询公共分类
         if(list!=null && list.size()>0){
