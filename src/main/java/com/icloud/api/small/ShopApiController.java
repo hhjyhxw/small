@@ -131,33 +131,56 @@ public class ShopApiController {
     @ResponseBody
     @AuthIgnore
     public R categoryList(@RequestParam String supplierId) {
-        List<CategoryAndGoodListVo> categoryvolist  = new ArrayList<CategoryAndGoodListVo>();
-        List<SpuVo> spuListvo  = null;
-        //先获取店铺个性化分类，如果店铺个性化分类不存在，则获取公共商品分类
-        List<SmallSellCategory> list  = smallSellCategoryService.list(new QueryWrapper<SmallSellCategory>().eq("status",1).eq("supplier_id",Long.valueOf(supplierId)));
-        List<SmallSpu> spuList = smallSpuService.list(new QueryWrapper<SmallSpu>().eq("status",1).eq("supplier_id",Long.valueOf(supplierId)));
-        if(list!=null && list.size()>0){
-            for(SmallSellCategory category:list){
-                CategoryAndGoodListVo categoryvo= new CategoryAndGoodListVo();
-                categoryvo.setId(category.getId());
-                categoryvo.setTitile(category.getTitle());
-                spuListvo = new ArrayList<SpuVo>();
-                for(SmallSpu spu:spuList){
-                    if(spu.getCategoryId().longValue()==category.getId().longValue()){
-                        SpuVo spuvo = new SpuVo();
-                        spuvo.setId(spu.getId());
-                        spuvo.setImg(spu.getImg());
-                        spuvo.setPrice(spu.getPrice());
-                        spuvo.setTitle(spu.getTitle());
-                        spuListvo.add(spuvo);
+        try {
+            List<CategoryAndGoodListVo> categoryvolist  = new ArrayList<CategoryAndGoodListVo>();
+            List<SpuVo> spuListvo  = null;
+            //先获取店铺个性化分类，如果店铺个性化分类不存在，则获取公共商品分类
+            List<SmallSellCategory> list  = smallSellCategoryService.list(new QueryWrapper<SmallSellCategory>().eq("status",1).eq("supplier_id",Long.valueOf(supplierId)));
+            List<SmallSpu> spuList = smallSpuService.list(new QueryWrapper<SmallSpu>().eq("status",1).eq("supplier_id",Long.valueOf(supplierId)));
+            if(list!=null && list.size()>0){
+                for(SmallSellCategory category:list){
+                    CategoryAndGoodListVo categoryvo= new CategoryAndGoodListVo();
+                    categoryvo.setId(category.getId());
+                    categoryvo.setTitile(category.getTitle());
+                    spuListvo = new ArrayList<SpuVo>();
+                    for(SmallSpu spu:spuList){
+                        if(spu.getCategoryId().longValue()==category.getId().longValue()){
+                            SpuVo spuvo = new SpuVo();
+                            spuvo.setId(spu.getId());
+                            spuvo.setImg(spu.getImg());
+                            spuvo.setPrice(spu.getPrice());
+                            spuvo.setTitle(spu.getTitle());
+                            spuListvo.add(spuvo);
+                        }
                     }
+                    categoryvo.setList(spuListvo);
+                    categoryvolist.add(categoryvo);
                 }
-                categoryvo.setList(spuListvo);
-                categoryvolist.add(categoryvo);
+
+                return R.ok().put("list",categoryvolist);
+            }else{
+                List<SmallCategory> lists  = smallCategoryService.list(new QueryWrapper<SmallCategory>().eq("status",1));
+                for(SmallCategory category:lists){
+                    CategoryAndGoodListVo categoryvo= new CategoryAndGoodListVo();
+                    categoryvo.setId(category.getId());
+                    categoryvo.setTitile(category.getTitle());
+                    spuListvo = new ArrayList<SpuVo>();
+                    for(SmallSpu spu:spuList){
+                        if(spu.getCategoryId().longValue()==category.getId().longValue()){
+                            SpuVo spuvo = new SpuVo();
+                            spuvo.setId(spu.getId());
+                            spuvo.setImg(spu.getImg());
+                            spuvo.setPrice(spu.getPrice());
+                            spuvo.setTitle(spu.getTitle());
+                            spuListvo.add(spuvo);
+                        }
+                    }
+                    categoryvo.setList(spuListvo);
+                    categoryvolist.add(categoryvo);
+                }
+                return R.ok().put("list",categoryvolist);
             }
 
-            return R.ok().put("list",categoryvolist);
-        }else{
             List<SmallCategory> lists  = smallCategoryService.list(new QueryWrapper<SmallCategory>().eq("status",1));
             for(SmallCategory category:lists){
                 CategoryAndGoodListVo categoryvo= new CategoryAndGoodListVo();
@@ -178,7 +201,10 @@ public class ShopApiController {
                 categoryvolist.add(categoryvo);
             }
             return R.ok().put("list",categoryvolist);
+        }catch (Exception e){
+            e.printStackTrace();
         }
+        return R.ok().put("list",null);
     }
 
     /**
