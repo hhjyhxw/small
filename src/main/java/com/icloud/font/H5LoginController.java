@@ -2,6 +2,7 @@ package com.icloud.font;
 
 import cn.hutool.captcha.generator.RandomGenerator;
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.icloud.basecommon.service.redis.RedisService;
 import com.icloud.common.util.StringUtil;
 import com.icloud.config.global.MyPropertitys;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * 前后端分离之h5登陆
@@ -48,6 +50,8 @@ public class H5LoginController {
 //                log.info("未授权的请求地址");
 //                return "modules/h5login/error";//
 //            }
+            List<SmallRetail> retailList = smallRetailService.list(new QueryWrapper<SmallRetail>().eq("user_id",user.getId().longValue()));
+            log.info("loginUser:retailList==="+ JSON.toJSONString(retailList));
             String h5token = new RandomGenerator(12).generate();
 //            redisService.set(MD5Utils.encode2hex(h5token),user,3000L);//兼容h5、APP 前端服务 登陆
             redisService.set(h5token,user,3000L);//兼容h5、APP 前端服务 登陆

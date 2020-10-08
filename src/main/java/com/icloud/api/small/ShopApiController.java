@@ -64,16 +64,16 @@ public class ShopApiController {
      */
     @ApiOperation(value="获取商家信息", notes="")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "商家id", required = true, paramType = "query", dataType = "Long"),
+            @ApiImplicitParam(name = "id", value = "商家id", required = true, paramType = "query", dataType = "String"),
     })
     @RequestMapping(value = "/shopInfo",method = {RequestMethod.GET})
     @ResponseBody
     @AuthIgnore
-    public R shopInfo(@RequestParam Long id)  {
+    public R shopInfo(@RequestParam String id)  {
         if(id==null){
             return R.error("商家id不能为空");
         }
-        Object shop = smallRetailService.getById(id);
+        Object shop = smallRetailService.getById(Long.valueOf(id));
         ShopInfo shopInfo = new ShopInfo();
         if(shop!=null){
             BeanUtils.copyProperties((SmallRetail)shop,shopInfo);
@@ -125,12 +125,12 @@ public class ShopApiController {
      */
     @ApiOperation(value="获取商品分类", notes="")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "Long")
+            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "String")
     })
     @RequestMapping(value = "/categoryList",method = {RequestMethod.GET})
     @ResponseBody
     @AuthIgnore
-    public R categoryList(@RequestParam Long supplierId) {
+    public R categoryList(@RequestParam String supplierId) {
         List<CategoryAndGoodListVo> categoryvolist  = new ArrayList<CategoryAndGoodListVo>();
         List<SpuVo> spuListvo  = null;
         //先获取店铺个性化分类，如果店铺个性化分类不存在，则获取公共商品分类
@@ -194,14 +194,14 @@ public class ShopApiController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "页码", required = false, paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "pageSize", value = "每页多少记录", required = false, paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "Long"),
+            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "categoryId", value = "分类id", required = false, paramType = "query", dataType = "Long"),
 
     })
     @RequestMapping(value = "/goodsList",method = {RequestMethod.GET})
     @ResponseBody
     @AuthIgnore
-    public R goodsList(String pageNum,String pageSize,@RequestParam Long supplierId,@RequestParam String categoryId) {
+    public R goodsList(String pageNum,String pageSize,@RequestParam String supplierId,@RequestParam String categoryId) {
 //    public R goodsList(@RequestBody Map<String,Object> params) {
 //        if(!params.containsKey("supplierId")){
 //            return R.error("商户id为空");
@@ -307,7 +307,7 @@ public class ShopApiController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "页码", required = false, paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "pageSize", value = "每页多少记录", required = false, paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "Long"),
+            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "keeperOpenid", value = "店主openid", required = false, paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "sign", value = "签名", required = false, paramType = "query", dataType = "Long"),
 
@@ -315,7 +315,7 @@ public class ShopApiController {
     @RequestMapping(value = "/getGoodsList",method = {RequestMethod.GET})
     @ResponseBody
     @AuthIgnore
-    public R getGoodsList(String pageNum, String pageSize, @RequestParam Long supplierId, String sign, @RequestParam String keeperOpenid, HttpServletRequest request) {
+    public R getGoodsList(String pageNum, String pageSize, @RequestParam String supplierId, String sign, @RequestParam String keeperOpenid, HttpServletRequest request) {
         //店主设置验证
       /*  SmallRetail retail = (SmallRetail) smallSpuService.getById(supplierId);
         String signStr = MD5Utils.encode2hex(retail.getId().toString()+retail.getLicence()+myPropertitys.getYaobaokey());
@@ -336,12 +336,12 @@ public class ShopApiController {
         if(retailList==null || retailList.size()==0){
             return R.error("不是店主");
         }
-        supplierId = retailList.get(0).getId();
+        Long supplierIds = retailList.get(0).getId();
         Query query = new Query(new HashMap<>());
         query.put("status",1);
         query.put("page",pageNum);
         query.put("limit",pageSize);
-        query.put("supplierId",supplierId);
+        query.put("supplierId",supplierIds);
 
         PageUtils<SmallSpu> page = smallSpuService.findByPage(query.getPageNum(),query.getPageSize(), query);
         if(page.getList()!=null && page.getList().size()>0){

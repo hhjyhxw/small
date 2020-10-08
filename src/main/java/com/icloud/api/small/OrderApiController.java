@@ -103,7 +103,7 @@ public class OrderApiController {
             if(preOrder.getNum()==null || preOrder.getNum().length==0 || preOrder.getSkuId()==null || preOrder.getNum().length!=preOrder.getSkuId().length){
                 return R.error("商品数量与商品id不匹配");
             }
-            if(preOrder.getSupplierId()==null || preOrder.getSupplierId()<=0){
+            if(!StringUtil.checkStr(preOrder.getSupplierId())){
                 return R.error("商户id不能为空");
             }
             if(preOrder.getAddressId()==null || preOrder.getAddressId()<=0){

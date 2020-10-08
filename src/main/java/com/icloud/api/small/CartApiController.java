@@ -43,12 +43,12 @@ public class CartApiController {
      */
     @ApiOperation(value="获取用户店铺购车信息", notes="")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "Long")
+            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "String")
     })
     @RequestMapping(value = "/cartList",method = {RequestMethod.GET})
     @ResponseBody
 //    @AuthIgnore
-    public R cartList(@RequestParam Long supplierId,@LoginUser WxUser user) {
+    public R cartList(@RequestParam String supplierId,@LoginUser WxUser user) {
         if(supplierId==null){
             return R.error("零售户id为空");
         }
@@ -64,12 +64,12 @@ public class CartApiController {
 
     @ApiOperation(value="购物车加一", notes="")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "Long"),
+            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "skuId", value = "商品id", required = true, paramType = "query", dataType = "Long")
     })
     @RequestMapping(value = "/addCart",method = {RequestMethod.GET})
     @ResponseBody
-    public R addCart(@RequestParam Long supplierId,@RequestParam Long skuId,@LoginUser WxUser user) {
+    public R addCart(@RequestParam String supplierId,@RequestParam Long skuId,@LoginUser WxUser user) {
         if(supplierId==null || skuId==null){
             return R.error("缺少参数");
         }
@@ -92,7 +92,7 @@ public class CartApiController {
             cart.setNum(1);
             cart.setCreateTime(new Date());
             cart.setUserId((long)user.getId());
-            cart.setSupplierId(supplierId);
+            cart.setSupplierId(Long.valueOf(supplierId));
             cart.setSkuId(skuId);
             return smallCartService.save(cart)?R.ok():R.error();
         }
@@ -101,12 +101,12 @@ public class CartApiController {
 
     @ApiOperation(value="购物车减一", notes="")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "Long"),
+            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "skuId", value = "商品id", required = true, paramType = "query", dataType = "Long")
     })
     @RequestMapping(value = "/subCart",method = {RequestMethod.GET})
     @ResponseBody
-    public R subCart(@RequestParam Long supplierId,@RequestParam Long skuId,@LoginUser WxUser user) {
+    public R subCart(@RequestParam String supplierId,@RequestParam Long skuId,@LoginUser WxUser user) {
         if(supplierId==null || skuId==null){
             return R.error("缺少参数");
         }
@@ -219,11 +219,11 @@ public class CartApiController {
 
     @ApiOperation(value="查询购车数量", notes="")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "Long")
+            @ApiImplicitParam(name = "supplierId", value = "商户id", required = true, paramType = "query", dataType = "String")
     })
     @RequestMapping(value = "/countCart",method = {RequestMethod.GET})
     @ResponseBody
-    public R countCart(@RequestParam Long supplierId,@LoginUser WxUser user) {
+    public R countCart(@RequestParam String supplierId,@LoginUser WxUser user) {
         if(supplierId==null){
             return R.error("supplierId为空");
         }

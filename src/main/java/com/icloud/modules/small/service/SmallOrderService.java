@@ -73,7 +73,7 @@ public class SmallOrderService extends BaseServiceImpl<SmallOrderMapper,SmallOrd
         //1、库存校验
         for(int i=0;i<preOrder.getSkuId().length;i++){
             SmallSpu spu = (SmallSpu) smallSpuService.getById(preOrder.getSkuId()[i]);
-            if(spu.getSupplierId().longValue()!=preOrder.getSupplierId().longValue()){
+            if(spu.getSupplierId().longValue()!=Long.valueOf(preOrder.getSupplierId()).longValue()){
                 return R.error(spu.getTitle()+" 与商户对应不上");
             }
             //剩余库存
@@ -125,7 +125,7 @@ public class SmallOrderService extends BaseServiceImpl<SmallOrderMapper,SmallOrd
         order.setOrderStatus(0);
         order.setCreateTime(new Date());
         order.setMemo(preOrder.getMemo());
-        order.setSupplierId(preOrder.getSupplierId());
+        order.setSupplierId(Long.valueOf(preOrder.getSupplierId()));
 //        log.info("dataCenterId==="+dataCenterId);
 //        log.info("jvmPid==="+JvmUtils.jvmPid());
 //        log.info("getSysinfo==="+JvmUtils.getSysinfo());
