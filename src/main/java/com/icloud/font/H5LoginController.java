@@ -58,12 +58,15 @@ public class H5LoginController {
             log.info("redirect_url=="+ redirect_url);
             //如果历史连接带上token,去掉
             if(redirect_url.indexOf("token")>=0){
-                redirect_url =  redirect_url.replace("token","oldd");
+                redirect_url =  redirect_url.replace("token","oldd");//
             }
             if(redirect_url.indexOf("?")>=0){
                 redirect_url = redirect_url+"&token="+h5token;
             }else{
                 redirect_url = redirect_url+"?token="+h5token;
+            }
+            if(!redirect_url.contains("supplierId") && retailList!=null && retailList.size()>0){
+                redirect_url = redirect_url+"?token="+h5token+"&supplierId="+retailList.get(0).getId();
             }
             log.info("最终redirect_url=="+ redirect_url);
             response.sendRedirect(redirect_url);

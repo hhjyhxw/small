@@ -91,8 +91,8 @@ public class ShopApiController {
     @ResponseBody
     @AuthIgnore
     public R adlist() {
-       List<BsactivityAd> list  = bsactivityAdService.list(new QueryWrapper<BsactivityAd>().eq("status",1));
-       return R.ok().put("list",list);
+        List<BsactivityAd> list  = bsactivityAdService.list(new QueryWrapper<BsactivityAd>().eq("status",1));
+        return R.ok().put("list",list);
     }
 
 
