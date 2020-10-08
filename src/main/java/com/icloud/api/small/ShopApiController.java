@@ -180,27 +180,6 @@ public class ShopApiController {
                 }
                 return R.ok().put("list",categoryvolist);
             }
-
-            List<SmallCategory> lists  = smallCategoryService.list(new QueryWrapper<SmallCategory>().eq("status",1));
-            for(SmallCategory category:lists){
-                CategoryAndGoodListVo categoryvo= new CategoryAndGoodListVo();
-                categoryvo.setId(category.getId());
-                categoryvo.setTitile(category.getTitle());
-                spuListvo = new ArrayList<SpuVo>();
-                for(SmallSpu spu:spuList){
-                    if(spu.getCategoryId().longValue()==category.getId().longValue()){
-                        SpuVo spuvo = new SpuVo();
-                        spuvo.setId(spu.getId());
-                        spuvo.setImg(spu.getImg());
-                        spuvo.setPrice(spu.getPrice());
-                        spuvo.setTitle(spu.getTitle());
-                        spuListvo.add(spuvo);
-                    }
-                }
-                categoryvo.setList(spuListvo);
-                categoryvolist.add(categoryvo);
-            }
-            return R.ok().put("list",categoryvolist);
         }catch (Exception e){
             e.printStackTrace();
         }
