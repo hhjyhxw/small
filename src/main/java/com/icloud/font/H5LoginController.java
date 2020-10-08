@@ -66,7 +66,7 @@ public class H5LoginController {
                 redirect_url = redirect_url+"?token="+h5token;
             }
             if(!redirect_url.contains("supplierId") && retailList!=null && retailList.size()>0){
-                redirect_url = redirect_url+"?token="+h5token+"&supplierId="+retailList.get(0).getId();
+                redirect_url = redirect_url+"&supplierId="+retailList.get(0).getId();
             }
             log.info("最终redirect_url=="+ redirect_url);
             response.sendRedirect(redirect_url);
