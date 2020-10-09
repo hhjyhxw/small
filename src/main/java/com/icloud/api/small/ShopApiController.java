@@ -144,7 +144,7 @@ public class ShopApiController {
                     categoryvo.setTitile(category.getTitle());
                     spuListvo = new ArrayList<SpuVo>();
                     for(SmallSpu spu:spuList){
-                        if(spu.getCategoryId().longValue()==category.getId().longValue()){
+                        if(spu.getSellcategoryId().longValue()==category.getId().longValue()){
                             SpuVo spuvo = new SpuVo();
                             spuvo.setId(spu.getId());
                             spuvo.setImg(spu.getImg());
