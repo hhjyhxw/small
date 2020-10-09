@@ -16,7 +16,6 @@
      <result property="createTime" column="create_time"/>
      <result property="modifyTime" column="modify_time"/>
     </resultMap>
-
    <!-- 基础字段列 -->
    <sql id="Base_Column_List" >
 id,user_id,coupon_id,order_id,use_time,start_time,end_time,create_time,modify_time

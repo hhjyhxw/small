@@ -182,6 +182,7 @@ $(function () {
             { label: '剩余库存', name: 'remainStock', index: 'remainStock', width: 80 },
             // { label: '分类id', name: 'categoryId', index: 'category_id', width: 80 },
             { label: '所属分类', name: 'smallCategory.title', index: 'category_id', width: 80 },
+            { label: '个性化分类', name: 'smallSellCategory.title', index: 'sellcategory_id', width: 80 },
             { label: '状态', name: 'status', width: 60, formatter: function(value, options, row){
                     return value === 0 ?
                         '<span class="label label-danger">下架</span>' :
@@ -240,6 +241,13 @@ var vm = new Vue({
             smallSellCategory:{
                 title:null
             }
+        },
+        retaillist:[],//店铺列表，用于查询
+        q:{
+            title:'',
+            supplierName:'',
+            supplierId:'',//店铺id
+            status:'',
         }
 	},
 
@@ -384,8 +392,9 @@ var vm = new Vue({
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
-			$("#jqGrid").jqGrid('setGridParam',{ 
-                page:page
+			$("#jqGrid").jqGrid('setGridParam',{
+                postData:vm.q,
+                page: 1
             }).trigger("reloadGrid");
 		},
 
@@ -426,7 +435,14 @@ var vm = new Vue({
                 }
             });
         },
-
+        //加载零售户
+        getRetailListForquery: function(){
+            //加载
+            $.get(baseURL + "small/smallretail/selectlist", function(r){
+                console.log("r====="+JSON.stringify(r))
+                vm.retaillist =  r.retaillist;
+            })
+        },
         //加载零售户
         getRetailList: function(){
             //加载
@@ -510,3 +526,4 @@ var vm = new Vue({
 
 	}
 });
+vm.getRetailListForquery();

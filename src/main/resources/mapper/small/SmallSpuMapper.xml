@@ -16,6 +16,7 @@
      <result property="detail" column="detail"/>
      <result property="description" column="description"/>
      <result property="categoryId" column="category_id"/>
+     <result property="sellcategoryId" column="sellcategory_id"/>
      <result property="freightTemplateId" column="freight_template_id"/>
      <result property="unit" column="unit"/>
      <result property="status" column="status"/>
@@ -37,40 +38,16 @@ id,price,original_price,vip_price,title,sales,img,detail,description,category_id
 
 
 <select id="queryMixList" resultMap="BaseResultMap">
-select t.*,(t.stock-t.freeze_stock) as remainStock from t_small_spu t
-<where>
-<if test="id != null">
-    and t.id = #{id}
-</if>
-<if test="price != null">
-    and t.price = #{price}
-</if>
-<if test="original_price != null">
-    and t.original_price = #{original_price}
-</if>
-<if test="vip_price != null">
-    and t.vip_price = #{vip_price}
-</if>
-<if test="title != null">
-    and t.title = #{title}
-</if>
-<if test="sales != null">
-    and t.sales = #{sales}
-</if>
-<if test="img != null">
-    and t.img = #{img}
-</if>
-<if test="detail != null">
-    and t.detail = #{detail}
-</if>
+    select a.*,sc.title as "smallSellCategory.title" from (
+    select t.*,(t.stock-t.freeze_stock) as remainStock,r.supplier_name as "smallRetail.supplierName",c.title as
+    "smallRetail.title" from t_small_spu t,t_small_retail r, t_small_category c
+    <where>
+    t.supplier_id = r.id and t.category_id = c.id
 <if test="description != null">
     and t.description = #{description}
 </if>
-<if test="category_id != null">
-    and t.category_id = #{category_id}
-</if>
-<if test="freight_template_id != null">
-    and t.freight_template_id = #{freight_template_id}
+<if test="categoryId != null">
+    and t.category_id = #{categoryId}
 </if>
 <if test="unit != null">
     and t.unit = #{unit}
@@ -78,24 +55,23 @@ select t.*,(t.stock-t.freeze_stock) as remainStock from t_small_spu t
 <if test="status != null">
     and t.status = #{status}
 </if>
-<if test="supplier_id != null">
-    and t.supplier_id = #{supplier_id}
+<if test="supplierId != null">
+    and t.supplier_id = #{supplierId}
 </if>
-<if test="ihot != null">
-    and t.ihot = #{ihot}
-</if>
-<if test="inew != null">
-    and t.inew = #{inew}
-</if>
-<if test="idiscount != null">
-    and t.idiscount = #{idiscount}
-</if>
-<if test="iselect != null">
-    and t.iselect = #{iselect}
-</if>
-<if test="create_time != null">
-    and t.create_time = #{create_time}
-</if>
+
+    <if test="title != null and title!=''">
+        and t.title LIKE CONCAT('%', '${title}', '%')
+    </if>
+    <if test="supplierName != null and supplierName!=''">
+        and r.supplier_name LIKE CONCAT('%', '${supplierName}', '%')
+    </if>
+    <if test="categoryTitle != null and categoryTitle!=''">
+        and c.title LIKE CONCAT('%', '${categoryTitle}', '%')
+    </if>
+
 </where>
+order by t.create_time desc,t.modify_time desc
+) a left join t_small_sell_category sc on a.sellcategory_id = sc.id
 </select>
+
 </mapper>

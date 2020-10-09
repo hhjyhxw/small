@@ -8,6 +8,7 @@ import com.icloud.common.validator.ValidatorUtils;
 import com.icloud.config.global.MyPropertitys;
 import com.icloud.modules.small.entity.SmallRetail;
 import com.icloud.modules.small.service.SmallRetailService;
+import com.icloud.modules.small.vo.RetailQueryVo;
 import com.icloud.modules.small.vo.RetailSysVo;
 import com.icloud.modules.small.vo.RetailVo;
 import com.icloud.thirdinterfaces.apiservice.SmallRetailSendService;
@@ -50,6 +51,22 @@ public class SmallRetailController {
         PageUtils page = smallRetailService.findByPage(query.getPageNum(),query.getPageSize(), query);
 
         return R.ok().put("page", page);
+    }
+    /**
+     * 列表
+     */
+    @RequestMapping("/selectlist")
+    @RequiresPermissions("small:smallretail:list")
+    public R selectlist(@RequestParam Map<String, Object> params){
+       List<SmallRetail> list = smallRetailService.list();
+       List<RetailQueryVo> volist = new ArrayList<RetailQueryVo>();
+       list.forEach(p->{
+           RetailQueryVo vo = new RetailQueryVo();
+           vo.setId(p.getId().toString());
+           vo.setSupplierName(p.getSupplierName());
+           volist.add(vo);
+       });
+       return R.ok().put("retaillist", volist);
     }
 
 
