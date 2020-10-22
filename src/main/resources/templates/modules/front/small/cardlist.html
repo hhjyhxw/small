@@ -204,14 +204,24 @@
             line-height: 3.5rem;
             justify-content: center;
         }
+        .list{
+            background:lightgrey;
+            padding:1rem;
+        }
+        .item{
+            background:white;
+            margin:0.5rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
 <div id="icloudapp" v-cloak>
 
-    <div style="dispaly:flex;">
-        <div style="boder:1px solid lightgrey;" v-for="(item,index) in list" :key="index">
-            <div>卡券名称：{{item.cardName}}</div>
+    <div class="list">
+        <div class="item" style="boder:1px solid lightgrey;" v-for="(item,index) in list" :key="index">
+            <div>卡券名称：{{item.cardName?item.cardName:'通用兑换券'}}</div>
             <div>code：{{item.orderNo}}</div>
         </div>
     </div>
