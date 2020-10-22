@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("small:smallrececardrecord:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("small:smallrececardrecord:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("small:smallrececardrecord:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">卡券名称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.cardName" placeholder="卡券名称"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">订单唯一编号（填入卡券code）</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.orderNo" placeholder="订单唯一编号（填入卡券code）"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">card_uid</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.cardUid" placeholder="card_uid"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">所属卡券id </div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.cardId" placeholder="所属卡券id "/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">account_type</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.accountType" placeholder="account_type"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">领取用户openid（需建立索引）</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.receverOpenid" placeholder="领取用户openid（需建立索引）"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">领取用户unionid</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.receverUnionid" placeholder="领取用户unionid"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">领取手机号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.phone" placeholder="领取手机号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">领取时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.createTime" placeholder="领取时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">修改时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.modifyTime" placeholder="修改时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">领取渠道id （需建立索引）</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.channelId" placeholder="领取渠道id （需建立索引）"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">核销员id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.verifyuserId" placeholder="核销员id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">核销时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.verifyTime" placeholder="核销时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">核销店铺id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.supplierId" placeholder="核销店铺id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0 不删除 1删除</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.comsueDeleteFlag" placeholder="0 不删除 1删除"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0 不删除 1删除</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.verifyDeleteFlag" placeholder="0 不删除 1删除"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">有效开始时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.startTime" placeholder="有效开始时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">有效结束时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.endTime" placeholder="有效结束时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">订单类型（对应卡券类型）0礼品券，1代金券、折扣券、3满减类型</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.cardType" placeholder="订单类型（对应卡券类型）0礼品券，1代金券、折扣券、3满减类型"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">卡券面额</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.value" placeholder="卡券面额"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">卡券折扣</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.discount" placeholder="卡券折扣"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">最低订单金额</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.lowAmount" placeholder="最低订单金额"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">满多少</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.totalAmount" placeholder="满多少"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">减多少</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.deductAmount" placeholder="减多少"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">版本号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.version" placeholder="版本号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">核销状态</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.verifyStatus" placeholder="核销状态"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">核心类型 0手机号核销、1输入code核销，2扫码code核销 3、第三方接口核销</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="smallRececardRecord.verifyType" placeholder="核心类型 0手机号核销、1输入code核销，2扫码code核销 3、第三方接口核销"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/small/smallrececardrecord.js?_${.now?long}"></script>
+</body>
+</html>

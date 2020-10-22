@@ -8,19 +8,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="small" />
-        <module name="wx-web-project" />
-        <module name="house-project" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="small" target="1.8" />
-      <module name="wx-web-project" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="small" options="-parameters" />
-      <module name="wx-web-project" options="-parameters" />
     </option>
   </component>
 </project>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.small.dao.SmallRececardRecordMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.small.entity.SmallRececardRecord" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="cardName" column="card_name"/>
+     <result property="orderNo" column="order_no"/>
+     <result property="cardUid" column="card_uid"/>
+     <result property="cardId" column="card_id"/>
+     <result property="accountType" column="account_type"/>
+     <result property="receverOpenid" column="recever_openid"/>
+     <result property="receverUnionid" column="recever_unionid"/>
+     <result property="phone" column="phone"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+     <result property="channelId" column="channel_id"/>
+     <result property="verifyuserId" column="verifyuser_id"/>
+     <result property="verifyTime" column="verify_time"/>
+     <result property="supplierId" column="supplier_id"/>
+     <result property="comsueDeleteFlag" column="comsue_delete_flag"/>
+     <result property="verifyDeleteFlag" column="verify_delete_flag"/>
+     <result property="startTime" column="start_time"/>
+     <result property="endTime" column="end_time"/>
+     <result property="cardType" column="card_type"/>
+     <result property="value" column="value"/>
+     <result property="discount" column="discount"/>
+     <result property="lowAmount" column="low_amount"/>
+     <result property="totalAmount" column="total_amount"/>
+     <result property="deductAmount" column="deduct_amount"/>
+     <result property="version" column="version"/>
+     <result property="verifyStatus" column="verify_status"/>
+     <result property="verifyType" column="verify_type"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,card_name,order_no,card_uid,card_id,account_type,recever_openid,recever_unionid,phone,create_time,modify_time,channel_id,verifyuser_id,verify_time,supplier_id,comsue_delete_flag,verify_delete_flag,start_time,end_time,card_type,value,discount,low_amount,total_amount,deduct_amount,version,verify_status,verify_type
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_small_rececard_record t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="card_name != null">
+    and t.card_name = #{card_name}
+</if>
+<if test="order_no != null">
+    and t.order_no = #{order_no}
+</if>
+<if test="card_uid != null">
+    and t.card_uid = #{card_uid}
+</if>
+<if test="card_id != null">
+    and t.card_id = #{card_id}
+</if>
+<if test="account_type != null">
+    and t.account_type = #{account_type}
+</if>
+<if test="recever_openid != null">
+    and t.recever_openid = #{recever_openid}
+</if>
+<if test="recever_unionid != null">
+    and t.recever_unionid = #{recever_unionid}
+</if>
+<if test="phone != null">
+    and t.phone = #{phone}
+</if>
+<if test="create_time != null">
+    and t.create_time = #{create_time}
+</if>
+<if test="modify_time != null">
+    and t.modify_time = #{modify_time}
+</if>
+<if test="channel_id != null">
+    and t.channel_id = #{channel_id}
+</if>
+<if test="verifyuser_id != null">
+    and t.verifyuser_id = #{verifyuser_id}
+</if>
+<if test="verify_time != null">
+    and t.verify_time = #{verify_time}
+</if>
+<if test="supplier_id != null">
+    and t.supplier_id = #{supplier_id}
+</if>
+<if test="comsue_delete_flag != null">
+    and t.comsue_delete_flag = #{comsue_delete_flag}
+</if>
+<if test="verify_delete_flag != null">
+    and t.verify_delete_flag = #{verify_delete_flag}
+</if>
+<if test="start_time != null">
+    and t.start_time = #{start_time}
+</if>
+<if test="end_time != null">
+    and t.end_time = #{end_time}
+</if>
+<if test="card_type != null">
+    and t.card_type = #{card_type}
+</if>
+<if test="value != null">
+    and t.value = #{value}
+</if>
+<if test="discount != null">
+    and t.discount = #{discount}
+</if>
+<if test="low_amount != null">
+    and t.low_amount = #{low_amount}
+</if>
+<if test="total_amount != null">
+    and t.total_amount = #{total_amount}
+</if>
+<if test="deduct_amount != null">
+    and t.deduct_amount = #{deduct_amount}
+</if>
+<if test="version != null">
+    and t.version = #{version}
+</if>
+<if test="verify_status != null">
+    and t.verify_status = #{verify_status}
+</if>
+</where>
+</select>
+</mapper>

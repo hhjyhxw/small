@@ -35,6 +35,8 @@ public class MyPropertitys {
     private String sendurl;
     //签名key
     private String sendkey;
+    //卡券领取参数
+    private Card card;
 
     /**
      * 微信相关参数
@@ -90,5 +92,17 @@ public class MyPropertitys {
         private String namespace;//#spring-session中redis命名空间
         private String parentDomainName;// #父域名
         private String cookieName;//#cookie名字
+    }
+
+    /**
+     * spring redis session 相关参数
+     */
+    @Data
+    public static class Card{
+        private String cardId;//#cardId
+        private String channelCode;// #渠道号
+        private String aeskey;//#ase加密key
+        private String getCardUrl;//领取卡券地址
+
     }
 }
