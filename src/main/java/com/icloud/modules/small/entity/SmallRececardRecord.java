@@ -99,7 +99,7 @@ public class SmallRececardRecord implements Serializable {
    	   	   /* 版本号 */
        @TableField("version")
        private Long version;
-   	   	   /* 核销状态 0未核销，1已核销 2核销失败*/
+    /* 核销状态 0未核销 1核销中 2已核销 3核销失败*/
        @TableField("verify_status")
        private Integer verifyStatus;
    	   	   /* 核心类型 0手机号核销、1输入code核销，2扫码code核销 3、第三方接口核销 */

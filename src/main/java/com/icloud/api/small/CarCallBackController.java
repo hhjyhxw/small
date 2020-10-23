@@ -35,6 +35,7 @@ import java.util.Map;
 @Api("卡券核销数据回推接口")
 @RestController
 @RequestMapping("/api/card")
+//http://zl.haiyunzy.com/small//api/card/cartList
 public class CarCallBackController {
 
     @Autowired

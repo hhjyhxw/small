@@ -1,7 +1,6 @@
 package com.icloud.modules.small.vo.card;
 
 import lombok.Data;
-import lombok.NonNull;
 
 import javax.validation.constraints.NotEmpty;
 

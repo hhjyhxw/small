@@ -213,6 +213,17 @@
             margin:0.5rem;
             padding: 0.5rem;
             border-radius: 5px;
+            position: relative;
+        }
+        .btndiv{
+            display:absolut;
+            right:2rem;
+            top:0.3rem;
+            position: absolute;
+        }
+        .btn{
+            backgroup:lightblue;
+            color:white
         }
     </style>
 </head>
@@ -220,9 +231,11 @@
 <div id="icloudapp" v-cloak>
 
     <div class="list">
-        <div class="item" style="boder:1px solid lightgrey;" v-for="(item,index) in list" :key="index">
+        <div class="item" style="display:relative;boder:1px solid lightgrey;" v-for="(item,index) in list" :key="index">
             <div>卡券名称：{{item.cardName?item.cardName:'通用兑换券'}}</div>
             <div>code：{{item.orderNo}}</div>
+            <div class="btndiv" v-if="item.verifyStatus==2"><button class="btn">已使用</button></div>
+            <div  class="btndiv" else><button class="btn">去使用</button></div>
         </div>
     </div>
 
