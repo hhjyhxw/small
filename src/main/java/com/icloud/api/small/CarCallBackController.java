@@ -61,7 +61,7 @@ public class CarCallBackController {
     public R cartList(@RequestBody CardReceiveParamVo verifycarvo) {
         ValidatorUtils.validateEntityForFront(verifycarvo);
         String aeskey =  myPropertitys.getCard().getAeskey();
-        String cardCode = AesUtils.encode(verifycarvo.getData(),aeskey);
+        String cardCode = AesUtils.decode(verifycarvo.getData(),aeskey);
         log.info("cardCode==="+cardCode);
        List<SmallRececardRecord> list = smallRececardRecordService.list(new QueryWrapper<SmallRececardRecord>().eq("order_no",cardCode));
         log.info("list.size()==="+(list!=null?list.size():0));
