@@ -23,6 +23,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @Api("卡券核销数据回推接口")
 @RestController
 @RequestMapping("/api/card")
@@ -60,7 +62,9 @@ public class CarCallBackController {
         ValidatorUtils.validateEntityForFront(verifycarvo);
         String aeskey =  myPropertitys.getCard().getAeskey();
         String cardCode = AesUtils.encode(verifycarvo.getData(),aeskey);
+        log.info("cardCode==="+cardCode);
        List<SmallRececardRecord> list = smallRececardRecordService.list(new QueryWrapper<SmallRececardRecord>().eq("order_no",cardCode));
+        log.info("list.size()==="+(list!=null?list.size():0));
        if(list!=null && list.size()>0){
            //核销状态(0未核销 1核销中 2已核销 3核销失败)
            SmallRececardRecord smallRececardRecord = list.get(0);
