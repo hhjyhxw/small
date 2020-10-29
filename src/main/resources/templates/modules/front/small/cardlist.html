@@ -15,6 +15,8 @@
     <!--  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=nsHiiQyIYQiRhOwj9Hzswulw"></script>-->
     <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="http://static.runoob.com/assets/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://static.runoob.com/assets/qrcode/qrcode.min.js"></script>
     <style>
         .goodimg{
           display: flex;
@@ -225,6 +227,72 @@
             backgroup:lightblue;
             color:white
         }
+        .tankuan{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            background:rgba(0, 0, 0,0.7);
+            overflow: hidden;
+        }
+        .tankuan > .tankuan-con{
+            width: 55%;
+            height: 27%;
+            background: white;
+            border-radius: 0.5rem;
+            margin: 50% auto auto auto;
+            overflow: hidden;
+        }
+        .tankuan > .tankuan-con > .button{
+            width: 35%;
+            height: 2rem;
+            display: block;
+            margin: 10% auto auto auto;
+            border: none;
+            border-radius: 2rem;
+            color: #ff573b;
+            font-weight: 600;
+            font-size: 1.2rem;
+            background-color: #ffdd4d;
+            box-shadow: 0px 2px 5px #f8a407;
+        }
+        .tankuan > .tankuan-con > h3{
+            margin-top: 12%;
+            text-align: center;
+            color: #fff;
+            display: block;
+        }
+
+        .tankuan > .tankuan-con > .but{
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            margin-top: 10%;
+        }
+        .tankuan > .tankuan-con > .but > .button{
+            width: 35%;
+            height: 2rem;
+            display: block;
+            border: none;
+            border-radius: 2rem;
+            color: #ff573b;
+            font-weight: 600;
+            font-size: 1.2rem;
+            background-color: #ffdd4d;
+            box-shadow: 0px 2px 5px #f8a407;
+        }
+        .qrcodediv{
+            width: 100%;
+            height: 100%;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .qrcodediv img{
+            width: 90%;
+            height: 78%;
+        }
     </style>
 </head>
 <body>
@@ -235,12 +303,28 @@
             <div>卡券名称：{{item.cardName?item.cardName:'通用兑换券'}}</div>
             <div>code：{{item.orderNo}}</div>
             <div class="btndiv" v-if="item.verifyStatus==2"><button class="btn">已使用</button></div>
-            <div  class="btndiv" else><button class="btn">去使用</button></div>
+            <div  class="btndiv" else @click="makeCodes(item.cardCode,item.cardUid)"><button class="btn">去使用</button></div>
         </div>
     </div>
 
+  <!--  <div id="tankuan" class="tankuan" onclick="closeWin()">
+        <div class="tankuan-con">
+            <div id="qrcode" class="qrcodediv" ></div>
+        </div>
+    </div>-->
 </div>
 
+<div id="tankuan" class="tankuan" onclick="closeWin()" style="display:none;">
+    <div class="tankuan-con">
+        <div id="qrcode" class="qrcodediv" ></div>
+    </div>
+</div>
 <script src="${request.contextPath}/statics/js/front/small/cardlist.js?_${.now?long}"></script>
+<script type="text/javascript">
+    function closeWin(){
+        let tankuan = document.getElementById('tankuan')
+        tankuan.style.display = 'none';
+    }
+</script>
 </body>
 </html>
