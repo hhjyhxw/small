@@ -307,7 +307,7 @@
             <div>卡券名称：{{item.cardName?item.cardName:'通用兑换券'}}</div>
             <div>code：{{item.orderNo}}</div>
             <div class="btndiv" v-if="item.verifyStatus==2"><button class="btn">已使用</button></div>
-            <div  class="btndiv" else @click="makeCodes(item.cardCode,item.cardUid)"><button class="btn btn2">去使用</button></div>
+            <div  class="btndiv" else @click="makeCodes(item.orderNo,item.cardUid)"><button class="btn btn2">去使用</button></div>
         </div>
     </div>
 
