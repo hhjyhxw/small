@@ -222,10 +222,14 @@
             right:2rem;
             top:0.3rem;
             position: absolute;
+            right: 2rem;
+            background: lightblue;
+            border-radius: 10px;
         }
-        .btn{
+        .btn2{
             backgroup:lightblue;
             color:white
+            background: blue !important;
         }
         .tankuan{
             width: 100%;
@@ -303,7 +307,7 @@
             <div>卡券名称：{{item.cardName?item.cardName:'通用兑换券'}}</div>
             <div>code：{{item.orderNo}}</div>
             <div class="btndiv" v-if="item.verifyStatus==2"><button class="btn">已使用</button></div>
-            <div  class="btndiv" else @click="makeCodes(item.cardCode,item.cardUid)"><button class="btn">去使用</button></div>
+            <div  class="btndiv" else @click="makeCodes(item.cardCode,item.cardUid)"><button class="btn btn2">去使用</button></div>
         </div>
     </div>
 
